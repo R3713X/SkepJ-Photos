@@ -15,14 +15,14 @@ public class Export {
     public void Extract ( File selectedImage) {
      
             int i = 0;
-
+            
             try {
+                ImageMetadata imageMetadata = new ImageMetadata();
                 Metadata metadata = ImageMetadataReader.readMetadata(selectedImage);
                 for (Directory directory : metadata.getDirectories()) {
                     for (Tag tag : directory.getTags()) {
-                           directory.getName()
-                           tag.getTagName()
-                           tag.getDescription());
+                           
+                           imageMetadata.InsertImageMetadata( tag.getTagName() , tag.getDescription() , i );
                         i++;
                     }
                     if (directory.hasErrors()) {
