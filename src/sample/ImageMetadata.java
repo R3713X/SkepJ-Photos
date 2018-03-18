@@ -1,4 +1,6 @@
-public class ImageMetadata(){
+package sample;
+
+public class ImageMetadata{
 
 
     private String [] tagName = new String[100];
@@ -14,13 +16,13 @@ public class ImageMetadata(){
     
     public void ShowBasicTags()
     {
-        for(int i =0;i<tagName.length;i++)
+        for(int i =0; i<tagName.length;i++)
         {
-            if(tagName.contains("File Name")    ||
-               tagName.contains("Date Created") ||
-               tagName.contains("Dimensions")   ||
-               tagName.contains("Latitude")     ||
-               tagName.contains("Longitude")
+            if(tagName[i].contains("File Name")    ||
+               tagName[i].contains("Date Created") ||
+               tagName[i].contains("Dimensions")   ||
+               tagName[i].contains("Latitude")     ||
+               tagName[i].contains("Longitude")
               )
             {
                 System.out.println(tagName[i] + ": " + tagDesc[i]); 
