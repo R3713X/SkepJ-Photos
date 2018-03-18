@@ -10,8 +10,17 @@ public class ImageMetadata(){
         tagName[i] = tName;  
         tagDesc[i] = tDesc;
     }
-
-
+    
+    
+    public String [] getTagName()
+    {
+        return tagName;
+    }
+    
+    public String [] getTagDesc()
+    {
+        return tagDesc;
+    }
 
 
 
