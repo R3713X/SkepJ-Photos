@@ -12,19 +12,17 @@ import java.io.IOException;
 public class Export {
 
 
-    public void Extract ( String filePath) {
-        if (filePath != null) {
-            File file = new File(filePath);
-            String[] tags = new String[100];
+    public void Extract ( File selectedImage) {
+     
             int i = 0;
 
             try {
-                Metadata metadata = ImageMetadataReader.readMetadata(file);
+                Metadata metadata = ImageMetadataReader.readMetadata(selectedImage);
                 for (Directory directory : metadata.getDirectories()) {
                     for (Tag tag : directory.getTags()) {
-                        tags[i] = tag.getDescription();
-                        System.out.format("\n[%s] - %s = %s",
-                                directory.getName(), tag.getTagName(), tag.getDescription());
+                           directory.getName()
+                           tag.getTagName()
+                           tag.getDescription());
                         i++;
                     }
                     if (directory.hasErrors()) {
@@ -38,8 +36,7 @@ public class Export {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-
+            
         }
 
     }
