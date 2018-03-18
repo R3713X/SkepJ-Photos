@@ -12,12 +12,30 @@ public class ImageMetadata(){
     }
     
     
-    public String [] getTagName()
+    public void ShowBasicTags()
+    {
+        for(int i =0;i<tagName.length;i++)
+        {
+            if(tagName.contains("File Name")    ||
+               tagName.contains("Date Created") ||
+               tagName.contains("Dimensions")   ||
+               tagName.contains("Latitude")     ||
+               tagName.contains("Longitude")
+              )
+            {
+                System.out.println(tagName[i] + ": " + tagDesc[i]); 
+            }
+        }
+        
+    }
+    
+    
+    public String [] GetTagName()
     {
         return tagName;
     }
     
-    public String [] getTagDesc()
+    public String [] GetTagDesc()
     {
         return tagDesc;
     }
