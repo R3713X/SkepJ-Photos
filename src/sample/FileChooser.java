@@ -2,23 +2,23 @@ package sample;
 
 import java.io.File;
 
-public class FileChooser {
+public class FileManager{
 
-    private String path = "";
+    
 
-    public void FileGet() {
-        javafx.stage.FileChooser fc = new javafx.stage.FileChooser();
+    public File FileGet() {
+        FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 
         if (selectedFile != null) {
-            path = selectedFile.getAbsolutePath();
+            selectedFile.getAbsolutePath();
         } else {
             System.out.println("Error");
         }
+        
+        return selectedFile;
 
     }
 
-    public String getPath() {
-        return path;
-    }
+
 }
