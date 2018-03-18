@@ -5,41 +5,45 @@ public class ImageMetadata{
 
     private String [] tagName = new String[100];
     private String [] tagDesc = new String[100];
-    
+
     
     public void InsertImageMetadata (String tName , String tDesc , int i )
     {
-        tagName[i] = tName;  
+        tagName[i] = tName;
         tagDesc[i] = tDesc;
     }
     
     
     public void ShowBasicTags()
     {
-        for(int i =0; i<tagName.length;i++)
+        int i = 0;
+
+        while (tagName[i] != null)
         {
-            if(tagName[i].contains("File Name")    ||
-               tagName[i].contains("Date Created") ||
-               tagName[i].contains("Dimensions")   ||
-               tagName[i].contains("Latitude")     ||
-               tagName[i].contains("Longitude")
-              )
+            if(
+               tagName[i].equals("File Name") ||
+               tagName[i].equals("File Modified Date")  ||
+               tagName[i].equals("Subject Distance Range")
+               )
             {
-                System.out.println(tagName[i] + ": " + tagDesc[i]); 
+                System.out.println(tagName[i] + ": " + tagDesc[i]);
             }
+
+            i++;
         }
         
     }
-    
-    
-    public String [] GetTagName()
+
+    public void ShowAllTags()
     {
-        return tagName;
-    }
-    
-    public String [] GetTagDesc()
-    {
-        return tagDesc;
+        int i = 0;
+
+        while (tagName[i] != null)
+        {
+            System.out.println(tagName[i] + ": " + tagDesc[i]);
+            i++;
+        }
+
     }
 
 

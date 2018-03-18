@@ -3,11 +3,8 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
-
 import java.io.File;
-import java.io.IOException;
+
 
 public class Controller {
 
@@ -17,21 +14,15 @@ public class Controller {
 
         FileManager fileManager = new FileManager();
         File selectedFile = fileManager.FileGet();
+        MetadataExtractor ex = new MetadataExtractor();
+        ImageMetadata imageMetadata = ex.Extract(selectedFile);
 
-        Export ex = new Export();
-        ex.Extract(selectedFile);
-
-        ImageMetadata imageMetadata = new ImageMetadata();
         imageMetadata.ShowBasicTags();
+        //imageMetadata.ShowAllTags();
 
     }
 
-    @FXML
-    private void ShowMetada(ActionEvent event1) {
 
-
-
-    }
 
 
 }

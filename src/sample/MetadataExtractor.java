@@ -9,15 +9,15 @@ import com.drew.metadata.Tag;
 import java.io.File;
 import java.io.IOException;
 
-public class Export {
+public class MetadataExtractor {
 
 
-    public void Extract ( File selectedImage) {
+    public ImageMetadata Extract ( File selectedImage) {
      
             int i = 0;
-            
+            ImageMetadata imageMetadata = new ImageMetadata();
             try {
-                ImageMetadata imageMetadata = new ImageMetadata();
+
                 Metadata metadata = ImageMetadataReader.readMetadata(selectedImage);
                 for (Directory directory : metadata.getDirectories()) {
                     for (Tag tag : directory.getTags()) {
@@ -38,6 +38,7 @@ public class Export {
                 e.printStackTrace();
             
         }
+        return imageMetadata;
 
     }
 }
