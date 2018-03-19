@@ -56,7 +56,7 @@ public class Controller{
 //        System.out.println();
 //        System.out.println(myByteArray.length);
         DatabaseController a = new DatabaseController();
-        a.ConnectToMySqlDB("photo", "root", "");
+        a.connectToMySqlDB("photo", "root", "");
         a.uploadPhotoToDB(myByteArray);
         }else {
             System.out.println("Please choose an Image to Upload First");
@@ -69,6 +69,7 @@ public class Controller{
         WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
         displayImageView.setImage(image);
     }
+
 
 
 
