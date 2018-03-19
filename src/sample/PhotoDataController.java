@@ -17,7 +17,7 @@ import java.io.IOException;
 public class PhotoDataController {
 
 
-    public Metadata ExtractMetadata(File selectedImage) {
+    public Metadata extractMetadata(File selectedImage) {
 
 
         Metadata metadata = null;
@@ -33,7 +33,7 @@ public class PhotoDataController {
 
     }
 
-    public ImageMetadata CreateImageMetadata(Metadata metadata) {
+    public ImageMetadata createImageMetadata(Metadata metadata) {
         ImageMetadata imageMetadata = new ImageMetadata();
         int i = 0;
         for (Directory directory : metadata.getDirectories()) {

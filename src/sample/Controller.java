@@ -1,25 +1,33 @@
 package sample;
 
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 
-public class Controller {
+public class Controller{
+
 
     File recentFile =null;
+    @FXML
+    ImageView displayImageView;
 
     @FXML
-    private void GetPath(ActionEvent event) {
+    private void getPath(ActionEvent event) {
 
         FileManager fileManager = new FileManager();
-        recentFile = fileManager.FileGet();
+        recentFile = fileManager.fileGet();
         PhotoDataController photoDataController = new PhotoDataController();
-        ImageMetadata imageMetadata = photoDataController.CreateImageMetadata(photoDataController.ExtractMetadata(recentFile));
+        displayImage();
+        ImageMetadata imageMetadata = photoDataController.createImageMetadata(photoDataController.extractMetadata(recentFile));
 
         imageMetadata.ShowBasicTags();
         //imageMetadata.ShowAllTags();
@@ -27,7 +35,7 @@ public class Controller {
     }
 
     @FXML
-    private void UploadPhoto(ActionEvent event) {
+    private void uploadPhoto(ActionEvent event) {
         if (recentFile!=null){
         PhotoDataController photoDataController = new PhotoDataController();
         Image image = photoDataController.getImageFromFile(recentFile);
@@ -54,6 +62,12 @@ public class Controller {
             System.out.println("Please choose an Image to Upload First");
         }
 
+    }
+    private void displayImage(){
+        PhotoDataController photoDataController = new PhotoDataController();
+        BufferedImage bufferedImage = (BufferedImage)photoDataController.getImageFromFile(recentFile);
+        WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
+        displayImageView.setImage(image);
     }
 
 

@@ -6,7 +6,7 @@ import java.io.File;
 
 public class FileManager {
 
-    public File FileGet() {
+    public File fileGet() {
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
 
