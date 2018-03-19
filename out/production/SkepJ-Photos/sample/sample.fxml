@@ -23,8 +23,8 @@
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
             <children>
-                <Button layoutX="17.0" layoutY="50.0" mnemonicParsing="false" onAction="#GetPath" text="Choose Image" />
-                <Button layoutX="17.0" layoutY="100.0" mnemonicParsing="false" onAction="#ShowMetada" text="Show Metadata" />
+                <Button layoutX="17.0" layoutY="100.0" mnemonicParsing="false" onAction="#GetPath" text="Choose Image" />
+            <Button layoutX="17.0" layoutY="138.0" mnemonicParsing="false" onAction="#UploadPhoto" text="Upload Image" />
             </children>
         </AnchorPane>
     </children>
