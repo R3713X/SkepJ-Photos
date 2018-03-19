@@ -27,7 +27,7 @@ public class DatabaseController {
 
     /**
      * For this to actually work you need to create or have a table "UploadedPhotos" in phpMyAdmin
-     * It needs to have 2 Fields PhotoID Varchar(32) and DataBytes LONGBLOB
+     * It needs to have 2 Fields PhotoID Varchar(36) and DataBytes LONGBLOB
      * you also will need to change the my.ini usually found in "C:\xampp\mysql\bin\"
      * Open it up with notepad++.
      * Change the fields:
