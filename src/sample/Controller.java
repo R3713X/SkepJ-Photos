@@ -66,7 +66,8 @@ public class Controller{
     private void displayImage(){
         PhotoDataController photoDataController = new PhotoDataController();
         BufferedImage bufferedImage = (BufferedImage)photoDataController.getImageFromFile(recentFile);
-        WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
+        WritableImage image = null;
+        image = SwingFXUtils.toFXImage(bufferedImage, null);
         displayImageView.setImage(image);
     }
 
