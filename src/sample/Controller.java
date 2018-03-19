@@ -35,8 +35,25 @@ public class Controller{
     }
 
     @FXML
-    private void uploadPhoto(ActionEvent event) {
+    private void uploadPhotoButton(ActionEvent event) {
         if (recentFile!=null){
+            uploadPhoto();
+        }else {
+            System.out.println("Please choose an Image to Upload First");
+        }
+
+    }
+    private void displayImage(){
+        PhotoDataController photoDataController = new PhotoDataController();
+        BufferedImage bufferedImage = (BufferedImage)photoDataController.getImageFromFile(recentFile);
+        WritableImage image = null;
+
+            image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        displayImageView.setImage(image);
+    }
+
+    private void uploadPhoto(){
         PhotoDataController photoDataController = new PhotoDataController();
         Image image = photoDataController.getImageFromFile(recentFile);
         byte[] myByteArray = null;
@@ -58,18 +75,8 @@ public class Controller{
         DatabaseController a = new DatabaseController();
         a.connectToMySqlDB("photo", "root", "");
         a.uploadPhotoToDB(myByteArray);
-        }else {
-            System.out.println("Please choose an Image to Upload First");
-        }
+    }
 
-    }
-    private void displayImage(){
-        PhotoDataController photoDataController = new PhotoDataController();
-        BufferedImage bufferedImage = (BufferedImage)photoDataController.getImageFromFile(recentFile);
-        WritableImage image = null;
-        image = SwingFXUtils.toFXImage(bufferedImage, null);
-        displayImageView.setImage(image);
-    }
 
 
 
