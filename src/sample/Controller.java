@@ -73,7 +73,7 @@ public class Controller{
 //        System.out.println();
 //        System.out.println(myByteArray.length);
         DatabaseController a = new DatabaseController();
-        a.connectToMySqlDB("photo", "root", "");
+        a.connectToMySqlDB("photos", "root", "nikolakis12");
         a.uploadPhotoToDB(myByteArray);
     }
 

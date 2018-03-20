@@ -19,7 +19,7 @@ public class DatabaseController {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
             // Setup the connection with the DB
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + DBName, DBUser, DBPwd);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DBName+"?useSSL=false"  , DBUser, DBPwd);
         } catch (Exception e) {
             System.out.println(e);
         }

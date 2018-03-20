@@ -7,8 +7,35 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.11.0" level="application" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.46" level="project" />
-    <orderEntry type="library" name="org.wisdom-framework:mysql-connector-java:5.1.34_1" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../JarFiles/metadata-extractor-2.11.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JarFiles/xmpcore-5.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../JarFiles/mysql-connector-java-5.1.46.jar!/mysql-connector-java-5.1.46/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/mysql-connector-java-5.1.46.jar!/mysql-connector-java-5.1.46/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../JarFiles/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
