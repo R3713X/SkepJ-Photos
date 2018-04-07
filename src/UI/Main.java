@@ -1,4 +1,4 @@
-package sample;
+package UI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +10,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("sample.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("../UI/sample.fxml"));
         Parent root = fxmlLoader.load();
-        primaryStage.setTitle("Hell World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Skepj-PhotoAlbum");
+        primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
+
     }
 
 
