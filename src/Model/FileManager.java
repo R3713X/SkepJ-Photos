@@ -1,10 +1,11 @@
 package Model;
 
-import Controller.AwtToFx;
 import Controller.DatabaseController;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,11 +31,13 @@ public class FileManager {
         return image;
     }
 
-    public javafx.scene.image.Image getImage(byte [] photoData) {
-        javafx.scene.image.Image img;
-
-        AwtToFx awtToFx = new AwtToFx();
-        img = awtToFx.getJavaFXImage(photoData,3000,3000);
+    public BufferedImage getImage(byte [] photoData) {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new ByteArrayInputStream(photoData));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return img;
     }

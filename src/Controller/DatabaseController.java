@@ -2,6 +2,7 @@ package Controller;
 
 
 import java.sql.*;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class DatabaseController {
@@ -58,11 +59,11 @@ public class DatabaseController {
         }
     }
 
-    public byte[] getPhotoFromDB(String uuid) {
+    public byte[] getSpecificPhotoFromDB(String uuid) {
         byte[] bytes = null;
         String selectTableSQL = "SELECT DataBytes"
                 + " FROM UploadedPhotos"
-                + " WHERE PhotoID= ? ";
+                + " WHERE PhotoID= (?)";
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
             preparedStatement.setString(1, uuid);
@@ -80,6 +81,32 @@ public class DatabaseController {
             e.printStackTrace();
         }
         return bytes;
+    }
+
+    public HashMap<String,byte[]> getAllPhotosFromDB() {
+        byte[] bytes;
+        HashMap<String,byte[]> hashMap = new HashMap<>();
+        String selectTableSQL = "SELECT DataBytes"
+                + " FROM UploadedPhotos" ;
+
+        try {
+            PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Blob blob;
+
+            if(resultSet.next()){
+                blob = resultSet.getBlob("DataBytes");
+                int blobLength = (int) blob.length();
+                bytes = blob.getBytes(1, blobLength);
+                hashMap.put(resultSet.getString("PhotoID"),bytes);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return hashMap;
     }
 
 

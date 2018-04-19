@@ -17,5 +17,15 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.11.0" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Documents/GitHub/SkepJ-Photos/JarFiles/javaxt-core.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="com.carrotgarden.maven:carrot-maven-imgscalr-plugin:1.1.1" level="application" />
   </component>
 </module>

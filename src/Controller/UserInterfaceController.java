@@ -10,6 +10,7 @@ import Model.FileManager;
 import Model.ImageMetadata;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 
 public class UserInterfaceController {
@@ -25,7 +26,7 @@ public class UserInterfaceController {
     Label nameLabel;
 
     @FXML
-    private void selectPhoto() {
+    private void selectPhoto() throws IOException {
 
         FileManager fileManager = new FileManager();
         recentFile = fileManager.fileGet();
