@@ -40,7 +40,7 @@ public class DatabaseController {
      */
     public void uploadPhotoToDB(byte[] photoBytes ,String photoName ,String photoDate,String latitude,String longitude) {
         String insertTableSQL = "INSERT INTO UploadedPhotos"
-                + "(PhotoID, DataBytes, PhotoName, PhotoDate, Latitude, Longitude) VALUES"
+                + "(PhotoID, DataBytes, Name, Date, Latitude, Longitude) VALUES"
                 + "(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
@@ -86,7 +86,7 @@ public class DatabaseController {
     public HashMap<String,byte[]> getAllPhotosFromDB() {
         byte[] bytes;
         HashMap<String,byte[]> hashMap = new HashMap<>();
-        String selectTableSQL = "SELECT DataBytes"
+        String selectTableSQL = "SELECT Thumbnail_Data"
                 + " FROM UploadedPhotos" ;
 
         try {
@@ -95,7 +95,7 @@ public class DatabaseController {
             Blob blob;
 
             if(resultSet.next()){
-                blob = resultSet.getBlob("DataBytes");
+                blob = resultSet.getBlob("Thumbnail_Data");
                 int blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);
                 hashMap.put(resultSet.getString("PhotoID"),bytes);
