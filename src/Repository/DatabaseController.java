@@ -1,4 +1,4 @@
-package Controller;
+package Repository;
 
 
 import java.sql.*;
@@ -41,7 +41,7 @@ public class DatabaseController {
     public void uploadPhotoToDB(byte[] photoBytes ,String photoName ,String photoDate,String latitude,String longitude) {
         String insertTableSQL = "INSERT INTO UploadedPhotos"
                 + "(PhotoID, DataBytes, PhotoName, PhotoDate, Latitude, Longitude) VALUES"
-                + "(?,?,?,?,?,?)";
+                + "(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
             //UUID creates a random ID check the docs for more info

@@ -48,8 +48,12 @@ public class ImageMetadata {
         try {
             javaxt.io.Image image = new javaxt.io.Image(file);
             double[] gps = image.getGPSCoordinate();
-            longitude = String.valueOf(gps[0]);
-            latitude = String.valueOf(gps[1]);
+            try {
+                longitude = String.valueOf(gps[0]);
+                latitude = String.valueOf(gps[1]);
+            } catch (Exception e) {
+                System.out.println("There is not gps data");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

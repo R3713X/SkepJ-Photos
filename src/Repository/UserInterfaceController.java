@@ -1,4 +1,4 @@
-package Controller;
+package Repository;
 
 
 import javafx.embed.swing.SwingFXUtils;
@@ -52,8 +52,6 @@ public class UserInterfaceController {
         image = SwingFXUtils.toFXImage(bufferedImage, null);
         displayImageView.setImage(image);
     }
-
-
 
 
 }

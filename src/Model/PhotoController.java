@@ -17,18 +17,17 @@ public class PhotoController {
     public HashMap<String,ImageView> getAllImages(HashMap<String,byte[]> photoData){
 
         HashMap<String,ImageView> imageList = new HashMap<>();
-        ImageView[] imageView = new ImageView[200];
 
-        int i =0;
         for(Map.Entry<String,byte[]> data : photoData.entrySet()) {
 
             try {
-                imageView[i].setImage(createThumbnail(ImageIO.read(new ByteArrayInputStream(data.getValue()))));
+                ImageView imageView = new ImageView();
+                imageView.setImage(createThumbnail(ImageIO.read(new ByteArrayInputStream(data.getValue()))));
+                imageList.put(data.getKey(),imageView);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            imageList.put(data.getKey(),imageView[i]);
-            i++;
+
         }
         return imageList;
 

@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.DatabaseController;
+import Repository.DatabaseController;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.*;
