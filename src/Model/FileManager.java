@@ -5,7 +5,9 @@ import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -49,12 +51,26 @@ public class FileManager {
         return Files.readAllBytes(path);
     }
 
+    private byte[] extractBytesFromImage(javafx.scene.image.Image image) throws IOException {
+
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        ImageIO.write((RenderedImage) image, "jpg", baos );
+        byte[] imageInByte=baos.toByteArray();
+        return imageInByte;
+    }
+
+
     public void saveToDB(File recentFile , String nameOfPhoto , String datePhotoCreated ,String latitude,String longitude)
     {
         if (recentFile!=null){
-            byte[] myByteArray = null;
+            byte[] complete_Data = null;
+            byte[] thumbnail_Data = null;
             try {
-                myByteArray = extractBytesFromImage(recentFile);
+                complete_Data = extractBytesFromImage(recentFile);
+                PhotoController photoController = new PhotoController();
+
+                thumbnail_Data = extractBytesFromImage(photoController.createThumbnail(getImage(complete_Data)));
+
 
             } catch (IOException e) {
                 System.out.println("ByteExtraction didn't work");
@@ -62,7 +78,7 @@ public class FileManager {
 
             DatabaseController a = new DatabaseController();
             a.connectToMySqlDB("photo", "piper006", "sky1997");
-            a.uploadPhotoToDB(myByteArray,nameOfPhoto,datePhotoCreated,latitude,longitude);
+            a.uploadPhotoToDB(nameOfPhoto,datePhotoCreated,latitude,longitude,thumbnail_Data,complete_Data);
         }else {
             System.out.println("Please choose an Image to Upload First");
         }
