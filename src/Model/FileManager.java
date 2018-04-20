@@ -54,7 +54,7 @@ public class FileManager {
     private byte[] extractBytesFromImage(javafx.scene.image.Image image) throws IOException {
 
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
-        ImageIO.write((RenderedImage) image, "jpg", baos );
+        //ImageIO.write(image, "jpg", baos );
         byte[] imageInByte=baos.toByteArray();
         return imageInByte;
     }
@@ -71,13 +71,12 @@ public class FileManager {
 
                 thumbnail_Data = extractBytesFromImage(photoController.createThumbnail(getImage(complete_Data)));
 
-
             } catch (IOException e) {
                 System.out.println("ByteExtraction didn't work");
             }
 
             DatabaseController a = new DatabaseController();
-            a.connectToMySqlDB("photo", "piper006", "sky1997");
+            a.connectToMySqlDB("photo", "root", "nikolakis12");
             a.uploadPhotoToDB(nameOfPhoto,datePhotoCreated,latitude,longitude,thumbnail_Data,complete_Data);
         }else {
             System.out.println("Please choose an Image to Upload First");

@@ -39,7 +39,7 @@ public class DatabaseController {
      * Save the file and restart mySql.
      */
     public void uploadPhotoToDB(String photoName ,String photoDate,String latitude,String longitude,byte[] thumbnail_Data,byte[] complete_Data) {
-        String insertTableSQL = "INSERT INTO UploadedPhotos"
+        String insertTableSQL = "INSERT INTO PhotoAlbum"
                 + "(PhotoID, Name, Date, Latitude, Longitude,Thumbnail_Data,Complete_Data) VALUES"
                 + "(?,?,?,?,?,?,?)";
         try {
@@ -63,7 +63,7 @@ public class DatabaseController {
     public byte[] getSpecificPhotoFromDB(String uuid) {
         byte[] bytes = null;
         String selectTableSQL = "SELECT DataBytes"
-                + " FROM UploadedPhotos"
+                + " FROM PhotoAlbum"
                 + " WHERE PhotoID= (?)";
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
@@ -88,7 +88,7 @@ public class DatabaseController {
         byte[] bytes;
         HashMap<String,byte[]> hashMap = new HashMap<>();
         String selectTableSQL = "SELECT Thumbnail_Data"
-                + " FROM UploadedPhotos" ;
+                + " FROM PhotoAlbum" ;
 
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
