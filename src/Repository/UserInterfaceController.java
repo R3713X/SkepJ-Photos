@@ -8,6 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import Model.FileManager;
 import Model.ImageMetadata;
+import javafx.scene.layout.HBox;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,9 +23,12 @@ public class UserInterfaceController {
     private String datePhotoCreated ="";
     private ImageMetadata imageMetadata = new ImageMetadata();
     @FXML
-    ImageView displayImageView;
+    private ImageView displayImageView;
     @FXML
-    Label nameLabel;
+    private Label nameLabel;
+
+    @FXML
+    private HBox hBox;
 
     @FXML
     private void selectPhoto() throws IOException {
@@ -31,11 +36,12 @@ public class UserInterfaceController {
         FileManager fileManager = new FileManager();
         recentFile = fileManager.fileGet();
         displayImage();
-        imageMetadata.extractImageMetadata(recentFile);
-        nameOfPhoto = imageMetadata.getNameOfPhoto();
-        datePhotoCreated = imageMetadata.getDatePhotoCreated();
-        nameLabel.setText(nameOfPhoto);
-
+        if (recentFile!=null) {
+            imageMetadata.extractImageMetadata(recentFile);
+            nameOfPhoto = imageMetadata.getNameOfPhoto();
+            datePhotoCreated = imageMetadata.getDatePhotoCreated();
+            nameLabel.setText(nameOfPhoto);
+        }
     }
 
     @FXML
@@ -49,8 +55,10 @@ public class UserInterfaceController {
         FileManager fileManager = new FileManager();
         BufferedImage bufferedImage = (BufferedImage)fileManager.getImage(recentFile);
         WritableImage image;
-        image = SwingFXUtils.toFXImage(bufferedImage, null);
-        displayImageView.setImage(image);
+        if (bufferedImage!=null) {
+            image = SwingFXUtils.toFXImage(bufferedImage, null);
+            displayImageView.setImage(image);
+        }
     }
 
 

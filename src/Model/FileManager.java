@@ -25,9 +25,11 @@ public class FileManager {
     public Image getImage(File file) {
         Image image = null;
         try {
+            if (file!=null)
             image = ImageIO.read(file);
         } catch (IOException e) {
             System.out.println("getImageFromFile could not read image");
+
         }
 
         return image;

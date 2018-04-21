@@ -13,9 +13,9 @@
 <BorderPane prefHeight="554.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Repository.UserInterfaceController">
     <left>
 
-        <VBox prefHeight="554.0" prefWidth="176.0" GridPane.rowIndex="1">
+        <VBox prefHeight="554.0" prefWidth="176.0" GridPane.rowIndex="1" alignment="TOP_LEFT">
 
-            <Label fx:id="nameLabel" layoutX="41.0" layoutY="14.0" prefHeight="27.0" prefWidth="202.0" text="Photo Name" textAlignment="CENTER">
+            <Label fx:id="nameLabel" layoutX="41.0" layoutY="14.0" prefHeight="27.0" prefWidth="202.0" text="" textAlignment="CENTER" alignment="TOP_CENTER">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -29,9 +29,7 @@
     </left>
    <right>
         <TilePane BorderPane.alignment="CENTER">
-            <HBox>
-                
-            </HBox>
+            <HBox fx:id="hBox"/>
         </TilePane>
    </right>
 </BorderPane>
