@@ -24,18 +24,19 @@
         </MenuBar>
     </top>
     <left>
+
         <BorderPane style="-fx-background-color: #dbe8ff ">
-            <top>
+
+
+            <center>
+                <ImageView fx:id="displayImageView" fitHeight="407.0" fitWidth="215.0" layoutX="14.0" layoutY="41.0"
+                           pickOnBounds="true" preserveRatio="true"/>
                 <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="41.0" layoutY="14.0" prefHeight="27.0"
                        prefWidth="202.0" textAlignment="CENTER">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
-            </top>
-            <center>
-                <ImageView fx:id="displayImageView" fitHeight="407.0" fitWidth="215.0" layoutX="14.0" layoutY="41.0"
-                           pickOnBounds="true" preserveRatio="true"/>
             </center>
             <bottom>
                 <HBox alignment="CENTER" spacing="10">
@@ -45,10 +46,9 @@
                             onAction="#uploadPhoto" prefHeight="26.0" prefWidth="94.0" text="Upload Image"/>
                 </HBox>
             </bottom>
-            <right>
-                <VBox  prefWidth="2" style="-fx-background-color: #000000 "/>
-            </right>
+
         </BorderPane>
+
     </left>
     <right>
         <TilePane BorderPane.alignment="CENTER">

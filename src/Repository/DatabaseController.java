@@ -1,6 +1,8 @@
 package Repository;
 
 
+import Model.Album;
+
 import java.sql.*;
 import java.util.HashMap;
 import java.util.UUID;
@@ -27,17 +29,7 @@ public class DatabaseController {
         }
     }
 
-    /**
-     * For this to actually work you need to create or have a table "UploadedPhotos" in phpMyAdmin
-     * It needs to have 2 Fields PhotoID Varchar(32) and DataBytes LONGBLOB
-     * you also will need to change the my.ini usually found in "C:\xampp\mysql\bin\"
-     * Open it up with notepad++.
-     * Change the fields:
-     * 1)  [mysqld]    innodb_log_file_size=256M
-     * 2)  [mysqld]    max_allowed_packet = 512M
-     * 3)  [mysqldump] max_allowed_packet = 512M
-     * Save the file and restart mySql.
-     */
+
     public void uploadPhotoToDB(String photoName ,String photoDate,String latitude,String longitude,byte[] thumbnail_Data,byte[] complete_Data) {
         String insertTableSQL = "INSERT INTO PhotoAlbum"
                 + "(PhotoID, Name, Date, Latitude, Longitude,Thumbnail_Data,Complete_Data) VALUES"
@@ -108,6 +100,9 @@ public class DatabaseController {
             e.printStackTrace();
         }
         return hashMap;
+    }
+    public void createAlbum(Album album){
+
     }
 
 
