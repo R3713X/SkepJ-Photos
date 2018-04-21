@@ -1,5 +1,6 @@
 package Model;
 
+import Repository.DatabaseController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,11 +15,13 @@ import java.util.Map;
 
 public class PhotoController {
 
-    public HashMap<String,ImageView> getAllImages(HashMap<String,byte[]> photoData){
+    public HashMap<String,ImageView> getAllImages(){
 
         HashMap<String,ImageView> imageList = new HashMap<>();
+        DatabaseController databaseController = new DatabaseController();
 
-        for(Map.Entry<String,byte[]> data : photoData.entrySet()) {
+
+        for(Map.Entry<String,byte[]> data : databaseController.getAllPhotosFromDB().entrySet()) {
 
             try {
                 ImageView imageView = new ImageView();
@@ -29,9 +32,11 @@ public class PhotoController {
             }
 
         }
+
         return imageList;
 
     }
+
 
 
     public Image createThumbnail(BufferedImage img) throws IOException {
