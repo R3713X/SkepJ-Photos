@@ -1,35 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane prefHeight="554.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Repository.UserInterfaceController">
+<BorderPane prefHeight="554.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Repository.UserInterfaceController">
+    <top>
+        <MenuBar>
+            <Menu text="Albums">
+                <items>
+                    <MenuItem text="Create a new Album"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Open an Album"/>
+                </items>
+            </Menu>
+            <Menu text="Photos Map"/>
+            <Menu text="Settings">
+                <MenuItem text="Empty for now"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="Sign out"/>
+            </Menu>
+        </MenuBar>
+    </top>
     <left>
-
-        <VBox prefHeight="554.0" prefWidth="176.0" GridPane.rowIndex="1" alignment="TOP_LEFT">
-
-            <Label fx:id="nameLabel" layoutX="41.0" layoutY="14.0" prefHeight="27.0" prefWidth="202.0" text="" textAlignment="CENTER" alignment="TOP_CENTER">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Label>
-            <ImageView fx:id="displayImageView" fitHeight="342.0" fitWidth="215.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
-            <HBox alignment="CENTER" spacing="10">
-                <Button contentDisplay="CENTER" layoutX="126.0" layoutY="417.0" mnemonicParsing="false" onAction="#selectPhoto" prefHeight="26.0" prefWidth="94.0" text="Choose Image" />
-                <Button alignment="CENTER_RIGHT" layoutX="432.0" layoutY="417.0" mnemonicParsing="false" onAction="#uploadPhoto" prefHeight="26.0" prefWidth="94.0" text="Upload Image" />
-            </HBox>
-        </VBox>
+        <BorderPane style="-fx-background-color: #dbe8ff ">
+            <top>
+                <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="41.0" layoutY="14.0" prefHeight="27.0"
+                       prefWidth="202.0" textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+            </top>
+            <center>
+                <ImageView fx:id="displayImageView" fitHeight="407.0" fitWidth="215.0" layoutX="14.0" layoutY="41.0"
+                           pickOnBounds="true" preserveRatio="true"/>
+            </center>
+            <bottom>
+                <HBox alignment="CENTER" spacing="10">
+                    <Button contentDisplay="CENTER" layoutX="126.0" layoutY="417.0" mnemonicParsing="false"
+                            onAction="#selectPhoto" prefHeight="26.0" prefWidth="94.0" text="Choose Image"/>
+                    <Button alignment="CENTER_RIGHT" layoutX="432.0" layoutY="417.0" mnemonicParsing="false"
+                            onAction="#uploadPhoto" prefHeight="26.0" prefWidth="94.0" text="Upload Image"/>
+                </HBox>
+            </bottom>
+            <right>
+                <VBox  prefWidth="2" style="-fx-background-color: #000000 "/>
+            </right>
+        </BorderPane>
     </left>
-   <right>
+    <right>
         <TilePane BorderPane.alignment="CENTER">
             <HBox fx:id="hBox"/>
         </TilePane>
-   </right>
+    </right>
 </BorderPane>
