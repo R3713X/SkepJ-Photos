@@ -1,4 +1,4 @@
-package Repository;
+package UI;
 
 
 import Model.FileManager;
@@ -6,16 +6,21 @@ import Model.ImageMetadata;
 import Model.PhotoController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class UserInterfaceController {
@@ -32,6 +37,11 @@ public class UserInterfaceController {
 
     @FXML
     private HBox hBox;
+
+    @FXML
+    private BorderPane mainBorderPane;
+
+
 
 
     @FXML
@@ -88,5 +98,23 @@ public class UserInterfaceController {
         }
     }
 
+    @FXML
+    public void showCreateAlbumDialog() {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Create a new Album");
+        dialog.setHeaderText("Use this dialog to create a new Album");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("createAlbumDialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        Optional<ButtonType> result = dialog.showAndWait();
+
+    }
 
 }
