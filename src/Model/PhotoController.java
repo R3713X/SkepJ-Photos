@@ -38,7 +38,6 @@ public class PhotoController {
     }
 
 
-
     public Image createThumbnail(BufferedImage img) throws IOException {
         BufferedImage scaledImg = Scalr.resize(img, Scalr.Method.QUALITY,
                 100, 100, Scalr.OP_ANTIALIAS);

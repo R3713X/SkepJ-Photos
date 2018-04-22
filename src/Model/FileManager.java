@@ -5,7 +5,6 @@ import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -62,24 +61,22 @@ public class FileManager {
     }
 
 
-    public void saveToDB(File recentFile , String nameOfPhoto , String datePhotoCreated ,String latitude,String longitude)
+    public void saveToDB(File recentFile ,Photo photo)
     {
         if (recentFile!=null){
-            byte[] complete_Data = null;
-            byte[] thumbnail_Data = null;
             try {
-                complete_Data = extractBytesFromImage(recentFile);
+                photo.setCompleteData(extractBytesFromImage(recentFile));
                 PhotoController photoController = new PhotoController();
 
-                thumbnail_Data = extractBytesFromImage(photoController.createThumbnail(getImage(complete_Data)));
+                photo.setThumbnailData(extractBytesFromImage(photoController.createThumbnail(getImage(photo.getCompleteData()))));
 
             } catch (IOException e) {
                 System.out.println("ByteExtraction didn't work");
             }
 
             DatabaseController a = new DatabaseController();
-            a.connectToMySqlDB("photo", "root", "nikolakis12");
-            a.uploadPhotoToDB(nameOfPhoto,datePhotoCreated,latitude,longitude,thumbnail_Data,complete_Data);
+            a.connectToMySqlDB("photo", "root", "sky1997");
+            a.uploadPhotoToDB(photo);
         }else {
             System.out.println("Please choose an Image to Upload First");
         }

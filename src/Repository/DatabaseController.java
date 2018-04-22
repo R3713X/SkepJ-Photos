@@ -2,6 +2,7 @@ package Repository;
 
 
 import Model.Album;
+import Model.Photo;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -30,20 +31,22 @@ public class DatabaseController {
     }
 
 
-    public void uploadPhotoToDB(String photoName ,String photoDate,String latitude,String longitude,byte[] thumbnail_Data,byte[] complete_Data) {
-        String insertTableSQL = "INSERT INTO PhotoAlbum"
-                + "(PhotoID, Name, Date, Latitude, Longitude,Thumbnail_Data,Complete_Data) VALUES"
-                + "(?,?,?,?,?,?,?)";
+    public void uploadPhotoToDB(Photo photo) {
+        String insertTableSQL = "INSERT INTO photos"
+                + "(PhotoID, UserID, Name, Date, Latitude, Longitude,ThumbnailData,CompleteData) VALUES"
+                + "(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
             //UUID creates a random ID check the docs for more info
             preparedStatement.setString(1, UUID.randomUUID().toString());
-            preparedStatement.setString(2, photoName);
-            preparedStatement.setString(3, photoDate);
-            preparedStatement.setString(4, latitude);
-            preparedStatement.setString(5, longitude);
-            preparedStatement.setBytes(6, thumbnail_Data);
-            preparedStatement.setBytes(7, complete_Data);
+            preparedStatement.setString(2,"1");
+            preparedStatement.setString(3, photo.getPhotoName());
+            preparedStatement.setString(4, photo.getDateCreated());
+            preparedStatement.setString(5, photo.getLatitude());
+            preparedStatement.setString(6, photo.getLongitude());
+            preparedStatement.setBytes(7, photo.getThumbnailData());
+            preparedStatement.setBytes(8, photo.getCompleteData());
+
 
             preparedStatement.executeUpdate();
             System.out.println("The photo uploaded successfully.");
@@ -102,6 +105,23 @@ public class DatabaseController {
         return hashMap;
     }
     public void createAlbum(Album album){
+
+        String insertTableSQL = "INSERT INTO albums"
+                + "(AlbumID, Name, Date) VALUES"
+                + "(?,?,?)";
+        try {
+            PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
+            //UUID creates a random ID check the docs for more info
+            preparedStatement.setString(1, album.getAlbumId());
+            preparedStatement.setString(2,album.getTitle());
+            preparedStatement.setString(3,album.getDate().toString());
+
+            preparedStatement.executeUpdate();
+            System.out.println("The album created successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

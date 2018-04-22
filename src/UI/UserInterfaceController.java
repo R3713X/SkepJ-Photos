@@ -3,6 +3,7 @@ package UI;
 
 import Model.FileManager;
 import Model.ImageMetadata;
+import Model.Photo;
 import Model.PhotoController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -27,14 +28,13 @@ public class UserInterfaceController {
 
 
     private File recentFile = null;
-    private String nameOfPhoto = "";
-    private String datePhotoCreated = "";
     private ImageMetadata imageMetadata = new ImageMetadata();
+    private Photo photo;
     @FXML
     private ImageView displayImageView;
-    @FXML
-    private Label nameLabel;
 
+    @FXML
+    private Label label;
     @FXML
     private HBox hBox;
 
@@ -67,16 +67,18 @@ public class UserInterfaceController {
     }
 
     @FXML
-    private void selectPhoto() throws IOException {
+    private void selectPhoto() {
 
         FileManager fileManager = new FileManager();
         recentFile = fileManager.fileGet();
         displayImage();
+        photo = new Photo();
         if (recentFile != null) {
             imageMetadata.extractImageMetadata(recentFile);
-            nameOfPhoto = imageMetadata.getNameOfPhoto();
-            datePhotoCreated = imageMetadata.getDatePhotoCreated();
-            nameLabel.setText(nameOfPhoto);
+            photo.setPhotoName(imageMetadata.getNameOfPhoto());
+            photo.setDateCreated(imageMetadata.getDatePhotoCreated());
+            photo.setLatitude(imageMetadata.getLatitude());
+            photo.setLongitude(imageMetadata.getLongitude());
         }
     }
 
@@ -84,7 +86,7 @@ public class UserInterfaceController {
     @FXML
     private void uploadPhoto() {
         FileManager fileManager = new FileManager();
-        fileManager.saveToDB(recentFile, nameOfPhoto, datePhotoCreated, imageMetadata.getLatitude(), imageMetadata.getLongitude());
+        fileManager.saveToDB(recentFile, photo);
     }
 
 
