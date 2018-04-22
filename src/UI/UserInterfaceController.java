@@ -116,7 +116,10 @@ public class UserInterfaceController {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
         Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get().equals(ButtonType.OK)) {
+            CreateAlbumDialogController dialogController = fxmlLoader.getController();
 
+        }
     }
 
 }

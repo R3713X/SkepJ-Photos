@@ -39,7 +39,7 @@ public class DatabaseController {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
             //UUID creates a random ID check the docs for more info
             preparedStatement.setString(1, UUID.randomUUID().toString());
-            preparedStatement.setString(2,"1");
+            preparedStatement.setString(2, "1");
             preparedStatement.setString(3, photo.getPhotoName());
             preparedStatement.setString(4, photo.getDateCreated());
             preparedStatement.setString(5, photo.getLatitude());
@@ -66,7 +66,7 @@ public class DatabaseController {
             ResultSet resultSet = preparedStatement.executeQuery();
             Blob blob;
 
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 blob = resultSet.getBlob("DataBytes");
                 int blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);
@@ -79,22 +79,22 @@ public class DatabaseController {
         return bytes;
     }
 
-    public HashMap<String,byte[]> getAllPhotosFromDB() {
+    public HashMap<String, byte[]> getAllPhotosFromDB() {
         byte[] bytes;
-        HashMap<String,byte[]> hashMap = new HashMap<>();
+        HashMap<String, byte[]> hashMap = new HashMap<>();
         String selectTableSQL = "SELECT Thumbnail_Data"
-                + " FROM PhotoAlbum" ;
+                + " FROM PhotoAlbum";
 
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
             Blob blob;
 
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 blob = resultSet.getBlob("Thumbnail_Data");
                 int blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);
-                hashMap.put(resultSet.getString("PhotoID"),bytes);
+                hashMap.put(resultSet.getString("PhotoID"), bytes);
 
             }
 
@@ -104,7 +104,8 @@ public class DatabaseController {
         }
         return hashMap;
     }
-    public void createAlbum(Album album){
+
+    public void createAlbum(Album album) {
 
         String insertTableSQL = "INSERT INTO albums"
                 + "(AlbumID, Name, Date) VALUES"
@@ -113,8 +114,8 @@ public class DatabaseController {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
             //UUID creates a random ID check the docs for more info
             preparedStatement.setString(1, album.getAlbumId());
-            preparedStatement.setString(2,album.getTitle());
-            preparedStatement.setString(3,album.getDate().toString());
+            preparedStatement.setString(2, album.getTitle());
+            preparedStatement.setString(3, album.getDate().toString());
 
             preparedStatement.executeUpdate();
             System.out.println("The album created successfully.");

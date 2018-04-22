@@ -1,24 +1,25 @@
 package Model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Album {
     private String title;
     private String albumId;
-    private Date date;
+    private LocalDate date;
 
-    public Album(String title, Date date) {
+    public Album(String title) {
         this.title = title;
         this.albumId = UUID.randomUUID().toString();
-        this.date = date;
+        this.date = LocalDate.now();
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
 
         this.date = date;
     }
@@ -31,7 +32,7 @@ public class Album {
         return albumId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 }
