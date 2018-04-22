@@ -27,16 +27,17 @@
 
         <BorderPane style="-fx-background-color: #dbe8ff ">
 
-
-            <center>
-                <ImageView fx:id="displayImageView" fitHeight="407.0" fitWidth="215.0" layoutX="14.0" layoutY="41.0"
-                           pickOnBounds="true" preserveRatio="true"/>
+            <top>
                 <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="41.0" layoutY="14.0" prefHeight="27.0"
                        prefWidth="202.0" textAlignment="CENTER">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Label>
+            </top>
+            <center>
+                <ImageView fx:id="displayImageView" fitHeight="407.0" fitWidth="215.0" layoutX="14.0" layoutY="41.0"
+                           pickOnBounds="true" preserveRatio="true"/>
             </center>
             <bottom>
                 <HBox alignment="CENTER" spacing="10">
