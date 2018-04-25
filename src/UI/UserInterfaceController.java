@@ -5,6 +5,7 @@ import Model.FileManager;
 import Model.ImageMetadata;
 import Model.Photo;
 import Model.PhotoController;
+import Repository.DatabaseController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,23 +48,11 @@ public class UserInterfaceController {
     @FXML
     public void initialize() {
         PhotoController photoController = new PhotoController();
-        Map<String, ImageView> map = null;
-        map = photoController.getAllImages();
-        if (map != null) {
-            for (Map.Entry<String, ImageView> entry : map.entrySet()) {
+        DatabaseController databaseController = new DatabaseController();
+        databaseController.connectToMySqlDB("photo","root","sky1997");
 
-                ImageView imageView = entry.getValue();
-                imageView.setCursor(Cursor.HAND);
-                hBox.getChildren().add(imageView);
+        showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
 
-            }
-
-            for (Map.Entry<String, ImageView> entry : map.entrySet()) {
-                entry.getValue().setOnMouseClicked(event ->
-                        System.out.println(entry.getKey())
-                );
-            }
-        }
     }
 
     @FXML
@@ -87,6 +76,12 @@ public class UserInterfaceController {
     private void uploadPhoto() {
         FileManager fileManager = new FileManager();
         fileManager.saveToDB(recentFile, photo);
+        PhotoController photoController = new PhotoController();
+        DatabaseController databaseController = new DatabaseController();
+        databaseController.connectToMySqlDB("photo","root","sky1997");
+
+        showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
+
     }
 
 
@@ -121,6 +116,26 @@ public class UserInterfaceController {
             dialogController.processResults();
 
         }
+    }
+
+    private void showPhotos(Map<String, ImageView> map){
+        if (map != null) {
+            hBox.getChildren().clear();
+            for (Map.Entry<String, ImageView> entry : map.entrySet()) {
+
+                ImageView imageView = entry.getValue();
+                imageView.setCursor(Cursor.HAND);
+                hBox.getChildren().add(imageView);
+
+            }
+
+            for (Map.Entry<String, ImageView> entry : map.entrySet()) {
+                entry.getValue().setOnMouseClicked(event ->
+                        System.out.println(entry.getKey())
+                );
+            }
+        }
+
     }
 
 }

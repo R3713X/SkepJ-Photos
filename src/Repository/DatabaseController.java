@@ -127,6 +127,32 @@ public class DatabaseController {
     }
 
 
+    public HashMap<String, byte[]> getPhotosOrderByDate() {
+        byte[] bytes;
+        HashMap<String, byte[]> hashMap = new HashMap<>();
+        String selectTableSQL = "SELECT ThumbnailData,PhotoID" +
+                " FROM Photos" +
+                " ORDER BY Date Desc";
+
+        try {
+            PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Blob blob;
+            while (resultSet.next()) {
+                blob = resultSet.getBlob("ThumbnailData");
+                int blobLength = (int) blob.length();
+                bytes = blob.getBytes(1, blobLength);
+                hashMap.put(resultSet.getString("PhotoID"), bytes);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return hashMap;
+
+    }
+
+
     private Connection getCon() {
         return con;
     }
