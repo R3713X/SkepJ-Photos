@@ -26,6 +26,9 @@ public class PhotoController {
 
             try {
                 ImageView imageView = new ImageView();
+                imageView.setFitHeight(100);
+                imageView.setFitWidth(100);
+                imageView.preserveRatioProperty();
                 imageView.setImage(createThumbnail(ImageIO.read(new ByteArrayInputStream(data.getValue()))));
                 imageList.put(data.getKey(),imageView);
             } catch (IOException e) {

@@ -20,6 +20,7 @@ public class CreateAlbumDialogController {
     public void processResults(){
         Album newAlbum = new Album(albumTitle.getText());
         DatabaseController databaseController = new DatabaseController();
+        databaseController.connectToMySqlDB("photo","root","sky1997");
         databaseController.createAlbum(newAlbum);
     }
 
