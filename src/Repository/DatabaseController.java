@@ -90,7 +90,7 @@ public class DatabaseController {
             ResultSet resultSet = preparedStatement.executeQuery();
             Blob blob;
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 blob = resultSet.getBlob("ThumbnailData");
                 int blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);

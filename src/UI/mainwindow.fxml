@@ -51,9 +51,9 @@
         </BorderPane>
 
     </left>
-    <right>
+    <center>
         <TilePane BorderPane.alignment="CENTER">
             <HBox fx:id="hBox"/>
         </TilePane>
-    </right>
+    </center>
 </BorderPane>

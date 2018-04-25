@@ -48,7 +48,7 @@ public class UserInterfaceController {
     public void initialize() {
         PhotoController photoController = new PhotoController();
         Map<String, ImageView> map = null;
-        //map = photoController.getAllImages();
+        map = photoController.getAllImages();
         if (map != null) {
             for (Map.Entry<String, ImageView> entry : map.entrySet()) {
 
