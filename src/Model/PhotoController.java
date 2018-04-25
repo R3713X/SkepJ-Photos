@@ -19,6 +19,7 @@ public class PhotoController {
 
         HashMap<String,ImageView> imageList = new HashMap<>();
         DatabaseController databaseController = new DatabaseController();
+        databaseController.connectToMySqlDB("photo","root","sky1997");
 
 
         for(Map.Entry<String,byte[]> data : databaseController.getAllPhotosFromDB().entrySet()) {

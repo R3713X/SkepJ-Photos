@@ -1,6 +1,7 @@
 package Model;
 
 import Repository.DatabaseController;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -55,8 +56,11 @@ public class FileManager {
     private byte[] extractBytesFromImage(javafx.scene.image.Image image) throws IOException {
 
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
-        //ImageIO.write(image, "jpg", baos );
-        byte[] imageInByte=baos.toByteArray();
+        BufferedImage img = SwingFXUtils.fromFXImage(image,null);
+        ImageIO.write( img, "jpg", baos );
+        baos.flush();
+        byte[] imageInByte = baos.toByteArray();
+        baos.close();
         return imageInByte;
     }
 

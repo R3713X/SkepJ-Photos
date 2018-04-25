@@ -82,8 +82,8 @@ public class DatabaseController {
     public HashMap<String, byte[]> getAllPhotosFromDB() {
         byte[] bytes;
         HashMap<String, byte[]> hashMap = new HashMap<>();
-        String selectTableSQL = "SELECT Thumbnail_Data"
-                + " FROM PhotoAlbum";
+        String selectTableSQL = "SELECT ThumbnailData,PhotoID"
+                + " FROM Photos";
 
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
@@ -91,7 +91,7 @@ public class DatabaseController {
             Blob blob;
 
             if (resultSet.next()) {
-                blob = resultSet.getBlob("Thumbnail_Data");
+                blob = resultSet.getBlob("ThumbnailData");
                 int blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);
                 hashMap.put(resultSet.getString("PhotoID"), bytes);
