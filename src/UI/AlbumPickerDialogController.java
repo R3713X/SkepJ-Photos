@@ -43,6 +43,8 @@ public class AlbumPickerDialogController {
     }
 
     public void processResults(String photoId) {
-        primaryController.createConnectionForAlbumAndPhotoTable(photoId,albumId);
+        System.out.println(photoId);
+        System.out.println(albumId);
+        primaryController.createConnectionForAlbumAndPhotoTable(albumId,photoId);
     }
 }

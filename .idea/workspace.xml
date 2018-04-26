@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/UI/albumPickerDialog.fxml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/SkepJ-Photos/UI/mainwindow.fxml" afterPath="$PROJECT_DIR$/out/production/SkepJ-Photos/UI/mainwindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/DatabaseController.java" afterPath="$PROJECT_DIR$/src/Repository/DatabaseController.java" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/FileManager.java" afterPath="$PROJECT_DIR$/src/Repository/FileManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PhotoController.java" afterPath="$PROJECT_DIR$/src/Repository/PrimaryController.java" />
-      <change beforePath="$PROJECT_DIR$/src/UI/UserInterfaceController.java" afterPath="$PROJECT_DIR$/src/UI/UserInterfaceController.java" />
+      <change beforePath="$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java" afterPath="$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java" />
       <change beforePath="$PROJECT_DIR$/src/UI/mainwindow.fxml" afterPath="$PROJECT_DIR$/src/UI/mainwindow.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -74,8 +67,8 @@
       <file leaf-file-name="UserInterfaceController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/UserInterfaceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state relative-caret-position="-404">
+              <caret line="147" column="21" lean-forward="false" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6509#6510#0" expanded="true" />
@@ -100,8 +93,8 @@
       <file leaf-file-name="PrimaryController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Repository/PrimaryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="208">
+              <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
               <folding>
                 <element signature="e#483#484#0" expanded="true" />
                 <element signature="e#553#554#0" expanded="true" />
@@ -132,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Repository/DatabaseController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="191">
-              <caret line="156" column="39" lean-forward="false" selection-start-line="156" selection-start-column="39" selection-end-line="156" selection-end-column="39" />
+              <caret line="146" column="16" lean-forward="false" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,8 +143,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="45" column="132" lean-forward="false" selection-start-line="45" selection-start-column="132" selection-end-line="45" selection-end-column="132" />
+            <state relative-caret-position="272">
+              <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -183,11 +176,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlbumPickerDialogController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AlbumPickerDialogController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="483">
+              <caret line="47" column="71" lean-forward="false" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -218,10 +211,10 @@
       <find>system</find>
       <find>upload</find>
       <find>initia</find>
-      <find>style</find>
-      <find>getSpeci</find>
       <find>initi</find>
+      <find>getSpeci</find>
       <find>show</find>
+      <find>style</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -272,11 +265,11 @@
         <option value="$PROJECT_DIR$/src/Repository/PhotoController.java" />
         <option value="$PROJECT_DIR$/src/UI/albumPickerDialong.fxml" />
         <option value="$PROJECT_DIR$/src/UI/albumPickerDialog.fxml" />
-        <option value="$PROJECT_DIR$/src/UI/mainwindow.fxml" />
         <option value="$PROJECT_DIR$/src/Repository/PrimaryController.java" />
-        <option value="$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java" />
         <option value="$PROJECT_DIR$/src/UI/UserInterfaceController.java" />
         <option value="$PROJECT_DIR$/src/Repository/DatabaseController.java" />
+        <option value="$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java" />
+        <option value="$PROJECT_DIR$/src/UI/mainwindow.fxml" />
       </list>
     </option>
   </component>
@@ -556,7 +549,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32401314" sideWeight="0.505295" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3107105" sideWeight="0.494705" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3107105" sideWeight="0.494705" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -977,17 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/mainwindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="45" column="132" lean-forward="false" selection-start-line="45" selection-start-column="132" selection-end-line="45" selection-end-column="132" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/albumPickerDialog.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1001,8 +983,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/PrimaryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="208">
+          <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
           <folding>
             <element signature="e#483#484#0" expanded="true" />
             <element signature="e#553#554#0" expanded="true" />
@@ -1012,10 +994,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/Repository/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="191">
+          <caret line="146" column="16" lean-forward="false" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1024,8 +1006,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/UserInterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="-404">
+          <caret line="147" column="21" lean-forward="false" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6509#6510#0" expanded="true" />
@@ -1036,10 +1018,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/DatabaseController.java">
+    <entry file="file://$PROJECT_DIR$/src/UI/mainwindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="156" column="39" lean-forward="false" selection-start-line="156" selection-start-column="39" selection-end-line="156" selection-end-column="39" />
+        <state relative-caret-position="272">
+          <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/AlbumPickerDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="47" column="71" lean-forward="false" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
