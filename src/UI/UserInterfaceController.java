@@ -3,26 +3,24 @@ package UI;
 
 import Model.ImageMetadata;
 import Model.Photo;
-import Repository.DatabaseController;
 import Repository.FileManager;
-import Repository.PhotoController;
+import Repository.PrimaryController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -35,6 +33,9 @@ public class UserInterfaceController {
     private File recentFile = null;
     private ImageMetadata imageMetadata = new ImageMetadata();
     private Photo photo;
+
+    private PrimaryController primaryController = new PrimaryController();
+    private String selectedPhotoId;
     @FXML
     private ImageView displayImageView;
 
@@ -44,19 +45,22 @@ public class UserInterfaceController {
     @FXML
     private BorderPane mainBorderPane;
 
+    @FXML
+    private Label uploadPhotoNameLabel,statusLabel;
+
+    @FXML
+    private Button chooseAlbumButton;
 
     @FXML
     public void initialize() {
-        PhotoController photoController = new PhotoController();
-        DatabaseController databaseController = new DatabaseController();
-        databaseController.connectToMySqlDB("photo", "root", "");
+        PrimaryController primaryController = new PrimaryController();
 
-        showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
+        showPhotos();
 
         mainBorderPane.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-                tilePane.setPrefColumns((newSceneWidth.intValue()-200)/200);
+                tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200);
             }
         });
     }
@@ -66,7 +70,7 @@ public class UserInterfaceController {
 
         FileManager fileManager = new FileManager();
         recentFile = fileManager.fileGet();
-        displayImage();
+
         photo = new Photo();
         if (recentFile != null) {
             imageMetadata.extractImageMetadata(recentFile);
@@ -74,6 +78,8 @@ public class UserInterfaceController {
             photo.setDateCreated(imageMetadata.getDatePhotoCreated());
             photo.setLatitude(imageMetadata.getLatitude());
             photo.setLongitude(imageMetadata.getLongitude());
+            uploadPhotoNameLabel.setText(imageMetadata.getNameOfPhoto());
+
         }
     }
 
@@ -82,23 +88,16 @@ public class UserInterfaceController {
     private void uploadPhoto() {
         FileManager fileManager = new FileManager();
         fileManager.saveToDB(recentFile, photo);
-        PhotoController photoController = new PhotoController();
-        DatabaseController databaseController = new DatabaseController();
-        databaseController.connectToMySqlDB("photo", "root", "");
-
-        showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
+        statusLabel.setText("Photo uploaded successfully");
+        showPhotos();
 
     }
 
 
-    private void displayImage() {
-        FileManager fileManager = new FileManager();
-        BufferedImage bufferedImage = (BufferedImage) fileManager.getImage(recentFile);
-        WritableImage image;
-        if (bufferedImage != null) {
-            image = SwingFXUtils.toFXImage(bufferedImage, null);
-            displayImageView.setImage(image);
-        }
+    private void displayImage(String id) {
+        displayImageView.setImage(null);
+        displayImageView.setImage(primaryController.getPhotoById(id));
+
     }
 
     @FXML
@@ -120,11 +119,34 @@ public class UserInterfaceController {
         if (result.isPresent() && result.get().equals(ButtonType.OK)) {
             CreateAlbumDialogController dialogController = fxmlLoader.getController();
             dialogController.processResults();
-
+            statusLabel.setText("Album created successfully.");
+        }
+    }
+    @FXML
+    public void showAlbumPickerDialog() {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Choose your album");
+        dialog.setHeaderText("Use this dialog to choose an Album");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("albumPickerDialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get().equals(ButtonType.OK)) {
+            AlbumPickerDialogController albumPickerDialogController = fxmlLoader.getController();
+            albumPickerDialogController.processResults(selectedPhotoId);
+            statusLabel.setText("Photo inserted to album successfully");
         }
     }
 
-    private void showPhotos(Map<String, ImageView> map) {
+    private void showPhotos() {
+        Map<String, ImageView> map = primaryController.getAllImages();
         if (map != null) {
             tilePane.getChildren().clear();
             for (Map.Entry<String, ImageView> entry : map.entrySet()) {
@@ -137,12 +159,15 @@ public class UserInterfaceController {
                     public void handle(javafx.scene.input.MouseEvent event) {
                         if (event.getButton() == MouseButton.PRIMARY) {
                             System.out.println("primary");
+                            displayImage(entry.getKey());
+                            chooseAlbumButton.setVisible(true);
 
                         } else if (event.getButton() == MouseButton.SECONDARY) {
                             System.out.println("Secondary");
 
                         }
                         System.out.println(entry.getKey());
+                        selectedPhotoId=entry.getKey();
                     }
                 });
                 TilePane pane = new TilePane();

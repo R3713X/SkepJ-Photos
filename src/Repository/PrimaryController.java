@@ -12,10 +12,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PhotoController {
+public class PrimaryController {
+    private DatabaseController databaseController = new DatabaseController();
 
-    public HashMap<String,ImageView> getAllImages(HashMap<String,byte[]> hashMap){
+    public PrimaryController() {
+        databaseController.connectToMySqlDB("photo","root","");
+    }
 
+    public HashMap<String,ImageView> getAllImages(){
+        HashMap<String,byte[]> hashMap = databaseController.getAllPhotosFromDB();
         HashMap<String,ImageView> imageList = new HashMap<>();
 
 
@@ -34,6 +39,23 @@ public class PhotoController {
         }
 
         return imageList;
+    }
+
+    public void createConnectionForAlbumAndPhotoTable(String photoId,String albumId){
+        databaseController.connectPhotoToAlbumFromId(photoId,albumId);
+    }
+    public Image getPhotoById(String id){
+        BufferedImage image =null;
+        try {
+             image = ImageIO.read(new ByteArrayInputStream(databaseController.getSpecificPhotoFromDB(id)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  SwingFXUtils.toFXImage(image,null);
+    }
+
+    public HashMap<String,String> getAlbums(){
+        return databaseController.getAllAlbums();
     }
 
 

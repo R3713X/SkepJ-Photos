@@ -70,9 +70,9 @@ public class FileManager {
         if (recentFile!=null){
             try {
                 photo.setCompleteData(extractBytesFromImage(recentFile));
-                PhotoController photoController = new PhotoController();
+                PrimaryController primaryController = new PrimaryController();
 
-                photo.setThumbnailData(extractBytesFromImage(photoController.createThumbnail(getImage(photo.getCompleteData()))));
+                photo.setThumbnailData(extractBytesFromImage(primaryController.createThumbnail(getImage(photo.getCompleteData()))));
 
             } catch (IOException e) {
                 System.out.println("ByteExtraction didn't work");

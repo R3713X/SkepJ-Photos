@@ -57,8 +57,8 @@ public class DatabaseController {
 
     public byte[] getSpecificPhotoFromDB(String uuid) {
         byte[] bytes = null;
-        String selectTableSQL = "SELECT DataBytes"
-                + " FROM PhotoAlbum"
+        String selectTableSQL = "SELECT CompleteData"
+                + " FROM photos"
                 + " WHERE PhotoID= (?)";
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
@@ -67,7 +67,7 @@ public class DatabaseController {
             Blob blob;
 
             if (resultSet.next()) {
-                blob = resultSet.getBlob("DataBytes");
+                blob = resultSet.getBlob("CompleteData");
                 int blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);
             }
@@ -77,6 +77,26 @@ public class DatabaseController {
             e.printStackTrace();
         }
         return bytes;
+    }
+
+    public HashMap<String, String> getAllAlbums() {
+        String selectTableSQL = "SELECT Name, AlbumId"
+                + " FROM albums";
+        HashMap<String,String> albumHashMap = new HashMap<>();
+        try {
+            PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                albumHashMap.put(resultSet.getString("Name"),
+                        resultSet.getString("AlbumId"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return albumHashMap;
     }
 
     public HashMap<String, byte[]> getAllPhotosFromDB() {
@@ -124,9 +144,9 @@ public class DatabaseController {
         }
     }
 
-    public void connectPhotoToAlbumFromId(String photoId, String albumId){
+    public void connectPhotoToAlbumFromId(String photoId, String albumId) {
         String insertTableSQL = "INSERT INTO albumandphotos"
-                + "(albumID, photoId) VALUES"
+                + "(albumID, photoID) VALUES"
                 + "(?,?)";
         try {
             PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
@@ -134,13 +154,12 @@ public class DatabaseController {
             preparedStatement.setString(1, photoId);
             preparedStatement.setString(2, albumId);
 
-            preparedStatement.executeUpdate();
+            preparedStatement.execute();
             System.out.println("The connection had been created successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 
 
     public HashMap<String, byte[]> getPhotosOrderByDate() {
