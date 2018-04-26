@@ -1,18 +1,22 @@
 package Model;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class Album {
     private String title;
     private String albumId;
-    private LocalDate date;
+    private String date;
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
     public Album(String title) {
         this.title = title;
         this.albumId = UUID.randomUUID().toString();
-        this.date = LocalDate.now();
+        Date date = Date.valueOf(LocalDate.now());
+        this.date = sdf.format(date);
     }
 
     public void setTitle(String title) {
@@ -21,7 +25,7 @@ public class Album {
 
     public void setDate(LocalDate date) {
 
-        this.date = date;
+        this.date = sdf.format(date);
     }
 
     public String getTitle() {
@@ -32,7 +36,8 @@ public class Album {
         return albumId;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getDate() {
+
+        return this.date;
     }
 }

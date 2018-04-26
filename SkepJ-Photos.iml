@@ -8,7 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.11.0" level="application" />
-    <orderEntry type="library" name="org.imgscalr:imgscalr-lib:4.2" level="application" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -46,5 +45,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="imgscalr-lib-4.2" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.45-bin" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.45-bin1" level="project" />
   </component>
 </module>

@@ -1,23 +1,29 @@
 package UI;
 
 
-import Model.FileManager;
+import Repository.FileManager;
 import Model.ImageMetadata;
 import Model.Photo;
-import Model.PhotoController;
+import Repository.PhotoController;
 import Repository.DatabaseController;
+import javafx.beans.property.ObjectProperty;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
+import javafx.geometry.Pos;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,12 +41,11 @@ public class UserInterfaceController {
     private ImageView displayImageView;
 
     @FXML
-    private Label label;
-    @FXML
-    private HBox hBox;
+    private TilePane tilePane;
 
     @FXML
     private BorderPane mainBorderPane;
+
 
 
 
@@ -49,7 +54,7 @@ public class UserInterfaceController {
     public void initialize() {
         PhotoController photoController = new PhotoController();
         DatabaseController databaseController = new DatabaseController();
-        databaseController.connectToMySqlDB("photo","root","sky1997");
+        databaseController.connectToMySqlDB("photo", "root", "");
 
         showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
 
@@ -78,7 +83,7 @@ public class UserInterfaceController {
         fileManager.saveToDB(recentFile, photo);
         PhotoController photoController = new PhotoController();
         DatabaseController databaseController = new DatabaseController();
-        databaseController.connectToMySqlDB("photo","root","sky1997");
+        databaseController.connectToMySqlDB("photo","root","");
 
         showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
 
@@ -120,22 +125,52 @@ public class UserInterfaceController {
 
     private void showPhotos(Map<String, ImageView> map){
         if (map != null) {
-            hBox.getChildren().clear();
+            tilePane.getChildren().clear();
             for (Map.Entry<String, ImageView> entry : map.entrySet()) {
 
                 ImageView imageView = entry.getValue();
-                imageView.setCursor(Cursor.HAND);
-                hBox.getChildren().add(imageView);
+                imageView.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                    @Override
+                    public void handle(javafx.scene.input.MouseEvent event) {
+                        if(event.getButton()==MouseButton.PRIMARY){
+                            System.out.println("primary");
+
+                        }else if (event.getButton()==MouseButton.SECONDARY){
+                            System.out.println("Secondary");
+
+                        }
+                        System.out.println(entry.getKey());
+                    }
+                });
+                TilePane pane = new TilePane();
+                pane.setAlignment(Pos.CENTER);
+                pane.setMaxWidth(150);
+                pane.setMaxHeight(150);
+                pane.getChildren().add(imageView);
+
+                pane.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        pane.setStyle("-fx-background-color: #b2cfff");
+                    }
+                });
+                pane.setOnMouseExited(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        pane.setStyle("-fx-background-color: #ffffff");
+                    }
+                });
+                tilePane.getChildren().add(pane);
+
 
             }
 
-            for (Map.Entry<String, ImageView> entry : map.entrySet()) {
-                entry.getValue().setOnMouseClicked(event ->
-                        System.out.println(entry.getKey())
-                );
-            }
+
+
         }
 
+
     }
+
 
 }

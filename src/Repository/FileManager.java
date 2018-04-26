@@ -1,6 +1,6 @@
-package Model;
+package Repository;
 
-import Repository.DatabaseController;
+import Model.Photo;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
@@ -65,7 +65,7 @@ public class FileManager {
     }
 
 
-    public void saveToDB(File recentFile ,Photo photo)
+    public void saveToDB(File recentFile , Photo photo)
     {
         if (recentFile!=null){
             try {
@@ -79,7 +79,7 @@ public class FileManager {
             }
 
             DatabaseController a = new DatabaseController();
-            a.connectToMySqlDB("photo", "root", "sky1997");
+            a.connectToMySqlDB("photo", "root", "");
             a.uploadPhotoToDB(photo);
         }else {
             System.out.println("Please choose an Image to Upload First");

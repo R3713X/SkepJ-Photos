@@ -115,16 +115,32 @@ public class DatabaseController {
             //UUID creates a random ID check the docs for more info
             preparedStatement.setString(1, album.getAlbumId());
             preparedStatement.setString(2, album.getTitle());
-            preparedStatement.setString(3, album.getDate().toString());
+            preparedStatement.setString(3, album.getDate());
 
             preparedStatement.executeUpdate();
             System.out.println("The album created successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
+
+    public void connectPhotoToAlbumFromId(String photoId, String albumId){
+        String insertTableSQL = "INSERT INTO albumandphotos"
+                + "(albumID, photoId) VALUES"
+                + "(?,?)";
+        try {
+            PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
+            //UUID creates a random ID check the docs for more info
+            preparedStatement.setString(1, photoId);
+            preparedStatement.setString(2, albumId);
+
+            preparedStatement.executeUpdate();
+            System.out.println("The connection had been created successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     public HashMap<String, byte[]> getPhotosOrderByDate() {
