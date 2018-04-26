@@ -58,7 +58,7 @@
     </left>
     <center>
         <ScrollPane hbarPolicy="NEVER">
-            <TilePane fx:id="tilePane" hgap="25"  prefColumns="10" tileAlignment="TOP_LEFT" vgap="25" BorderPane.alignment="CENTER" >
+            <TilePane fx:id="tilePane" hgap="25"   tileAlignment="TOP_LEFT" vgap="15" BorderPane.alignment="CENTER"  >
             <opaqueInsets>
                <Insets />
             </opaqueInsets>

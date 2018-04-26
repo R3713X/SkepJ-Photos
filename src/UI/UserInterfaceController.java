@@ -1,12 +1,13 @@
 package UI;
 
 
-import Repository.FileManager;
 import Model.ImageMetadata;
 import Model.Photo;
-import Repository.PhotoController;
 import Repository.DatabaseController;
-import javafx.beans.property.ObjectProperty;
+import Repository.FileManager;
+import Repository.PhotoController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,12 +19,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -47,9 +45,6 @@ public class UserInterfaceController {
     private BorderPane mainBorderPane;
 
 
-
-
-
     @FXML
     public void initialize() {
         PhotoController photoController = new PhotoController();
@@ -58,6 +53,12 @@ public class UserInterfaceController {
 
         showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
 
+        mainBorderPane.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+                tilePane.setPrefColumns((newSceneWidth.intValue()-200)/200);
+            }
+        });
     }
 
     @FXML
@@ -83,7 +84,7 @@ public class UserInterfaceController {
         fileManager.saveToDB(recentFile, photo);
         PhotoController photoController = new PhotoController();
         DatabaseController databaseController = new DatabaseController();
-        databaseController.connectToMySqlDB("photo","root","");
+        databaseController.connectToMySqlDB("photo", "root", "");
 
         showPhotos(photoController.getAllImages(databaseController.getAllPhotosFromDB()));
 
@@ -123,19 +124,21 @@ public class UserInterfaceController {
         }
     }
 
-    private void showPhotos(Map<String, ImageView> map){
+    private void showPhotos(Map<String, ImageView> map) {
         if (map != null) {
             tilePane.getChildren().clear();
             for (Map.Entry<String, ImageView> entry : map.entrySet()) {
 
                 ImageView imageView = entry.getValue();
+
+
                 imageView.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
                     @Override
                     public void handle(javafx.scene.input.MouseEvent event) {
-                        if(event.getButton()==MouseButton.PRIMARY){
+                        if (event.getButton() == MouseButton.PRIMARY) {
                             System.out.println("primary");
 
-                        }else if (event.getButton()==MouseButton.SECONDARY){
+                        } else if (event.getButton() == MouseButton.SECONDARY) {
                             System.out.println("Secondary");
 
                         }
@@ -144,9 +147,10 @@ public class UserInterfaceController {
                 });
                 TilePane pane = new TilePane();
                 pane.setAlignment(Pos.CENTER);
-                pane.setMaxWidth(150);
-                pane.setMaxHeight(150);
-                pane.getChildren().add(imageView);
+                pane.setMaxWidth(180);
+                pane.setMaxHeight(180);
+                pane.getChildren().add(0, imageView);
+                pane.setStyle("-fx-background-color: #e2fffc");
 
                 pane.setOnMouseEntered(new EventHandler<MouseEvent>() {
                     @Override
@@ -157,14 +161,13 @@ public class UserInterfaceController {
                 pane.setOnMouseExited(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        pane.setStyle("-fx-background-color: #ffffff");
+                        pane.setStyle("-fx-background-color: #e2fffc");
                     }
                 });
                 tilePane.getChildren().add(pane);
 
 
             }
-
 
 
         }

@@ -23,10 +23,8 @@ public class PhotoController {
 
             try {
                 ImageView imageView = new ImageView();
-//                imageView.setFitHeight(150);
-//                imageView.setFitWidth(150);
-//                imageView.preserveRatioProperty( );
-                imageView.smoothProperty();
+                imageView.prefHeight(100);
+                imageView.prefWidth(100);
                 imageView.setImage(createThumbnail(ImageIO.read(new ByteArrayInputStream(data.getValue()))));
                 imageList.put(data.getKey(),imageView);
             } catch (IOException e) {
