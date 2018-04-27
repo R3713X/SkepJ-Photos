@@ -13,7 +13,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainwindow.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Skepj-PhotoAlbum");
-        primaryStage.setScene(new Scene(root, 850, 500));
+        primaryStage.setScene(new Scene(root, 850, 600));
         primaryStage.show();
 
     }

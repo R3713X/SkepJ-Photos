@@ -21,6 +21,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 
+import javax.imageio.ImageIO;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -146,6 +148,42 @@ public class UserInterfaceController {
     }
 
     private void showPhotos() {
+        //
+        // List<MyImage> mImages = primaryController.getAllImages();
+        // for (MyImage image: mImages) {
+        //  ImageView imageView = new ImageView();
+        //                imageView.prefHeight(100);
+        //                imageView.prefWidth(100);
+        //                imageView.setImage(myImage.getThumbnail());
+
+//        imageView.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+//            @Override
+//            public void handle(javafx.scene.input.MouseEvent event) {
+//                if (event.getButton() == MouseButton.PRIMARY) {
+//                    System.out.println("primary");
+//                    displayImage(mImage.getName());
+//                    chooseAlbumButton.setVisible(true);
+//
+//                } else if (event.getButton() == MouseButton.SECONDARY) {
+//                    System.out.println("Secondary");
+//
+//                }
+//                System.out.println(entry.getKey());
+//                selectedPhotoId=entry.getKey();
+//            }
+//        });
+        //                imageList.put(data.getKey(),imageView);
+//       S for(Map.Entry<String,byte[]> data : hashMap.entrySet()) {
+//
+//                    try {
+//                        ImageView imageView = new ImageView();
+//                        imageView.prefHeight(100);
+//                        imageView.prefWidth(100);
+//                        imageView.setImage(createThumbnail(ImageIO.read(new ByteArrayInputStream(data.getValue()))));
+//                        imageList.put(data.getKey(),imageView);
+//                    } catch (IOException e) {
+//                        e.printtackTrace();
+//            }
         Map<String, ImageView> map = primaryController.getAllImages();
         if (map != null) {
             tilePane.getChildren().clear();

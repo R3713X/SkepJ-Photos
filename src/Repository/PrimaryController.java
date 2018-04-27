@@ -20,6 +20,9 @@ public class PrimaryController {
     }
 
     public HashMap<String,ImageView> getAllImages(){
+
+        // List<MyImage> myImages = db.getAllPhotos();
+        // return myImages;
         HashMap<String,byte[]> hashMap = databaseController.getAllPhotosFromDB();
         HashMap<String,ImageView> imageList = new HashMap<>();
 

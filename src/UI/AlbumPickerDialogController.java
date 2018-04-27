@@ -27,6 +27,7 @@ public class AlbumPickerDialogController {
             albumList.add(a.getKey());
         }
         albumChoiceBox.setItems(albumList);
+        albumChoiceBox.getSelectionModel().select(0);
 
         albumChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override

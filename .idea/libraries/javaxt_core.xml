@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="javaxt-core-1.7.8">
+  <library name="javaxt-core">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../javaxt-core-1.7.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../javaxt-core.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

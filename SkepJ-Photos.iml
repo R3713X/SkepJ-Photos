@@ -26,7 +26,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="javaxt-core-1.7.8" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -45,8 +44,10 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="javaxt-core" level="project" />
     <orderEntry type="library" name="imgscalr-lib-4.2" level="project" />
+    <orderEntry type="library" name="metadata-extractor-2.11.0" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.45-bin" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.45-bin1" level="project" />
+    <orderEntry type="library" name="xmpcore-5.1.2" level="project" />
   </component>
 </module>
