@@ -7,6 +7,7 @@ import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,9 +15,9 @@ public class ImageMetadata {
 
     private HashMap<String, String> tagMap = new HashMap<>();
     private String nameOfPhoto = "";
-    private String datePhotoCreated = "";
-    private String longitude = "";
-    private String latitude = "";
+    private String datePhotoCreated ;
+    private double longitude ;
+    private double latitude ;
 
 
     public void extractImageMetadata(File file) {
@@ -49,8 +50,8 @@ public class ImageMetadata {
             javaxt.io.Image image = new javaxt.io.Image(file);
             double[] gps = image.getGPSCoordinate();
             try {
-                longitude = String.valueOf(gps[0]);
-                latitude = String.valueOf(gps[1]);
+                longitude = Double.valueOf(gps[0]);
+                latitude = Double.valueOf(gps[1]);
             } catch (Exception e) {
                 System.out.println("There is not gps data");
             }
@@ -85,11 +86,11 @@ public class ImageMetadata {
             return nameOfPhoto;
         }
 
-        public String getLatitude() {
+        public double getLatitude() {
             return latitude;
         }
 
-        public String getLongitude() {
+        public double getLongitude() {
             return longitude;
         }
 }

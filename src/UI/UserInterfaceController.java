@@ -2,7 +2,8 @@ package UI;
 
 
 import Model.ImageMetadata;
-import Model.Photo;
+import Model.ProxyPhoto;
+import Model.RealPhoto;
 import Repository.FileManager;
 import Repository.PrimaryController;
 import javafx.beans.value.ChangeListener;
@@ -21,22 +22,21 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 
-import javax.imageio.ImageIO;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 
 public class UserInterfaceController {
 
 
+    FileManager fileManager = new FileManager();
+    PrimaryController primaryController = new PrimaryController();
     private File recentFile = null;
     private ImageMetadata imageMetadata = new ImageMetadata();
-    private Photo photo;
+    private RealPhoto realPhoto;
 
-    private PrimaryController primaryController = new PrimaryController();
     private String selectedPhotoId;
     @FXML
     private ImageView displayImageView;
@@ -48,7 +48,7 @@ public class UserInterfaceController {
     private BorderPane mainBorderPane;
 
     @FXML
-    private Label uploadPhotoNameLabel,statusLabel;
+    private Label uploadPhotoNameLabel, statusLabel;
 
     @FXML
     private Button chooseAlbumButton;
@@ -73,13 +73,13 @@ public class UserInterfaceController {
         FileManager fileManager = new FileManager();
         recentFile = fileManager.fileGet();
 
-        photo = new Photo();
+        realPhoto = new RealPhoto();
         if (recentFile != null) {
             imageMetadata.extractImageMetadata(recentFile);
-            photo.setPhotoName(imageMetadata.getNameOfPhoto());
-            photo.setDateCreated(imageMetadata.getDatePhotoCreated());
-            photo.setLatitude(imageMetadata.getLatitude());
-            photo.setLongitude(imageMetadata.getLongitude());
+            realPhoto.setName(imageMetadata.getNameOfPhoto());
+            realPhoto.setDate(imageMetadata.getDatePhotoCreated());
+            realPhoto.setLatitude(imageMetadata.getLatitude());
+            realPhoto.setLongitude(imageMetadata.getLongitude());
             uploadPhotoNameLabel.setText(imageMetadata.getNameOfPhoto());
 
         }
@@ -88,11 +88,9 @@ public class UserInterfaceController {
 
     @FXML
     private void uploadPhoto() {
-        FileManager fileManager = new FileManager();
-        fileManager.saveToDB(recentFile, photo);
-        statusLabel.setText("Photo uploaded successfully");
+        primaryController.uploadNewPhoto(fileManager.createPhotoFromFile(recentFile));
+        statusLabel.setText("RealPhoto uploaded successfully");
         showPhotos();
-
     }
 
 
@@ -124,6 +122,7 @@ public class UserInterfaceController {
             statusLabel.setText("Album created successfully.");
         }
     }
+
     @FXML
     public void showAlbumPickerDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -143,94 +142,54 @@ public class UserInterfaceController {
         if (result.isPresent() && result.get().equals(ButtonType.OK)) {
             AlbumPickerDialogController albumPickerDialogController = fxmlLoader.getController();
             albumPickerDialogController.processResults(selectedPhotoId);
-            statusLabel.setText("Photo inserted to album successfully");
+            statusLabel.setText("RealPhoto inserted to album successfully");
         }
     }
 
     private void showPhotos() {
-        //
-        // List<MyImage> mImages = primaryController.getAllImages();
-        // for (MyImage image: mImages) {
-        //  ImageView imageView = new ImageView();
-        //                imageView.prefHeight(100);
-        //                imageView.prefWidth(100);
-        //                imageView.setImage(myImage.getThumbnail());
+        List<ProxyPhoto> proxyPhotos = primaryController.getAllPhotos();
+        for (ProxyPhoto proxyPhoto : proxyPhotos) {
+            ImageView imageView = new ImageView();
+            imageView.prefHeight(100);
+            imageView.prefWidth(100);
+            imageView.smoothProperty();
+            imageView.setImage(proxyPhoto.getThumbnail());
+            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    if (event.getButton() == MouseButton.PRIMARY) {
+                        System.out.println("primary");
+                        displayImage(proxyPhoto.getId());
+                        chooseAlbumButton.setVisible(true);
+                        selectedPhotoId=proxyPhoto.getId();
 
-//        imageView.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-//            @Override
-//            public void handle(javafx.scene.input.MouseEvent event) {
-//                if (event.getButton() == MouseButton.PRIMARY) {
-//                    System.out.println("primary");
-//                    displayImage(mImage.getName());
-//                    chooseAlbumButton.setVisible(true);
-//
-//                } else if (event.getButton() == MouseButton.SECONDARY) {
-//                    System.out.println("Secondary");
-//
-//                }
-//                System.out.println(entry.getKey());
-//                selectedPhotoId=entry.getKey();
-//            }
-//        });
-        //                imageList.put(data.getKey(),imageView);
-//       S for(Map.Entry<String,byte[]> data : hashMap.entrySet()) {
-//
-//                    try {
-//                        ImageView imageView = new ImageView();
-//                        imageView.prefHeight(100);
-//                        imageView.prefWidth(100);
-//                        imageView.setImage(createThumbnail(ImageIO.read(new ByteArrayInputStream(data.getValue()))));
-//                        imageList.put(data.getKey(),imageView);
-//                    } catch (IOException e) {
-//                        e.printtackTrace();
-//            }
-        Map<String, ImageView> map = primaryController.getAllImages();
-        if (map != null) {
-            tilePane.getChildren().clear();
-            for (Map.Entry<String, ImageView> entry : map.entrySet()) {
+                    } else if (event.getButton() == MouseButton.SECONDARY) {
+                        System.out.println("Secondary");
 
-                ImageView imageView = entry.getValue();
-
-
-                imageView.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-                    @Override
-                    public void handle(javafx.scene.input.MouseEvent event) {
-                        if (event.getButton() == MouseButton.PRIMARY) {
-                            System.out.println("primary");
-                            displayImage(entry.getKey());
-                            chooseAlbumButton.setVisible(true);
-
-                        } else if (event.getButton() == MouseButton.SECONDARY) {
-                            System.out.println("Secondary");
-
-                        }
-                        System.out.println(entry.getKey());
-                        selectedPhotoId=entry.getKey();
                     }
-                });
-                TilePane pane = new TilePane();
-                pane.setAlignment(Pos.CENTER);
-                pane.setMaxWidth(180);
-                pane.setMaxHeight(180);
-                pane.getChildren().add(0, imageView);
-                pane.setStyle("-fx-background-color: #e2fffc");
+                    System.out.println(proxyPhoto.getId());
+                }
+            });
+            TilePane pane = new TilePane();
+            pane.setAlignment(Pos.CENTER);
+            pane.setMaxWidth(180);
+            pane.setMaxHeight(180);
+            pane.getChildren().add(0, imageView);
+            pane.setStyle("-fx-background-color: #e2fffc");
 
-                pane.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        pane.setStyle("-fx-background-color: #b2cfff");
-                    }
-                });
-                pane.setOnMouseExited(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        pane.setStyle("-fx-background-color: #e2fffc");
-                    }
-                });
-                tilePane.getChildren().add(pane);
-
-
-            }
+            pane.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    pane.setStyle("-fx-background-color: #b2cfff");
+                }
+            });
+            pane.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    pane.setStyle("-fx-background-color: #e2fffc");
+                }
+            });
+            tilePane.getChildren().add(pane);
 
 
         }
@@ -240,3 +199,5 @@ public class UserInterfaceController {
 
 
 }
+
+

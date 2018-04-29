@@ -1,5 +1,6 @@
 package UI;
 
+import Model.Album;
 import Repository.PrimaryController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AlbumPickerDialogController {
@@ -17,14 +19,14 @@ public class AlbumPickerDialogController {
 
     private ObservableList<String> albumList = FXCollections.observableArrayList();
     private PrimaryController primaryController = new PrimaryController();
-    private HashMap<String, String> albums = primaryController.getAlbums();
+    private List<Album> albums = primaryController.getAlbums();
     private String albumId;
     @FXML
     public void initialize() {
 
 
-        for (Map.Entry<String, String> a : albums.entrySet()) {
-            albumList.add(a.getKey());
+        for (Album album : albums) {
+            albumList.add(album.getName());
         }
         albumChoiceBox.setItems(albumList);
         albumChoiceBox.getSelectionModel().select(0);
@@ -33,9 +35,9 @@ public class AlbumPickerDialogController {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 String selectedAlbumName = albumChoiceBox.getSelectionModel().getSelectedItem();
-                for (Map.Entry<String, String> a : albums.entrySet()) {
-                   if (selectedAlbumName.equals(a.getKey())){
-                        albumId = a.getValue();
+                for (Album album : albums) {
+                   if (selectedAlbumName.equals(album.getName())){
+                        albumId = album.getAlbumId();
                     }
                 }
             }
@@ -44,8 +46,6 @@ public class AlbumPickerDialogController {
     }
 
     public void processResults(String photoId) {
-        System.out.println(photoId);
-        System.out.println(albumId);
         primaryController.createConnectionForAlbumAndPhotoTable(albumId,photoId);
     }
 }

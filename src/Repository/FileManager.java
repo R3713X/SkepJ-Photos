@@ -1,10 +1,14 @@
 package Repository;
 
-import Model.Photo;
+import Model.ImageMetadata;
+import Model.RealPhoto;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import org.imgscalr.Scalr;
+
 import javax.imageio.ImageIO;
-import java.awt.*;
+
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 public class FileManager {
 
@@ -21,19 +26,19 @@ public class FileManager {
 
         return fc.showOpenDialog(null);
     }
-
-    public Image getImage(File file) {
-        Image image = null;
-        try {
-            if (file!=null)
-            image = ImageIO.read(file);
-        } catch (IOException e) {
-            System.out.println("getImageFromFile could not read image");
-
-        }
-
-        return image;
-    }
+//
+//    public Image getImage(File file) {
+//        Image image = null;
+//        try {
+//            if (file!=null)
+//            image = ImageIO.read(file);
+//        } catch (IOException e) {
+//            System.out.println("getImageFromFile could not read image");
+//
+//        }
+//
+//        return image;
+//    }
 
     public BufferedImage getImage(byte [] photoData) {
         BufferedImage img = null;
@@ -65,24 +70,58 @@ public class FileManager {
     }
 
 
-    public void saveToDB(File recentFile , Photo photo)
-    {
+    public RealPhoto createPhotoFromFile(File recentFile) {
+        ImageMetadata imageMetadata = new ImageMetadata();
+
+        imageMetadata.extractImageMetadata(recentFile);
+        RealPhoto realPhoto = new RealPhoto();
         if (recentFile!=null){
+
             try {
-                photo.setCompleteData(extractBytesFromImage(recentFile));
-                PrimaryController primaryController = new PrimaryController();
-
-                photo.setThumbnailData(extractBytesFromImage(primaryController.createThumbnail(getImage(photo.getCompleteData()))));
-
+                realPhoto.setCompleteImage(byteArrayToImage(extractBytesFromImage(recentFile)));
             } catch (IOException e) {
-                System.out.println("ByteExtraction didn't work");
+                e.printStackTrace();
+            }
+            realPhoto.setThumbnailImage(createThumbnail(realPhoto.getCompleteImage()));
+                realPhoto.setName(imageMetadata.getNameOfPhoto());
+                realPhoto.setDate(imageMetadata.getDatePhotoCreated());
+                realPhoto.setId(UUID.randomUUID().toString());
+                realPhoto.setLatitude(imageMetadata.getLatitude());
+                realPhoto.setLongitude(imageMetadata.getLongitude());
             }
 
-            DatabaseController a = new DatabaseController();
-            a.connectToMySqlDB("photo", "root", "");
-            a.uploadPhotoToDB(photo);
-        }else {
-            System.out.println("Please choose an Image to Upload First");
+        return realPhoto;
+    }
+
+    private javafx.scene.image.Image byteArrayToImage(byte[] bytes){
+        BufferedImage bufferedImage;
+        javafx.scene.image.Image image = new javafx.scene.image.Image("");
+        try{
+            bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes));
+            image = SwingFXUtils.toFXImage(bufferedImage,null);
+        }catch (IOException e) {
+            e.printStackTrace();
         }
+        return  image;
+    }
+    private byte[] imageToByteArray(javafx.scene.image.Image image) throws IOException {
+
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        BufferedImage img = SwingFXUtils.fromFXImage(image,null);
+        ImageIO.write( img, "jpg", baos );
+        baos.flush();
+        byte[] imageInByte = baos.toByteArray();
+        baos.close();
+        return imageInByte;
+    }
+
+    public Image createThumbnail(Image image) {
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+
+        bufferedImage = Scalr.resize(bufferedImage, Scalr.Method.QUALITY,
+                150, 150, Scalr.OP_ANTIALIAS);
+
+
+        return SwingFXUtils.toFXImage(bufferedImage, null);
     }
 }

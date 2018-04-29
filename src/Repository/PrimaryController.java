@@ -1,70 +1,54 @@
 package Repository;
 
+import Model.Album;
+import Model.ProxyPhoto;
+import Model.RealPhoto;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import org.imgscalr.Scalr;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class PrimaryController {
+    private PhotoRepository photoRepository = new PhotoRepository();
+    private AlbumRepository albumRepository = new AlbumRepository();
     private DatabaseController databaseController = new DatabaseController();
 
-    public PrimaryController() {
-        databaseController.connectToMySqlDB("photo","root","");
+
+    public List<ProxyPhoto> getAllPhotos() {
+        List<ProxyPhoto> proxyPhotos;
+        proxyPhotos = photoRepository.getAllPhotos(databaseController.getConnection());
+        databaseController.closeConnection();
+        return proxyPhotos;
     }
 
-    public HashMap<String,ImageView> getAllImages(){
-
-        // List<MyImage> myImages = db.getAllPhotos();
-        // return myImages;
-        HashMap<String,byte[]> hashMap = databaseController.getAllPhotosFromDB();
-        HashMap<String,ImageView> imageList = new HashMap<>();
-
-
-        for(Map.Entry<String,byte[]> data : hashMap.entrySet()) {
-
-            try {
-                ImageView imageView = new ImageView();
-                imageView.prefHeight(100);
-                imageView.prefWidth(100);
-                imageView.setImage(createThumbnail(ImageIO.read(new ByteArrayInputStream(data.getValue()))));
-                imageList.put(data.getKey(),imageView);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        return imageList;
+    public void createConnectionForAlbumAndPhotoTable(String photoId, String albumId) {
+        albumRepository.connectPhotoToAlbumFromId(photoId, albumId, databaseController.getConnection());
+        databaseController.closeConnection();
     }
 
-    public void createConnectionForAlbumAndPhotoTable(String photoId,String albumId){
-        databaseController.connectPhotoToAlbumFromId(photoId,albumId);
-    }
-    public Image getPhotoById(String id){
-        BufferedImage image =null;
-        try {
-             image = ImageIO.read(new ByteArrayInputStream(databaseController.getSpecificPhotoFromDB(id)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return  SwingFXUtils.toFXImage(image,null);
+    public Image getPhotoById(String id) {
+        Image image = photoRepository.getPhotoById(id, databaseController.getConnection());
+        databaseController.closeConnection();
+        return image;
     }
 
-    public HashMap<String,String> getAlbums(){
-        return databaseController.getAllAlbums();
+    public List<Album> getAlbums() {
+        List<Album> albums= albumRepository.getAllAlbums(databaseController.getConnection());
+        databaseController.closeConnection();
+        return albums;
     }
 
-
-    public Image createThumbnail(BufferedImage img) {
-        BufferedImage scaledImg = Scalr.resize(img, Scalr.Method.QUALITY,
-                150, 150, Scalr.OP_ANTIALIAS);
-        return SwingFXUtils.toFXImage(scaledImg, null);
+    public void uploadNewPhoto(RealPhoto realPhoto){
+        photoRepository.uploadPhotoToDB(realPhoto,databaseController.getConnection());
+        databaseController.closeConnection();
     }
+    public void createNewAlbum(Album album){
+        albumRepository.createAlbum(album,databaseController.getConnection());
+        databaseController.closeConnection();
+    }
+
 }

@@ -1,12 +1,7 @@
 package Repository;
 
 
-import Model.Album;
-import Model.Photo;
-
 import java.sql.*;
-import java.util.HashMap;
-import java.util.UUID;
 
 public class DatabaseController {
     /**
@@ -19,7 +14,7 @@ public class DatabaseController {
      * @param DBUser Database's username
      * @param DBPwd  Database's password, If there isn't any password put null
      */
-    public void connectToMySqlDB(String DBName, String DBUser, String DBPwd) {
+       public void connectToMySqlDB(String DBName, String DBUser, String DBPwd) {
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,166 +24,22 @@ public class DatabaseController {
             System.out.println(e);
         }
     }
-
-
-    public void uploadPhotoToDB(Photo photo) {
-        String insertTableSQL = "INSERT INTO photos"
-                + "(PhotoID, UserID, Name, Date, Latitude, Longitude,ThumbnailData,CompleteData) VALUES"
-                + "(?,?,?,?,?,?,?,?)";
+    public Connection getConnection(){
         try {
-            PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
-            //UUID creates a random ID check the docs for more info
-            preparedStatement.setString(1, UUID.randomUUID().toString());
-            preparedStatement.setString(2, "1");
-            preparedStatement.setString(3, photo.getPhotoName());
-            preparedStatement.setString(4, photo.getDateCreated());
-            preparedStatement.setString(5, photo.getLatitude());
-            preparedStatement.setString(6, photo.getLongitude());
-            preparedStatement.setBytes(7, photo.getThumbnailData());
-            preparedStatement.setBytes(8, photo.getCompleteData());
-
-
-            preparedStatement.executeUpdate();
-            System.out.println("The photo uploaded successfully.");
-        } catch (SQLException e) {
-            e.printStackTrace();
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.jdbc.Driver");
+            // Setup the connection with the DB
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "photo", "root", "");
+        } catch (Exception e) {
+            System.out.println(e);
         }
-    }
-
-    public byte[] getSpecificPhotoFromDB(String uuid) {
-        byte[] bytes = null;
-        String selectTableSQL = "SELECT CompleteData"
-                + " FROM photos"
-                + " WHERE PhotoID= (?)";
-        try {
-            PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
-            preparedStatement.setString(1, uuid);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            Blob blob;
-
-            if (resultSet.next()) {
-                blob = resultSet.getBlob("CompleteData");
-                int blobLength = (int) blob.length();
-                bytes = blob.getBytes(1, blobLength);
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return bytes;
-    }
-
-    public HashMap<String, String> getAllAlbums() {
-        String selectTableSQL = "SELECT Name, AlbumId"
-                + " FROM albums";
-        HashMap<String,String> albumHashMap = new HashMap<>();
-        try {
-            PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                albumHashMap.put(resultSet.getString("Name"),
-                        resultSet.getString("AlbumId"));
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return albumHashMap;
-    }
-
-    public HashMap<String, byte[]> getAllPhotosFromDB() {
-        byte[] bytes;
-        HashMap<String, byte[]> hashMap = new HashMap<>();
-        String selectTableSQL = "SELECT ThumbnailData,PhotoID"
-                + " FROM Photos";
-
-        try {
-            PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            Blob blob;
-
-            while (resultSet.next()) {
-                blob = resultSet.getBlob("ThumbnailData");
-                int blobLength = (int) blob.length();
-                bytes = blob.getBytes(1, blobLength);
-                hashMap.put(resultSet.getString("PhotoID"), bytes);
-
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return hashMap;
-    }
-
-    public void createAlbum(Album album) {
-
-        String insertTableSQL = "INSERT INTO albums"
-                + "(AlbumID, Name, Date) VALUES"
-                + "(?,?,?)";
-        try {
-            PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
-            //UUID creates a random ID check the docs for more info
-            preparedStatement.setString(1, album.getAlbumId());
-            preparedStatement.setString(2, album.getTitle());
-            preparedStatement.setString(3, album.getDate());
-
-            preparedStatement.executeUpdate();
-            System.out.println("The album created successfully.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void connectPhotoToAlbumFromId(String photoId, String albumId) {
-        String insertTableSQL = "INSERT INTO albumandphotos"
-                + "(albumID, photoID) VALUES"
-                + "(?,?)";
-        try {
-            PreparedStatement preparedStatement = this.getCon().prepareStatement(insertTableSQL);
-            //UUID creates a random ID check the docs for more info
-            preparedStatement.setString(1, photoId);
-            preparedStatement.setString(2, albumId);
-
-            preparedStatement.execute();
-            System.out.println("The connection had been created successfully.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public HashMap<String, byte[]> getPhotosOrderByDate() {
-        byte[] bytes;
-        HashMap<String, byte[]> hashMap = new HashMap<>();
-        String selectTableSQL = "SELECT ThumbnailData,PhotoID" +
-                " FROM Photos" +
-                " ORDER BY Date Desc";
-
-        try {
-            PreparedStatement preparedStatement = this.getCon().prepareStatement(selectTableSQL);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            Blob blob;
-            while (resultSet.next()) {
-                blob = resultSet.getBlob("ThumbnailData");
-                int blobLength = (int) blob.length();
-                bytes = blob.getBytes(1, blobLength);
-                hashMap.put(resultSet.getString("PhotoID"), bytes);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return hashMap;
-
-    }
-
-
-    private Connection getCon() {
         return con;
+    }
+    public void closeConnection(){
+        try {
+            this.con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

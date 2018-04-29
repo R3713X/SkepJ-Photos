@@ -2,6 +2,7 @@ package UI;
 
 import Model.Album;
 import Repository.DatabaseController;
+import Repository.PrimaryController;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -19,9 +20,8 @@ public class CreateAlbumDialogController {
     @FXML
     public void processResults(){
         Album newAlbum = new Album(albumTitle.getText());
-        DatabaseController databaseController = new DatabaseController();
-        databaseController.connectToMySqlDB("photo","root","");
-        databaseController.createAlbum(newAlbum);
+        PrimaryController primaryController =new PrimaryController();
+        primaryController.createNewAlbum(newAlbum);
     }
 
 
