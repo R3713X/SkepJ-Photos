@@ -1,10 +1,9 @@
 package Model;
 
+import Repository.PrimaryController;
 import javafx.scene.image.Image;
 
-import java.sql.Date;
-
-public class RealPhoto implements Photo{
+public class RealPhoto implements Photo {
 
 
     @Override
@@ -20,15 +19,18 @@ public class RealPhoto implements Photo{
     private Image thumbnailImage;
     private Image completeImage;
 
-    public RealPhoto(ProxyPhoto proxyPhoto){
+    public RealPhoto(ProxyPhoto proxyPhoto) {
         this.name = proxyPhoto.getName();
         this.date = proxyPhoto.getDate();
         this.id = proxyPhoto.getId();
         this.latitude = proxyPhoto.getLatitude();
         this.longitude = proxyPhoto.getLongitude();
         this.thumbnailImage = proxyPhoto.getThumbnail();
-        this.completeImage = null;
+        PrimaryController primaryController = new PrimaryController();
+        this.completeImage=primaryController.getPhotoById(this.getId());
+
     }
+
     public RealPhoto(String name, String date, String id, double latitude, double longitude, Image thumbnailImage, Image completeImage) {
         this.name = name;
         this.date = date;

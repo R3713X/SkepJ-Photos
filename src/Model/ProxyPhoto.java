@@ -8,10 +8,9 @@ public class ProxyPhoto implements Photo {
 
     @Override
     public Image getCompleteImage() {
-
         if (completeImage==null) {
-            RealPhoto  a = new RealPhoto(this);
-            return completeImage=a.getCompleteImage();
+            RealPhoto  realPhoto = new RealPhoto(this);
+            return completeImage=realPhoto.getCompleteImage();
         }
         return completeImage;
 

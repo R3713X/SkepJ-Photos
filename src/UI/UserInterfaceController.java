@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -79,7 +80,7 @@ public class UserInterfaceController {
     @FXML
     private void uploadPhoto() {
         primaryController.uploadNewPhoto(fileManager.createPhotoFromFile(recentFile));
-        statusLabel.setText(recentFile.getName()+" has been uploaded successfully");
+        statusLabel.setText(recentFile.getName() + " has been uploaded successfully");
         showPhotos();
     }
 
@@ -135,17 +136,31 @@ public class UserInterfaceController {
             statusLabel.setText("RealPhoto inserted to album successfully");
         }
     }
+
     @FXML
-    public void showPreviewPhotoDialog() {
+    public void showPreviewPhotoDialog(ProxyPhoto proxyPhoto) {
+
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
         FXMLLoader fxmlLoader = new FXMLLoader();
+        dialog.setTitle("Photo Preview");
         fxmlLoader.setLocation(getClass().getResource("previewPhotoDialog.fxml"));
         try {
             dialog.getDialogPane().setContent(fxmlLoader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Image image = proxyPhoto.getCompleteImage();
+        image.isPreserveRatio();
+
+        ImageView imageView = new ImageView();
+        imageView.setPreserveRatio(true);
+        imageView.setImage(image);
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(600);
+        dialog.setGraphic(imageView);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        dialog.showAndWait();
 
     }
 
@@ -164,13 +179,15 @@ public class UserInterfaceController {
                         System.out.println("primary");
                         displayImage(proxyPhoto.getId());
                         chooseAlbumButton.setVisible(true);
-                        selectedPhotoId=proxyPhoto.getId();
-                        selectedPhotoName=proxyPhoto.getName();
+                        selectedPhotoId = proxyPhoto.getId();
+                        selectedPhotoName = proxyPhoto.getName();
 
                     } else if (event.getButton() == MouseButton.SECONDARY) {
                         System.out.println("Secondary");
+                        showPreviewPhotoDialog(proxyPhoto);
                     }
                     System.out.println(proxyPhoto.getId());
+
                 }
             });
             VBox vbox = new VBox();
@@ -180,7 +197,7 @@ public class UserInterfaceController {
             vbox.getChildren().add(0, imageView);
             vbox.setStyle("-fx-background-color: #e2fffc");
 
-            vbox.getChildren().add(1,new Label(proxyPhoto.getName()));
+            vbox.getChildren().add(1, new Label(proxyPhoto.getName()));
             vbox.setOnMouseEntered(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {

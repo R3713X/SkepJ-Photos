@@ -36,6 +36,7 @@ public class PrimaryController {
         return image;
     }
 
+
     public List<Album> getAlbums() {
         List<Album> albums= albumRepository.getAllAlbums(databaseController.getConnection());
         databaseController.closeConnection();

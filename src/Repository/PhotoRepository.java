@@ -32,11 +32,13 @@ public class PhotoRepository {
                 blob = resultSet.getBlob("CompleteData");
                 int blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);
+                System.out.println("ALL GOOD");
 
             }
 
 
         } catch (SQLException e) {
+            System.out.println("BAAAAAAAAAAD");
             e.printStackTrace();
         }
         return byteArrayToImage(bytes);
