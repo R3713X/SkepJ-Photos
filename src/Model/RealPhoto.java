@@ -19,9 +19,7 @@ public class RealPhoto implements Photo{
     private double longitude;
     private Image thumbnailImage;
     private Image completeImage;
-    public RealPhoto(){
 
-    }
     public RealPhoto(ProxyPhoto proxyPhoto){
         this.name = proxyPhoto.getName();
         this.date = proxyPhoto.getDate();
