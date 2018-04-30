@@ -21,6 +21,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class UserInterfaceController {
     private ImageMetadata imageMetadata = new ImageMetadata();
     private RealPhoto realPhoto;
 
+    private String selectedPhotoName;
     private String selectedPhotoId;
     @FXML
     private ImageView displayImageView;
@@ -69,27 +71,15 @@ public class UserInterfaceController {
 
     @FXML
     private void selectPhoto() {
-
-        FileManager fileManager = new FileManager();
         recentFile = fileManager.fileGet();
-
-        realPhoto = new RealPhoto();
-        if (recentFile != null) {
-            imageMetadata.extractImageMetadata(recentFile);
-            realPhoto.setName(imageMetadata.getNameOfPhoto());
-            realPhoto.setDate(imageMetadata.getDatePhotoCreated());
-            realPhoto.setLatitude(imageMetadata.getLatitude());
-            realPhoto.setLongitude(imageMetadata.getLongitude());
-            uploadPhotoNameLabel.setText(imageMetadata.getNameOfPhoto());
-
-        }
+        uploadPhotoNameLabel.setText(recentFile.getName());
     }
 
 
     @FXML
     private void uploadPhoto() {
         primaryController.uploadNewPhoto(fileManager.createPhotoFromFile(recentFile));
-        statusLabel.setText("RealPhoto uploaded successfully");
+        statusLabel.setText(recentFile.getName()+" has been uploaded successfully");
         showPhotos();
     }
 
@@ -145,6 +135,19 @@ public class UserInterfaceController {
             statusLabel.setText("RealPhoto inserted to album successfully");
         }
     }
+    @FXML
+    public void showPreviewPhotoDialog() {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("previewPhotoDialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     private void showPhotos() {
         List<ProxyPhoto> proxyPhotos = primaryController.getAllPhotos();
@@ -162,34 +165,35 @@ public class UserInterfaceController {
                         displayImage(proxyPhoto.getId());
                         chooseAlbumButton.setVisible(true);
                         selectedPhotoId=proxyPhoto.getId();
+                        selectedPhotoName=proxyPhoto.getName();
 
                     } else if (event.getButton() == MouseButton.SECONDARY) {
                         System.out.println("Secondary");
-
                     }
                     System.out.println(proxyPhoto.getId());
                 }
             });
-            TilePane pane = new TilePane();
-            pane.setAlignment(Pos.CENTER);
-            pane.setMaxWidth(180);
-            pane.setMaxHeight(180);
-            pane.getChildren().add(0, imageView);
-            pane.setStyle("-fx-background-color: #e2fffc");
+            VBox vbox = new VBox();
+            vbox.setAlignment(Pos.CENTER);
+            vbox.setMaxWidth(180);
+            vbox.setMaxHeight(180);
+            vbox.getChildren().add(0, imageView);
+            vbox.setStyle("-fx-background-color: #e2fffc");
 
-            pane.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            vbox.getChildren().add(1,new Label(proxyPhoto.getName()));
+            vbox.setOnMouseEntered(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    pane.setStyle("-fx-background-color: #b2cfff");
+                    vbox.setStyle("-fx-background-color: #b2cfff");
                 }
             });
-            pane.setOnMouseExited(new EventHandler<MouseEvent>() {
+            vbox.setOnMouseExited(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    pane.setStyle("-fx-background-color: #e2fffc");
+                    vbox.setStyle("-fx-background-color: #e2fffc");
                 }
             });
-            tilePane.getChildren().add(pane);
+            tilePane.getChildren().add(vbox);
 
 
         }

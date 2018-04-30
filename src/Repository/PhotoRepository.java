@@ -13,13 +13,11 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 public class PhotoRepository {
 
 
-
-    public Image getPhotoById(String uuid,Connection con) {
+    public Image getPhotoById(String uuid, Connection con) {
         byte[] bytes = null;
         String selectTableSQL = "SELECT CompleteData"
                 + " FROM photos"
@@ -43,7 +41,8 @@ public class PhotoRepository {
         }
         return byteArrayToImage(bytes);
     }
-    public void uploadPhotoToDB(RealPhoto realPhoto,Connection con) {
+
+    public void uploadPhotoToDB(RealPhoto realPhoto, Connection con) {
         String insertTableSQL = "INSERT INTO photos"
                 + "(PhotoID, UserID, Name, Date, Latitude, Longitude,ThumbnailData,CompleteData) VALUES"
                 + "(?,?,?,?,?,?,?,?)";
@@ -59,10 +58,9 @@ public class PhotoRepository {
             try {
                 preparedStatement.setBytes(7, imageToByteArray(realPhoto.getThumbnailImage()));
                 preparedStatement.setBytes(8, imageToByteArray(realPhoto.getCompleteImage()));
-            }catch (IOException e){
+            } catch (IOException e) {
                 System.out.println("The imageToByteArray Problem.");
             }
-
 
 
             preparedStatement.executeUpdate();
@@ -78,7 +76,7 @@ public class PhotoRepository {
         int blobLength;
         byte[] bytes;
         ProxyPhoto proxyPhoto;
-        Image image = null ;
+        Image image = null;
         String selectTableSQL = "SELECT *"
                 + " FROM Photos";
 
@@ -93,10 +91,10 @@ public class PhotoRepository {
                 blob = resultSet.getBlob("ThumbnailData");
                 blobLength = (int) blob.length();
                 bytes = blob.getBytes(1, blobLength);
-                try{
+                try {
                     bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes));
-                    image = SwingFXUtils.toFXImage(bufferedImage,null);
-                }catch (IOException e) {
+                    image = SwingFXUtils.toFXImage(bufferedImage, null);
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
@@ -118,25 +116,31 @@ public class PhotoRepository {
         return proxyPhotos;
     }
 
-    private Image byteArrayToImage(byte[] bytes){
+    private Image byteArrayToImage(byte[] bytes) {
         BufferedImage bufferedImage;
         Image image = null;
-        try{
+        try {
             bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes));
-            image = SwingFXUtils.toFXImage(bufferedImage,null);
-        }catch (IOException e) {
+            image = SwingFXUtils.toFXImage(bufferedImage, null);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return  image;
+        return image;
     }
-    private byte[] imageToByteArray(Image image) throws IOException {
 
-        ByteArrayOutputStream baos=new ByteArrayOutputStream();
-        BufferedImage img = SwingFXUtils.fromFXImage(image,null);
-        ImageIO.write( img, "jpg", baos );
-        baos.flush();
-        byte[] imageInByte = baos.toByteArray();
-        baos.close();
+
+
+    private byte[] imageToByteArray(javafx.scene.image.Image image) throws IOException {
+
+        byte[] imageInByte;
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+
+            BufferedImage img = SwingFXUtils.fromFXImage(image, null);
+            ImageIO.write(img, "jpg", baos);
+            baos.flush();
+            imageInByte = baos.toByteArray();
+            baos.close();
+        }
         return imageInByte;
     }
 }

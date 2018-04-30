@@ -9,7 +9,7 @@ public class RealPhoto implements Photo{
 
     @Override
     public Image getCompleteImage() {
-        return null;
+        return completeImage;
     }
 
     private String name;
