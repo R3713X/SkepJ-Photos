@@ -44,8 +44,28 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="imgscalr-lib-4.2" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.45-bin" level="project" />
     <orderEntry type="library" name="javaxt-core-1.7.8" level="project" />
+    <orderEntry type="library" name="GMapsFX-2.12.0 (1)" level="project" />
+    <orderEntry type="library" name="imgscalr-lib-4.21" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../metadata-extractor-2.4.0-beta-1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../metadata-extractor-2.4.0-beta-1_2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.10.2-SNAPSHOT" level="application" />
   </component>
 </module>

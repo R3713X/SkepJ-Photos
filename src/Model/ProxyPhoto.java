@@ -16,6 +16,14 @@ public class ProxyPhoto implements Photo {
 
     }
 
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
     private String name;
     private String date;
     private String id;

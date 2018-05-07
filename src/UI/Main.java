@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainwindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Skepj-PhotoAlbum");
         primaryStage.setScene(new Scene(root, 850, 600));

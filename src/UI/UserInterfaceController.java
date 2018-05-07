@@ -6,6 +6,11 @@ import Model.ProxyPhoto;
 import Model.RealPhoto;
 import Repository.FileManager;
 import Repository.PrimaryController;
+import com.lynden.gmapsfx.GoogleMapView;
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -23,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +44,10 @@ public class UserInterfaceController {
     private File recentFile = null;
     private ImageMetadata imageMetadata = new ImageMetadata();
     private RealPhoto realPhoto;
+
+    @FXML
+    public GoogleMapView mapView;
+
 
     private String selectedPhotoName;
     private String selectedPhotoId;
@@ -56,11 +66,28 @@ public class UserInterfaceController {
     @FXML
     private Button chooseAlbumButton;
 
+    private GoogleMap map;
+    private static Stage stage;
+
     @FXML
     public void initialize() {
         PrimaryController primaryController = new PrimaryController();
 
         showPhotos();
+
+//        MapOptions mapOptions = new MapOptions();
+//        LatLong serres = new LatLong(41.092083, 23.541016);
+//        mapOptions.center(serres)
+//                .mapType(MapTypeIdEnum.ROADMAP)
+//                .overviewMapControl(false)
+//                .panControl(false)
+//                .rotateControl(false)
+//                .scaleControl(false)
+//                .streetViewControl(false)
+//                .zoomControl(false)
+//                .zoom(12);
+//
+//        map = mapView.createMap(mapOptions);
 
         mainBorderPane.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -79,7 +106,11 @@ public class UserInterfaceController {
 
     @FXML
     private void uploadPhoto() {
-        primaryController.uploadNewPhoto(fileManager.createPhotoFromFile(recentFile));
+        try {
+            primaryController.uploadNewPhoto(fileManager.createPhotoFromFile(recentFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         statusLabel.setText(recentFile.getName() + " has been uploaded successfully");
         showPhotos();
     }
@@ -165,6 +196,7 @@ public class UserInterfaceController {
     }
 
     private void showPhotos() {
+        tilePane.getChildren().clear();
         List<ProxyPhoto> proxyPhotos = primaryController.getAllPhotos();
         for (ProxyPhoto proxyPhoto : proxyPhotos) {
             ImageView imageView = new ImageView();

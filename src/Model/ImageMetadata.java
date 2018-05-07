@@ -5,9 +5,9 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
+
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 

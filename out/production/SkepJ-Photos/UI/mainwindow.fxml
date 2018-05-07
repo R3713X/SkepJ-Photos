@@ -5,6 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
 <BorderPane fx:id="mainBorderPane" prefHeight="554.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.UserInterfaceController">
     <top>
@@ -72,6 +73,10 @@
                     </ScrollPane>
                 </Tab>
                 <Tab text="Albums" closable="false">
+
+                </Tab>
+                <Tab text="Map" closable="false">
+                    <!--<GoogleMapView fx:id="mapView" prefHeight="750.0" prefWidth="761.0" AnchorPane.bottomAnchor="-185.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-441.0" AnchorPane.topAnchor="0.0" />-->
 
                 </Tab>
             </tabs>

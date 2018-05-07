@@ -103,10 +103,14 @@ public class PhotoRepository {
                 proxyPhoto = new ProxyPhoto(resultSet.getString("Name"),
                         resultSet.getString("Date"),
                         resultSet.getString("PhotoID"),
-                        Double.parseDouble(resultSet.getString("Latitude")),
-                        Double.parseDouble(resultSet.getString("Longitude")),
+                        0,
+                        0,
                         image);
-
+                // Double.parseDouble(resultSet.getString("Latitude"))
+                if (!resultSet.getString("Latitude").isEmpty()){
+                    proxyPhoto.setLatitude(Double.parseDouble(resultSet.getString("Latitude")));
+                    proxyPhoto.setLongitude(Double.parseDouble(resultSet.getString("Longitude")));
+                }
                 proxyPhotos.add(proxyPhoto);
 
             }
@@ -141,7 +145,6 @@ public class PhotoRepository {
             ImageIO.write(img, "jpg", baos);
             baos.flush();
             imageInByte = baos.toByteArray();
-            baos.close();
         }
         return imageInByte;
     }
