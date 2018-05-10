@@ -1,7 +1,7 @@
-package UI;
+package gui;
 
-import Model.Album;
-import Repository.PrimaryController;
+import model.Album;
+import repository.PrimaryController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

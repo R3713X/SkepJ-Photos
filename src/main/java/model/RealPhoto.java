@@ -1,6 +1,6 @@
-package Model;
+package model;
 
-import Repository.PrimaryController;
+import repository.PrimaryController;
 import javafx.scene.image.Image;
 
 public class RealPhoto implements Photo {

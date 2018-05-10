@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
@@ -50,8 +50,8 @@ public class ImageMetadata {
             javaxt.io.Image image = new javaxt.io.Image(file);
             double[] gps = image.getGPSCoordinate();
             try {
-                longitude = Double.valueOf(gps[0]);
-                latitude = Double.valueOf(gps[1]);
+                longitude = gps[0];
+                latitude = gps[1];
             } catch (Exception e) {
                 System.out.println("There is not gps data");
             }

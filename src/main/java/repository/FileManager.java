@@ -1,15 +1,13 @@
-package Repository;
+package repository;
 
-import Model.ImageMetadata;
-import Model.RealPhoto;
+import model.ImageMetadata;
+import model.RealPhoto;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;

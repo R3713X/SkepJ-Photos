@@ -1,15 +1,16 @@
-package UI;
+package gui;
 
 
-import Model.ProxyPhoto;
-import Repository.FileManager;
-import Repository.PrimaryController;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.*;
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -21,6 +22,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import model.ProxyPhoto;
+import repository.FileManager;
+import repository.PrimaryController;
 import sun.applet.Main;
 
 import java.io.File;
@@ -168,7 +172,16 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
             imageView.prefWidth(100);
             imageView.smoothProperty();
             imageView.setImage(proxyPhoto.getThumbnail());
-            imageView.setOnMouseClicked(event -> {
+
+            VBox vbox = new VBox();
+            vbox.setSpacing(10);
+            vbox.setPadding(new Insets(10,10,10,10));
+            vbox.setAlignment(Pos.CENTER);
+            vbox.setMaxWidth(180);
+            vbox.setMaxHeight(180);
+            vbox.getChildren().add(0, imageView);
+            vbox.setStyle("-fx-background-color: #e2fffc");
+            vbox.setOnMouseClicked(event -> {
                 if (event.getButton() == MouseButton.PRIMARY) {
                     System.out.println("primary");
                     displayImage(proxyPhoto.getId());
@@ -182,13 +195,6 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
                 System.out.println(proxyPhoto.getId());
 
             });
-            VBox vbox = new VBox();
-            vbox.setAlignment(Pos.CENTER);
-            vbox.setMaxWidth(180);
-            vbox.setMaxHeight(180);
-            vbox.getChildren().add(0, imageView);
-            vbox.setStyle("-fx-background-color: #e2fffc");
-
             vbox.getChildren().add(1, new Label(proxyPhoto.getName()));
             vbox.setOnMouseEntered(event -> vbox.setStyle("-fx-background-color: #b2cfff"));
             vbox.setOnMouseExited(event -> vbox.setStyle("-fx-background-color: #e2fffc"));
@@ -203,17 +209,13 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
 
     @Override
     public void mapInitialized() {
-        LatLong joeSmithLocation = new LatLong(47.6197, -122.3231);
-        LatLong joshAndersonLocation = new LatLong(47.6297, -122.3431);
-        LatLong bobUnderwoodLocation = new LatLong(47.6397, -122.3031);
-        LatLong tomChoiceLocation = new LatLong(47.6497, -122.3325);
-        LatLong fredWilkieLocation = new LatLong(47.6597, -122.3357);
 
 
         //Set the initial properties of the map.
         MapOptions mapOptions = new MapOptions();
 
-        mapOptions.center(new LatLong(47.6097, -122.3331))
+        mapOptions.center(new LatLong(40.589453, 22.949803))
+                .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
                 .panControl(false)
                 .rotateControl(false)
@@ -225,46 +227,21 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
         map = mapView.createMap(mapOptions);
 
         //Add markers to the map
-        MarkerOptions markerOptions1 = new MarkerOptions();
-        markerOptions1.position(joeSmithLocation);
-
-        MarkerOptions markerOptions2 = new MarkerOptions();
-        markerOptions2.position(joshAndersonLocation);
-
-        MarkerOptions markerOptions3 = new MarkerOptions();
-        markerOptions3.position(bobUnderwoodLocation);
-
-        MarkerOptions markerOptions4 = new MarkerOptions();
-        markerOptions4.position(tomChoiceLocation);
-
-        MarkerOptions markerOptions5 = new MarkerOptions();
-        markerOptions5.position(fredWilkieLocation);
-
-        Marker joeSmithMarker = new Marker(markerOptions1);
-        Marker joshAndersonMarker = new Marker(markerOptions2);
-        Marker bobUnderwoodMarker = new Marker(markerOptions3);
-        Marker tomChoiceMarker= new Marker(markerOptions4);
-        Marker fredWilkieMarker = new Marker(markerOptions5);
-
-        map.addMarker( joeSmithMarker );
-        map.addMarker( joshAndersonMarker );
-        map.addMarker( bobUnderwoodMarker );
-        map.addMarker( tomChoiceMarker );
-        map.addMarker( fredWilkieMarker );
-
+//        MarkerOptions markerOptions1 = new MarkerOptions();
+//
+//        Marker joeSmithMarker = new Marker(markerOptions1);
+//        map.addMarker( joeSmithMarker );
 //        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-//        infoWindowOptions.content("<h2>Fred Wilkie</h2>"
-//                + "Current Location: Safeway<br>"
-//                + "ETA: 45 minutes" );
+//        infoWindowOptions.content("<div style='float:left'><img src='http://i.stack.imgur.com/g672i.png'></div>" +
+//                "<div style='float:right; padding: 10px;'><b>Title</b><br/>123 Address<br/> City,Country</div>" );
 //
 //        InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
-//        fredWilkeInfoWindow.open(map, fredWilkieMarker);
+//        fredWilkeInfoWindow.open(map, joeSmithMarker);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mapView.addMapInializedListener(this);
-        PrimaryController primaryController = new PrimaryController();
 
         showPhotos();
 

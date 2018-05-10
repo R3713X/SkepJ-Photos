@@ -1,8 +1,8 @@
-package Repository;
+package repository;
 
-import Model.Album;
-import Model.ProxyPhoto;
-import Model.RealPhoto;
+import model.Album;
+import model.ProxyPhoto;
+import model.RealPhoto;
 import javafx.scene.image.Image;
 
 import java.util.List;

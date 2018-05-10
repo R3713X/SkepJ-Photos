@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import com.lynden.gmapsfx.GoogleMapView?>
 <BorderPane fx:id="mainBorderPane" prefHeight="554.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.UserInterfaceController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserInterfaceController">
     <top>
         <MenuBar>
             <Menu text="Albums">

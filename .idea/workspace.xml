@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c711893-b92e-43c0-8648-6a004f76b349" name="Default" comment="">
+    <list default="true" id="5c711893-b92e-43c0-8648-6a004f76b349" name="Default" comment="changes in VBoxes of photos, now you click the vbox to show the pictures instead of clicking the actual image inside the vBox, changed to map to focus on thessaloniki for testing reasons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Album.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ImageMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ImageMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Photo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ProxyPhoto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/RealPhoto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/RealPhoto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/AlbumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/AwtToFx.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/DatabaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/PhotoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/PrimaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/AlbumPickerDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/CreateAlbumDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/PreviewPhotoDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/PreviewPhotoDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/UserInterfaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/albumPickerDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/albumPickerDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/createAlbumDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/createAlbumDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/previewPhotoDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/previewPhotoDialog.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -64,12 +81,73 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="UserInterfaceController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gui/UserInterfaceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="99" column="56" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
+            <state relative-caret-position="124">
+              <caret line="152" column="14" selection-start-line="152" selection-start-column="14" selection-end-line="152" selection-end-column="14" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlbumRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="10" column="10" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="albumPickerDialog.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/albumPickerDialog.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="ProxyPhoto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+              <folding>
+                <element signature="e#1308#1309#0" expanded="true" />
+                <element signature="e#1340#1341#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createAlbumDialog.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/createAlbumDialog.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file leaf-file-name="CreateAlbumDialogController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainWindow.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mainWindow.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="122">
+              <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file leaf-file-name="previewPhotoDialog.fxml" pinned="false" current-in-tab="false">
@@ -79,7 +157,7 @@
         </entry>
       </file>
       <file leaf-file-name="RealPhoto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/RealPhoto.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/RealPhoto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
@@ -87,65 +165,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PreviewPhotoDialogController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/UI/PreviewPhotoDialogController.java">
+      <file leaf-file-name="ImageMetadata.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/ImageMetadata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProxyPhoto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/ProxyPhoto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="10" column="90" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlbumPickerDialogController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/UI/AlbumPickerDialogController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Image.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/javaxt-core-1.7.8.jar!/javaxt/io/Image.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+            <state relative-caret-position="221">
+              <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -557,12 +584,17 @@
         <option value="$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/UserInterfaceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/albumPickerDialog.fxml" />
+        <option value="$PROJECT_DIR$/src/main/resources/createAlbumDialog.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/model/ImageMetadata.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="190" />
-    <option name="y" value="-15" />
+    <option name="x" value="64" />
+    <option name="y" value="-8" />
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
@@ -592,6 +624,37 @@
               <item name="SkepJ-Photos" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkepJ-Photos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SkepJ-Photos" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkepJ-Photos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SkepJ-Photos" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkepJ-Photos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SkepJ-Photos" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SkepJ-Photos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SkepJ-Photos" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SkepJ-Photos" type="b2602c69:ProjectViewProjectNode" />
@@ -781,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525967247317</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixes on dialogs now they are showing up. also some changes to libs. no warnings now">
+      <created>1525975402239</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1525975402239</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -790,19 +860,20 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49926794" weight="0.3290938" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" sideWeight="0.49926794" visible="true" weight="0.3290938" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.24304539" side_tool="true" weight="0.40222576" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290938" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7569546" visible="true" weight="0.26868045" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7569546" weight="0.26868045" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23938507" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49926794" weight="0.3290938" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.0014641288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -834,7 +905,6 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.24304539" side_tool="true" weight="0.40222576" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49926794" weight="0.3290938" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Messages" order="7" sideWeight="0.49926794" visible="true" weight="0.3290938" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23938507" />
@@ -878,7 +948,9 @@
     <MESSAGE value="Fixes for showing pictures at initialize, need to fix dialogs they dont work" />
     <MESSAGE value="changes in libs" />
     <MESSAGE value="shit" />
-    <option name="LAST_COMMIT_MESSAGE" value="shit" />
+    <MESSAGE value="fixes on dialogs now they are showing up. also some changes to libs. no warnings now" />
+    <MESSAGE value="changes in VBoxes of photos, now you click the vbox to show the pictures instead of clicking the actual image inside the vBox, changed to map to focus on thessaloniki for testing reasons" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in VBoxes of photos, now you click the vbox to show the pictures instead of clicking the actual image inside the vBox, changed to map to focus on thessaloniki for testing reasons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -886,34 +958,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1955">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/RealPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/PreviewPhotoDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ProxyPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -921,14 +965,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/AlbumPickerDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
@@ -942,7 +986,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ImageMetadata.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ImageMetadata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
@@ -952,21 +996,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/UserInterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2465">
           <caret line="145" selection-start-line="145" selection-end-line="145" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/PreviewPhotoDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/PreviewPhotoDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ProxyPhoto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
@@ -980,35 +1024,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/AlbumPickerDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/CreateAlbumDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/PhotoRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/PrimaryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PrimaryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
@@ -1018,14 +1062,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/CreateAlbumDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/PhotoRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
@@ -1039,42 +1083,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/PreviewPhotoDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/PreviewPhotoDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/RealPhoto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/RealPhoto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/AlbumPickerDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ProxyPhoto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+          <folding>
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#1340#1341#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/UserInterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1955">
           <caret line="146" selection-start-line="146" selection-end-line="146" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
@@ -1088,7 +1136,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ImageMetadata.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ImageMetadata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
@@ -1098,21 +1146,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/UserInterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2465">
           <caret line="145" selection-start-line="145" selection-end-line="145" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/PreviewPhotoDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/PreviewPhotoDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ProxyPhoto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
@@ -1126,45 +1174,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/AlbumPickerDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/CreateAlbumDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/PhotoRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ImageMetadata.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/PrimaryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PrimaryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
@@ -1174,42 +1212,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/CreateAlbumDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/PhotoRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/PreviewPhotoDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/PreviewPhotoDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/AlbumPickerDialogController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ProxyPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
@@ -1237,7 +1261,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/RealPhoto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/RealPhoto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
@@ -1248,10 +1272,69 @@
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="99" column="56" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
+        <state relative-caret-position="102">
+          <caret line="10" column="10" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/albumPickerDialog.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/createAlbumDialog.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mainWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+          <folding>
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#1340#1341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ImageMetadata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/UserInterfaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="152" column="14" selection-start-line="152" selection-start-column="14" selection-end-line="152" selection-end-column="14" />
         </state>
       </provider>
     </entry>

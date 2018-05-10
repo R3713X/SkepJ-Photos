@@ -1,12 +1,12 @@
-package Repository;
+package repository;
 
-import Model.Album;
+import model.Album;
 
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AlbumRepository {
+class AlbumRepository {
 
     public void connectPhotoToAlbumFromId(String photoId, String albumId, Connection con) {
         String insertTableSQL = "INSERT INTO albumandphotos"

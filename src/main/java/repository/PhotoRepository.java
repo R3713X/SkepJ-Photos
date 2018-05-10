@@ -1,7 +1,7 @@
-package Repository;
+package repository;
 
-import Model.ProxyPhoto;
-import Model.RealPhoto;
+import model.ProxyPhoto;
+import model.RealPhoto;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 

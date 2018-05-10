@@ -4,6 +4,6 @@
 
 <Pane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="UI.PreviewPhotoDialogController">
+      fx:controller="gui.PreviewPhotoDialogController">
 
 </Pane>
