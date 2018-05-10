@@ -7,9 +7,6 @@ import Repository.PrimaryController;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.object.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -38,8 +34,8 @@ import java.util.ResourceBundle;
 public class UserInterfaceController implements Initializable, MapComponentInitializedListener {
 
 
-    FileManager fileManager = new FileManager();
-    PrimaryController primaryController = new PrimaryController();
+    private FileManager fileManager = new FileManager();
+    private PrimaryController primaryController = new PrimaryController();
     private File recentFile = null;
 
 
@@ -97,7 +93,7 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
         dialog.setTitle("Create a new Album");
         dialog.setHeaderText("Use this dialog to create a new Album");
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Main.class.getResource("createAlbumDialog.fxml"));
+        fxmlLoader.setLocation(Main.class.getResource("/createAlbumDialog.fxml"));
         try {
             dialog.getDialogPane().setContent(fxmlLoader.load());
         } catch (IOException e) {
@@ -120,7 +116,7 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
         dialog.setTitle("Choose your album");
         dialog.setHeaderText("Use this dialog to choose an Album");
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("albumPickerDialog.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/albumPickerDialog.fxml"));
         try {
             dialog.getDialogPane().setContent(fxmlLoader.load());
         } catch (IOException e) {
@@ -137,13 +133,13 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
     }
 
     @FXML
-    public void showPreviewPhotoDialog(ProxyPhoto proxyPhoto) {
+    private void showPreviewPhotoDialog(ProxyPhoto proxyPhoto) {
 
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
         FXMLLoader fxmlLoader = new FXMLLoader();
         dialog.setTitle("Photo Preview");
-        fxmlLoader.setLocation(getClass().getResource("previewPhotoDialog.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/previewPhotoDialog.fxml"));
         try {
             dialog.getDialogPane().setContent(fxmlLoader.load());
         } catch (IOException e) {
@@ -172,22 +168,19 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
             imageView.prefWidth(100);
             imageView.smoothProperty();
             imageView.setImage(proxyPhoto.getThumbnail());
-            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    if (event.getButton() == MouseButton.PRIMARY) {
-                        System.out.println("primary");
-                        displayImage(proxyPhoto.getId());
-                        chooseAlbumButton.setVisible(true);
-                        selectedPhotoId = proxyPhoto.getId();
+            imageView.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.PRIMARY) {
+                    System.out.println("primary");
+                    displayImage(proxyPhoto.getId());
+                    chooseAlbumButton.setVisible(true);
+                    selectedPhotoId = proxyPhoto.getId();
 
-                    } else if (event.getButton() == MouseButton.SECONDARY) {
-                        System.out.println("Secondary");
-                        showPreviewPhotoDialog(proxyPhoto);
-                    }
-                    System.out.println(proxyPhoto.getId());
-
+                } else if (event.getButton() == MouseButton.SECONDARY) {
+                    System.out.println("Secondary");
+                    showPreviewPhotoDialog(proxyPhoto);
                 }
+                System.out.println(proxyPhoto.getId());
+
             });
             VBox vbox = new VBox();
             vbox.setAlignment(Pos.CENTER);
@@ -197,18 +190,8 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
             vbox.setStyle("-fx-background-color: #e2fffc");
 
             vbox.getChildren().add(1, new Label(proxyPhoto.getName()));
-            vbox.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    vbox.setStyle("-fx-background-color: #b2cfff");
-                }
-            });
-            vbox.setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    vbox.setStyle("-fx-background-color: #e2fffc");
-                }
-            });
+            vbox.setOnMouseEntered(event -> vbox.setStyle("-fx-background-color: #b2cfff"));
+            vbox.setOnMouseExited(event -> vbox.setStyle("-fx-background-color: #e2fffc"));
             tilePane.getChildren().add(vbox);
 
 
@@ -285,12 +268,7 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
 
         showPhotos();
 
-        mainBorderPane.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-                tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200);
-            }
-        });
+        mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
 
     }
 }
