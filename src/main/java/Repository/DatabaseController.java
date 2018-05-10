@@ -4,9 +4,7 @@ package Repository;
 import java.sql.*;
 
 public class DatabaseController {
-    /**
-     * @var con is a string type var that takes the DB info to log
-     */
+
     private Connection con;
 
     /**
@@ -17,25 +15,25 @@ public class DatabaseController {
        public void connectToMySqlDB(String DBName, String DBUser, String DBPwd) {
         try {
             // This will load the MySQL driver, each DB has its own driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + DBName, DBUser, DBPwd);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
-    public Connection getConnection(){
+    Connection getConnection(){
         try {
             // This will load the MySQL driver, each DB has its own driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "photo", "root", "");
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return con;
     }
-    public void closeConnection(){
+    void closeConnection(){
         try {
             this.con.close();
         } catch (SQLException e) {
