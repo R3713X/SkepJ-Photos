@@ -1,9 +1,7 @@
 package UI;
 
 
-import Model.ImageMetadata;
 import Model.ProxyPhoto;
-import Model.RealPhoto;
 import Repository.FileManager;
 import Repository.PrimaryController;
 import com.lynden.gmapsfx.GoogleMapView;
@@ -27,7 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import sun.applet.Main;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,8 +41,6 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
     FileManager fileManager = new FileManager();
     PrimaryController primaryController = new PrimaryController();
     private File recentFile = null;
-    private ImageMetadata imageMetadata = new ImageMetadata();
-    private RealPhoto realPhoto;
 
 
 
@@ -53,8 +49,6 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
     @FXML
     public GoogleMapView mapView;
 
-
-    private String selectedPhotoName;
     private String selectedPhotoId;
 
     @FXML
@@ -71,22 +65,6 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
 
     @FXML
     private Button chooseAlbumButton;
-
-    private static Stage stage;
-
-    @FXML
-    public void initialize() {
-        PrimaryController primaryController = new PrimaryController();
-
-        showPhotos();
-
-        mainBorderPane.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-                tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200);
-            }
-        });
-    }
 
     @FXML
     private void selectPhoto() {
@@ -119,7 +97,7 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
         dialog.setTitle("Create a new Album");
         dialog.setHeaderText("Use this dialog to create a new Album");
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("createAlbumDialog.fxml"));
+        fxmlLoader.setLocation(Main.class.getResource("createAlbumDialog.fxml"));
         try {
             dialog.getDialogPane().setContent(fxmlLoader.load());
         } catch (IOException e) {
@@ -202,7 +180,6 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
                         displayImage(proxyPhoto.getId());
                         chooseAlbumButton.setVisible(true);
                         selectedPhotoId = proxyPhoto.getId();
-                        selectedPhotoName = proxyPhoto.getName();
 
                     } else if (event.getButton() == MouseButton.SECONDARY) {
                         System.out.println("Secondary");
@@ -304,6 +281,17 @@ public class UserInterfaceController implements Initializable, MapComponentIniti
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mapView.addMapInializedListener(this);
+        PrimaryController primaryController = new PrimaryController();
+
+        showPhotos();
+
+        mainBorderPane.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+                tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200);
+            }
+        });
+
     }
 }
 
