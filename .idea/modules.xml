@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SkepJ-Photos.iml" filepath="$PROJECT_DIR$/SkepJ-Photos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SkepJ-Photos_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SkepJ-Photos_main.iml" group="SkepJ-Photos" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SkepJ-Photos_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SkepJ-Photos_test.iml" group="SkepJ-Photos" />
     </modules>
   </component>
 </project>

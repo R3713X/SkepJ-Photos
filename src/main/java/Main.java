@@ -1,5 +1,3 @@
-package UI;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +9,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("../../resources/mainWindow.fxml"));
+
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Skepj-PhotoAlbum");
         primaryStage.setScene(new Scene(root, 850, 600));

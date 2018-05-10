@@ -2,8 +2,6 @@ package Model;
 
 import javafx.scene.image.Image;
 
-import java.sql.Date;
-
 public class ProxyPhoto implements Photo {
 
     @Override

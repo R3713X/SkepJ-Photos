@@ -1,15 +1,9 @@
 package UI;
 
 import Model.Album;
-import Repository.DatabaseController;
 import Repository.PrimaryController;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import javax.xml.crypto.Data;
-import java.time.LocalDate;
 
 
 public class CreateAlbumDialogController {

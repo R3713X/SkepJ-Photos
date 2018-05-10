@@ -3,13 +3,8 @@ package Repository;
 import Model.Album;
 import Model.ProxyPhoto;
 import Model.RealPhoto;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
-import org.imgscalr.Scalr;
 
-import java.awt.image.BufferedImage;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 public class PrimaryController {

@@ -76,8 +76,11 @@
 
                 </Tab>
                 <Tab text="Map" closable="false">
-                    <!--<GoogleMapView fx:id="mapView" prefHeight="750.0" prefWidth="761.0" AnchorPane.bottomAnchor="-185.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-441.0" AnchorPane.topAnchor="0.0" />-->
-
+                  <AnchorPane>
+                      <children>
+                          <GoogleMapView fx:id="mapView" prefHeight="750.0" prefWidth="761.0" />
+                      </children>
+                  </AnchorPane>
                 </Tab>
             </tabs>
         </TabPane>
