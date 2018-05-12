@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import com.lynden.gmapsfx.GoogleMapView?>
 <BorderPane fx:id="mainBorderPane" prefHeight="554.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserInterfaceController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainWindowController">
     <top>
         <MenuBar>
             <Menu text="Albums">
@@ -92,10 +92,10 @@
                       xmlns:fx="http://javafx.com/fxml/1">
                     <children>
                         <Label text="" fx:id="uploadPhotoNameLabel"></Label>
-                        <Button contentDisplay="CENTER" layoutX="126.0" layoutY="417.0" mnemonicParsing="false"
-                                onAction="#selectPhoto" prefHeight="26.0" prefWidth="94.0" text="Choose Image"/>
-                        <Button alignment="CENTER_RIGHT" layoutX="432.0" layoutY="417.0" mnemonicParsing="false"
-                                onAction="#uploadPhoto" prefHeight="26.0" prefWidth="94.0" text="Upload Image"/>
+                        <Button fx:id="choosePhotoButton" contentDisplay="CENTER" layoutX="126.0" layoutY="417.0" mnemonicParsing="false"
+                                 prefHeight="26.0" prefWidth="94.0" text="Choose Image"/>
+                        <Button fx:id="uploadPhotoButton" alignment="CENTER_RIGHT" layoutX="432.0" layoutY="417.0" mnemonicParsing="false"
+                                 prefHeight="26.0" prefWidth="94.0" text="Upload Image"/>
 
                     </children>
                 </HBox>
