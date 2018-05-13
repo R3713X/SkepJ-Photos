@@ -1,16 +1,16 @@
 package gui;
 
-import model.Album;
-import repository.PrimaryController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import model.Album;
+import repository.PrimaryController;
+
 import java.util.List;
 
 public class AlbumPickerDialogController {
+
     @FXML
     private ChoiceBox<String> albumChoiceBox;
 
@@ -25,24 +25,27 @@ public class AlbumPickerDialogController {
         for (Album album : albums) {
             albumList.add(album.getName());
         }
+        albumId=albums.get(0).getAlbumId();
         albumChoiceBox.setItems(albumList);
         albumChoiceBox.getSelectionModel().select(0);
+        albumChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            String selectedAlbumName = albumChoiceBox.getSelectionModel().getSelectedItem();
 
-        albumChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                String selectedAlbumName = albumChoiceBox.getSelectionModel().getSelectedItem();
-                for (Album album : albums) {
-                   if (selectedAlbumName.equals(album.getName())){
-                        albumId = album.getAlbumId();
-                    }
+            System.out.println(selectedAlbumName);
+            for (Album album : albums) {
+               if (selectedAlbumName.equals(album.getName())){
+                    albumId = album.getAlbumId();
                 }
             }
         });
 
+
+
     }
 
     public void processResults(String photoId) {
+        System.out.println(albumId);
+        System.out.println(photoId);
         primaryController.createConnectionForAlbumAndPhotoTable(albumId,photoId);
     }
 }

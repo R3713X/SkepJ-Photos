@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import com.lynden.gmapsfx.GoogleMapView?>
+
 <BorderPane fx:id="mainBorderPane" prefHeight="554.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainWindowController">
     <top>
@@ -44,10 +44,12 @@
                            pickOnBounds="true" preserveRatio="true"/>
             </center>
             <bottom>
-                <HBox alignment="CENTER">
+                <HBox alignment="CENTER" spacing="10">
                     <children>
-                        <Button text="Add to album" visible="false" onMouseClicked="#showAlbumPickerDialog"
+                        <Button text="Add to album" visible="false"
                                 fx:id="chooseAlbumButton"/>
+                        <Button text="Show Location" visible="false"
+                                fx:id="showOnMapButton"/>
                     </children>
                 </HBox>
 
@@ -73,14 +75,6 @@
                     </ScrollPane>
                 </Tab>
                 <Tab text="Albums" closable="false">
-
-                </Tab>
-                <Tab text="Map" closable="false">
-                  <AnchorPane>
-                      <children>
-                          <GoogleMapView fx:id="mapView" prefHeight="750.0" prefWidth="761.0" />
-                      </children>
-                  </AnchorPane>
                 </Tab>
             </tabs>
         </TabPane>
@@ -91,7 +85,7 @@
                 <HBox alignment="BOTTOM_RIGHT" spacing="15" xmlns="http://javafx.com/javafx/8.0.121"
                       xmlns:fx="http://javafx.com/fxml/1">
                     <children>
-                        <Label text="" fx:id="uploadPhotoNameLabel"></Label>
+                        <Label text="" fx:id="uploadPhotoNameLabel"/>
                         <Button fx:id="choosePhotoButton" contentDisplay="CENTER" layoutX="126.0" layoutY="417.0" mnemonicParsing="false"
                                  prefHeight="26.0" prefWidth="94.0" text="Choose Image"/>
                         <Button fx:id="uploadPhotoButton" alignment="CENTER_RIGHT" layoutX="432.0" layoutY="417.0" mnemonicParsing="false"

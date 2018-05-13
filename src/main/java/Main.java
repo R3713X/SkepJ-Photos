@@ -25,7 +25,6 @@ public class Main extends Application {
         primaryStage.setTitle("SkepJ Photos");
         Scene scene = new Scene(root, 800, 550);
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.setOnCloseRequest(e -> System.exit(0));
         MainWindowController.setStage(primaryStage);

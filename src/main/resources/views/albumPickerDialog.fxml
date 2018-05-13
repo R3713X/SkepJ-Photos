@@ -13,7 +13,7 @@
     <content>
         <GridPane vgap="10" hgap="10">
             <Label text="Album Title" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <ChoiceBox fx:id="albumChoiceBox" GridPane.rowIndex="0" GridPane.columnIndex="1"></ChoiceBox>
+            <ChoiceBox fx:id="albumChoiceBox" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
         </GridPane>
     </content>

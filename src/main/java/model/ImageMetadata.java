@@ -8,6 +8,7 @@ import com.drew.metadata.Tag;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class ImageMetadata {
     private String datePhotoCreated ;
     private double longitude ;
     private double latitude ;
+    private Date date;
 
 
     public void extractImageMetadata(File file) {
@@ -36,12 +38,10 @@ public class ImageMetadata {
                 }
             }
             getUsefulTags(file);
-        } catch (ImageProcessingException e) {
+        } catch (ImageProcessingException | IOException e) {
             e.printStackTrace();
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
         private void getUsefulTags (File file) {
@@ -52,6 +52,7 @@ public class ImageMetadata {
             try {
                 longitude = gps[0];
                 latitude = gps[1];
+                System.out.println(latitude+" "+longitude);
             } catch (Exception e) {
                 System.out.println("There is not gps data");
             }
@@ -68,7 +69,15 @@ public class ImageMetadata {
                 }
 
                 case "File Modified Date": {
+//                    SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy");
                     datePhotoCreated = entry.getValue();
+//                    try {
+//                        java.sql.Date a = java.sql.Date.valueOf(String.valueOf(sdf.parse(datePhotoCreated)));
+//
+//                        System.out.println(a);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
                     break;
                 }
                 default: {

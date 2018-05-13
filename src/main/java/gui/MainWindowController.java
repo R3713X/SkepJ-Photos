@@ -1,12 +1,6 @@
 package gui;
 
 
-import com.lynden.gmapsfx.GoogleMapView;
-import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.GoogleMap;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.MapOptions;
-import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,21 +32,17 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class MainWindowController implements Initializable, MapComponentInitializedListener {
+public class MainWindowController implements Initializable {
 
 
     private FileManager fileManager = new FileManager();
     private PrimaryController primaryController = new PrimaryController();
     private File recentFile = null;
-    private static Stage stage;
+    private ProxyPhoto selectedPhoto;
 
-
-    private GoogleMap map;
-
-    @FXML
-    public GoogleMapView mapView;
 
     private String selectedPhotoId;
+
 
     @FXML
     private ImageView displayImageView;
@@ -67,15 +57,14 @@ public class MainWindowController implements Initializable, MapComponentInitiali
     private Label uploadPhotoNameLabel, statusLabel;
 
     @FXML
-    private Button chooseAlbumButton,choosePhotoButton,uploadPhotoButton;
-
+    private Button chooseAlbumButton, choosePhotoButton, uploadPhotoButton, showOnMapButton;
 
 
     @FXML
     private void selectPhoto() {
         recentFile = fileManager.fileGet();
-        if (recentFile!=null)
-        uploadPhotoNameLabel.setText(recentFile.getName());
+        if (recentFile != null)
+            uploadPhotoNameLabel.setText(recentFile.getName());
     }
 
 
@@ -120,7 +109,7 @@ public class MainWindowController implements Initializable, MapComponentInitiali
     }
 
     @FXML
-    public void showAlbumPickerDialog() {
+    private void showAlbumPickerDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
         dialog.setTitle("Choose your album");
@@ -171,6 +160,34 @@ public class MainWindowController implements Initializable, MapComponentInitiali
 
     }
 
+    @FXML
+    private void showMapLocationDialog() {
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/showPhotoLocationDialog.fxml"));
+        ShowPhotoLocationController showPhotoLocationController = new ShowPhotoLocationController();
+        showPhotoLocationController.setPhoto(selectedPhoto);
+        fxmlLoader.setController(showPhotoLocationController);
+
+        dialog.setTitle("Map Location");
+        fxmlLoader.setLocation(getClass().getResource("/views/showPhotoLocationDialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Node closeButton = dialog.getDialogPane().lookupButton(ButtonType.CLOSE);
+        closeButton.managedProperty().bind(closeButton.visibleProperty());
+        closeButton.setVisible(false);
+        dialog.showAndWait();
+
+    }
+
+
     private void showPhotos() {
         tilePane.getChildren().clear();
         List<ProxyPhoto> proxyPhotos = primaryController.getAllPhotos();
@@ -180,10 +197,9 @@ public class MainWindowController implements Initializable, MapComponentInitiali
             imageView.prefWidth(100);
             imageView.smoothProperty();
             imageView.setImage(proxyPhoto.getThumbnail());
-
             VBox vbox = new VBox();
             vbox.setSpacing(10);
-            vbox.setPadding(new Insets(10,10,10,10));
+            vbox.setPadding(new Insets(10, 10, 10, 10));
             vbox.setAlignment(Pos.CENTER);
             vbox.setMaxWidth(180);
             vbox.setMaxHeight(180);
@@ -194,6 +210,13 @@ public class MainWindowController implements Initializable, MapComponentInitiali
                     System.out.println("primary");
                     displayImage(proxyPhoto.getId());
                     chooseAlbumButton.setVisible(true);
+                    showOnMapButton.setVisible(false);
+                    System.out.println(proxyPhoto.getLatitude());
+                    if (proxyPhoto.getLongitude() != 0 && proxyPhoto.getLatitude() != 0) {
+                        selectedPhoto = proxyPhoto;
+                        showOnMapButton.setVisible(true);
+                    }
+
                     selectedPhotoId = proxyPhoto.getId();
 
                 } else if (event.getButton() == MouseButton.SECONDARY) {
@@ -217,49 +240,19 @@ public class MainWindowController implements Initializable, MapComponentInitiali
 
 
     @Override
-    public void mapInitialized() {
-
-
-        //Set the initial properties of the map.
-        MapOptions mapOptions = new MapOptions();
-
-        mapOptions.center(new LatLong(40.589453, 22.949803))
-                .mapType(MapTypeIdEnum.ROADMAP)
-                .overviewMapControl(false)
-                .panControl(false)
-                .rotateControl(false)
-                .scaleControl(false)
-                .streetViewControl(false)
-                .zoomControl(false)
-                .zoom(12);
-
-        map = mapView.createMap(mapOptions);
-
-        //Add markers to the map
-//        MarkerOptions markerOptions1 = new MarkerOptions();
-//
-//        Marker joeSmithMarker = new Marker(markerOptions1);
-//        map.addMarker( joeSmithMarker );
-//        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-//        infoWindowOptions.content("<div style='float:left'><img src='http://i.stack.imgur.com/g672i.png'></div>" +
-//                "<div style='float:right; padding: 10px;'><b>Title</b><br/>123 Address<br/> City,Country</div>" );
-//
-//        InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
-//        fredWilkeInfoWindow.open(map, joeSmithMarker);
-    }
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         GuiControllers.setMainController(this);
-        mapView.addMapInializedListener(this);
         choosePhotoButton.setOnAction(event -> selectPhoto());
         uploadPhotoButton.setOnAction(event -> uploadPhoto());
+        chooseAlbumButton.setOnAction(event -> showAlbumPickerDialog());
+        showOnMapButton.setOnAction(event -> showMapLocationDialog());
         System.out.println("Running");
         showPhotos();
 
         mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
 
     }
+    private static Stage stage;
 
     public static void setStage(Stage stage) {
         MainWindowController.stage = stage;
