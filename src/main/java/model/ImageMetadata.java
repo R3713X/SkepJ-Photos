@@ -5,12 +5,14 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class ImageMetadata {
 
@@ -20,12 +22,14 @@ public class ImageMetadata {
     private double longitude ;
     private double latitude ;
     private Date date;
+    private java.sql.Date sDate;
 
 
     public void extractImageMetadata(File file) {
 
         try {
             Metadata metadata = ImageMetadataReader.readMetadata(file);
+
             for (Directory directory : metadata.getDirectories()) {
                 for (Tag tag : directory.getTags()) {
                     tagMap.put(tag.getTagName(), tag.getDescription());
@@ -38,6 +42,12 @@ public class ImageMetadata {
                 }
             }
             getUsefulTags(file);
+
+            ExifSubIFDDirectory idir_exif_sub_dir = metadata.getFirstDirectoryOfType( com.drew.metadata.exif.ExifSubIFDDirectory.class );
+            date =idir_exif_sub_dir.getDate(ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED, TimeZone.getDefault());
+            sDate = convertUtilToSql(date);
+            System.out.println(sDate);
+
         } catch (ImageProcessingException | IOException e) {
             e.printStackTrace();
 
@@ -67,28 +77,20 @@ public class ImageMetadata {
                     nameOfPhoto = entry.getValue();
                     break;
                 }
-
-                case "File Modified Date": {
-//                    SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy");
-                    datePhotoCreated = entry.getValue();
-//                    try {
-//                        java.sql.Date a = java.sql.Date.valueOf(String.valueOf(sdf.parse(datePhotoCreated)));
-//
-//                        System.out.println(a);
-//                    } catch (ParseException e) {
-//                        e.printStackTrace();
-//                    }
-                    break;
-                }
                 default: {
                     break;
                 }
             }
         }
     }
+    private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
+        return  new java.sql.Date(uDate.getTime());
+    }
 
-        public String getDatePhotoCreated() {
-            return datePhotoCreated;
+
+
+    public String getDatePhotoCreated() {
+            return sDate.toString();
         }
 
         public String getNameOfPhoto() {
