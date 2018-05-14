@@ -1,15 +1,15 @@
-package repository;
+package services;
 
 import javafx.scene.image.Image;
-import model.Album;
 import model.Photo;
 import model.RealPhoto;
+import repository.DatabaseController;
+import repository.PhotoRepository;
 
 import java.util.List;
 
-public class PrimaryController {
+public class PhotoService {
     private PhotoRepository photoRepository = new PhotoRepository();
-    private AlbumRepository albumRepository = new AlbumRepository();
     private DatabaseController databaseController = new DatabaseController();
 
 
@@ -20,10 +20,7 @@ public class PrimaryController {
         return proxyPhotos;
     }
 
-    public void createConnectionForAlbumAndPhotoTable(String photoId, String albumId) {
-        albumRepository.connectPhotoToAlbumFromId(photoId, albumId, databaseController.getConnection());
-        databaseController.closeConnection();
-    }
+
 
     public Image getPhotoById(String id) {
         Image image = photoRepository.getPhotoById(id, databaseController.getConnection());
@@ -32,20 +29,11 @@ public class PrimaryController {
     }
 
 
-    public List<Album> getAlbums() {
-        List<Album> albums= albumRepository.getAllAlbums(databaseController.getConnection());
-
-        databaseController.closeConnection();
-        return albums;
-    }
 
     public void uploadNewPhoto(RealPhoto realPhoto){
         photoRepository.uploadPhotoToDB(realPhoto,databaseController.getConnection());
         databaseController.closeConnection();
     }
-    public void createNewAlbum(Album album){
-        albumRepository.createAlbum(album,databaseController.getConnection());
-        databaseController.closeConnection();
-    }
+
 
 }

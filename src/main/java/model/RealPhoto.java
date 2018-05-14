@@ -1,6 +1,6 @@
 package model;
 
-import repository.PrimaryController;
+import services.PhotoService;
 import javafx.scene.image.Image;
 
 public class RealPhoto implements Photo {
@@ -26,8 +26,8 @@ public class RealPhoto implements Photo {
         this.latitude = proxyPhoto.getLatitude();
         this.longitude = proxyPhoto.getLongitude();
         this.thumbnailImage = proxyPhoto.getThumbnailImage();
-        PrimaryController primaryController = new PrimaryController();
-        this.completeImage=primaryController.getPhotoById(this.getId());
+        PhotoService photoService = new PhotoService();
+        this.completeImage= photoService.getPhotoById(this.getId());
 
     }
 

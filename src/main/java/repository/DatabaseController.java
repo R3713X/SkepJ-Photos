@@ -22,7 +22,7 @@ public class DatabaseController {
             e.printStackTrace();
         }
     }
-    Connection getConnection(){
+    public Connection getConnection(){
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -33,7 +33,7 @@ public class DatabaseController {
         }
         return con;
     }
-    void closeConnection(){
+    public void closeConnection(){
         try {
             this.con.close();
         } catch (SQLException e) {

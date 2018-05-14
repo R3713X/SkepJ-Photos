@@ -19,10 +19,9 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Photo;
-import model.ProxyPhoto;
 import other.GuiControllers;
-import repository.FileManager;
-import repository.PrimaryController;
+import services.FileService;
+import services.PhotoService;
 import sun.applet.Main;
 
 import java.io.File;
@@ -36,8 +35,8 @@ import java.util.ResourceBundle;
 public class MainWindowController implements Initializable {
 
 
-    private FileManager fileManager = new FileManager();
-    private PrimaryController primaryController = new PrimaryController();
+    private FileService fileService = new FileService();
+    private PhotoService photoService = new PhotoService();
     private File recentFile = null;
     private Photo selectedPhoto;
 
@@ -63,7 +62,7 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void selectPhoto() {
-        recentFile = fileManager.fileGet();
+        recentFile = fileService.fileGet();
         if (recentFile != null)
             uploadPhotoNameLabel.setText(recentFile.getName());
     }
@@ -72,7 +71,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private void uploadPhoto() {
         try {
-            primaryController.uploadNewPhoto(fileManager.createPhotoFromFile(recentFile));
+            photoService.uploadNewPhoto(fileService.createPhotoFromFile(recentFile));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +82,7 @@ public class MainWindowController implements Initializable {
 
     private void displayImage(String id) {
         displayImageView.setImage(null);
-        displayImageView.setImage(primaryController.getPhotoById(id));
+        displayImageView.setImage(photoService.getPhotoById(id));
     }
 
     @FXML
@@ -191,7 +190,7 @@ public class MainWindowController implements Initializable {
 
     private void showPhotos() {
         tilePane.getChildren().clear();
-        List<Photo> proxyPhotos = primaryController.getAllPhotos();
+        List<Photo> proxyPhotos = photoService.getAllPhotos();
         for (Photo proxyPhoto : proxyPhotos) {
             ImageView imageView = new ImageView();
             imageView.prefHeight(100);

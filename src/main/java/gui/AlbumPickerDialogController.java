@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import model.Album;
-import repository.PrimaryController;
+import services.AlbumService;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ public class AlbumPickerDialogController {
     private ChoiceBox<String> albumChoiceBox;
 
     private ObservableList<String> albumList = FXCollections.observableArrayList();
-    private PrimaryController primaryController = new PrimaryController();
-    private List<Album> albums = primaryController.getAlbums();
+    private AlbumService albumService = new AlbumService();
+    private List<Album> albums = albumService.getAlbums();
     private String albumId;
     @FXML
     public void initialize() {
@@ -46,6 +46,6 @@ public class AlbumPickerDialogController {
     public void processResults(String photoId) {
         System.out.println(albumId);
         System.out.println(photoId);
-        primaryController.createConnectionForAlbumAndPhotoTable(albumId,photoId);
+        albumService.createConnectionForAlbumAndPhotoTable(albumId,photoId);
     }
 }

@@ -1,9 +1,9 @@
 package gui;
 
-import model.Album;
-import repository.PrimaryController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import model.Album;
+import services.AlbumService;
 
 
 public class CreateAlbumDialogController {
@@ -14,8 +14,8 @@ public class CreateAlbumDialogController {
     @FXML
     public void processResults(){
         Album newAlbum = new Album(albumTitle.getText());
-        PrimaryController primaryController =new PrimaryController();
-        primaryController.createNewAlbum(newAlbum);
+        AlbumService albumService =new AlbumService();
+        albumService.createNewAlbum(newAlbum);
     }
 
 

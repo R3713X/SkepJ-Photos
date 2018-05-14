@@ -1,4 +1,4 @@
-package repository;
+package services;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.UUID;
 
-public class FileManager {
+public class FileService {
      private final int MAX_BYTES =1048576;
 
     public File fileGet() {
