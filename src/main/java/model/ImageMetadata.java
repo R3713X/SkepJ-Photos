@@ -9,6 +9,7 @@ import com.drew.metadata.exif.ExifSubIFDDirectory;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +19,9 @@ public class ImageMetadata {
 
     private HashMap<String, String> tagMap = new HashMap<>();
     private String nameOfPhoto = "";
-    private String datePhotoCreated ;
-    private double longitude ;
-    private double latitude ;
+    private String datePhotoCreated;
+    private double longitude;
+    private double latitude;
     private Date date;
     private java.sql.Date sDate;
 
@@ -43,18 +44,25 @@ public class ImageMetadata {
             }
             getUsefulTags(file);
 
-            ExifSubIFDDirectory idir_exif_sub_dir = metadata.getFirstDirectoryOfType( com.drew.metadata.exif.ExifSubIFDDirectory.class );
-            date =idir_exif_sub_dir.getDate(ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED, TimeZone.getDefault());
-            sDate = convertUtilToSql(date);
-            System.out.println(sDate);
+            ExifSubIFDDirectory idir_exif_sub_dir = metadata.getFirstDirectoryOfType(com.drew.metadata.exif.ExifSubIFDDirectory.class);
+            try {
+                date = idir_exif_sub_dir.getDate(ExifSubIFDDirectory.TAG_DATETIME_DIGITIZED, TimeZone.getDefault());
+                sDate = convertUtilToSql(date);
+                System.out.println(sDate);
+            } catch (NullPointerException e) {
+                LocalDate localDate = LocalDate.now();
 
-        } catch (ImageProcessingException | IOException e) {
+                System.out.println("Photo has no date tag, setting date to"+localDate);
+                sDate = java.sql.Date.valueOf(localDate);
+            }
+
+        } catch (ImageProcessingException | IOException | NullPointerException e) {
             e.printStackTrace();
-
-
+            
         }
     }
-        private void getUsefulTags (File file) {
+
+    private void getUsefulTags(File file) {
 
         try {
             javaxt.io.Image image = new javaxt.io.Image(file);
@@ -62,7 +70,7 @@ public class ImageMetadata {
             try {
                 longitude = gps[0];
                 latitude = gps[1];
-                System.out.println(latitude+" "+longitude);
+                System.out.println(latitude + " " + longitude);
             } catch (Exception e) {
                 System.out.println("There is not gps data");
             }
@@ -83,26 +91,26 @@ public class ImageMetadata {
             }
         }
     }
+
     private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
-        return  new java.sql.Date(uDate.getTime());
+        return new java.sql.Date(uDate.getTime());
     }
 
 
-
     public String getDatePhotoCreated() {
-            return sDate.toString();
-        }
+        return sDate.toString();
+    }
 
-        public String getNameOfPhoto() {
-            return nameOfPhoto;
-        }
+    public String getNameOfPhoto() {
+        return nameOfPhoto;
+    }
 
-        public double getLatitude() {
-            return latitude;
-        }
+    public double getLatitude() {
+        return latitude;
+    }
 
-        public double getLongitude() {
-            return longitude;
-        }
+    public double getLongitude() {
+        return longitude;
+    }
 }
 
