@@ -5,7 +5,7 @@ import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.object.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import model.ProxyPhoto;
+import model.Photo;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,9 +16,9 @@ public class ShowPhotoLocationController implements Initializable, MapComponentI
     private GoogleMapView mapView;
 
     private GoogleMap map;
-    private ProxyPhoto proxyPhoto;
+    private Photo proxyPhoto;
 
-    public boolean setPhoto(ProxyPhoto proxyPhoto) {
+    public boolean setPhoto(Photo proxyPhoto) {
         this.proxyPhoto = proxyPhoto;
         return true;
     }

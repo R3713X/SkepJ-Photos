@@ -18,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Photo;
 import model.ProxyPhoto;
 import other.GuiControllers;
 import repository.FileManager;
@@ -38,7 +39,7 @@ public class MainWindowController implements Initializable {
     private FileManager fileManager = new FileManager();
     private PrimaryController primaryController = new PrimaryController();
     private File recentFile = null;
-    private ProxyPhoto selectedPhoto;
+    private Photo selectedPhoto;
 
 
     private String selectedPhotoId;
@@ -132,7 +133,7 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    private void showPreviewPhotoDialog(ProxyPhoto proxyPhoto) {
+    private void showPreviewPhotoDialog(Photo proxyPhoto) {
 
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
@@ -190,13 +191,13 @@ public class MainWindowController implements Initializable {
 
     private void showPhotos() {
         tilePane.getChildren().clear();
-        List<ProxyPhoto> proxyPhotos = primaryController.getAllPhotos();
-        for (ProxyPhoto proxyPhoto : proxyPhotos) {
+        List<Photo> proxyPhotos = primaryController.getAllPhotos();
+        for (Photo proxyPhoto : proxyPhotos) {
             ImageView imageView = new ImageView();
             imageView.prefHeight(100);
             imageView.prefWidth(100);
             imageView.smoothProperty();
-            imageView.setImage(proxyPhoto.getThumbnail());
+            imageView.setImage(proxyPhoto.getThumbnailImage());
             VBox vbox = new VBox();
             vbox.setSpacing(10);
             vbox.setPadding(new Insets(10, 10, 10, 10));

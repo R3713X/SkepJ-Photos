@@ -1,5 +1,6 @@
 package repository;
 
+import model.Photo;
 import model.ProxyPhoto;
 import model.RealPhoto;
 import javafx.embed.swing.SwingFXUtils;
@@ -72,8 +73,8 @@ public class PhotoRepository {
         }
     }
 
-    public List<ProxyPhoto> getAllPhotos(Connection con) {
-        List<ProxyPhoto> proxyPhotos = new LinkedList<>();
+    public List<Photo> getAllPhotos(Connection con) {
+        List<Photo> proxyPhotos = new LinkedList<>();
         BufferedImage bufferedImage;
         int blobLength;
         byte[] bytes;

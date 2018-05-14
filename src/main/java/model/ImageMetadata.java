@@ -58,7 +58,7 @@ public class ImageMetadata {
 
         } catch (ImageProcessingException | IOException | NullPointerException e) {
             e.printStackTrace();
-            
+
         }
     }
 

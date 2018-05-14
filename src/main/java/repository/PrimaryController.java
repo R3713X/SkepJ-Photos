@@ -1,9 +1,9 @@
 package repository;
 
-import model.Album;
-import model.ProxyPhoto;
-import model.RealPhoto;
 import javafx.scene.image.Image;
+import model.Album;
+import model.Photo;
+import model.RealPhoto;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public class PrimaryController {
     private DatabaseController databaseController = new DatabaseController();
 
 
-    public List<ProxyPhoto> getAllPhotos() {
-        List<ProxyPhoto> proxyPhotos;
+    public List<Photo> getAllPhotos() {
+        List<Photo> proxyPhotos;
         proxyPhotos = photoRepository.getAllPhotos(databaseController.getConnection());
         databaseController.closeConnection();
         return proxyPhotos;

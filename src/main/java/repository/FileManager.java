@@ -1,23 +1,20 @@
 package repository;
 
-import model.ImageMetadata;
-import model.RealPhoto;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import model.ImageMetadata;
+import model.RealPhoto;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.UUID;
 
 public class FileManager {
-    final int MAX_BYTES =1048576;
+     private final int MAX_BYTES =1048576;
 
     public File fileGet() {
         FileChooser fc = new FileChooser();
@@ -58,11 +55,6 @@ public class FileManager {
         return realPhoto;
     }
 
-    private byte[] extractBytesFromImage(File imageFile) throws IOException {
-
-        Path path = Paths.get(imageFile.getAbsolutePath());
-        return Files.readAllBytes(path);
-    }
 
 
 
