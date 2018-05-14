@@ -10,6 +10,12 @@ public class AlbumService {
     private AlbumRepository albumRepository = new AlbumRepository();
     private DatabaseController databaseController = new DatabaseController();
 
+    public void connectPhotosToAlbumFromIds(List<String> photoIds, String albumId){
+        for(String photoId:  photoIds){
+            createConnectionForAlbumAndPhotoTable(photoId,albumId);
+        }
+    }
+
     public void createConnectionForAlbumAndPhotoTable(String photoId, String albumId) {
         albumRepository.connectPhotoToAlbumFromId(photoId, albumId, databaseController.getConnection());
         databaseController.closeConnection();

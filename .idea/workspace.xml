@@ -2,14 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c711893-b92e-43c0-8648-6a004f76b349" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_maps_google_maps_services_0_2_7.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_8_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_13_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__joda_time_joda_time_2_9_9.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_25.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/AlbumAndPhotoConnectionService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/views/createAlbumWithDateOptions.fxml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_23.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/SkepJ-Photos_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/SkepJ-Photos_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/SkepJ-Photos_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/SkepJ-Photos_test.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/CreateAlbumDialogController.java" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/main/java/gui/MainWindowController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/RealPhoto.java" afterPath="$PROJECT_DIR$/src/main/java/model/RealPhoto.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/AlbumService.java" afterPath="$PROJECT_DIR$/src/main/java/service/AlbumService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/FileService.java" afterPath="$PROJECT_DIR$/src/main/java/service/FileService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/PhotoService.java" afterPath="$PROJECT_DIR$/src/main/java/service/PhotoService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ImageMetadata.java" afterPath="$PROJECT_DIR$/src/main/java/other/ImageMetadata.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java" afterPath="$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java" afterPath="$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/AlbumService.java" afterPath="$PROJECT_DIR$/src/main/java/service/AlbumService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/FileService.java" afterPath="$PROJECT_DIR$/src/main/java/service/FileService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/PhotoService.java" afterPath="$PROJECT_DIR$/src/main/java/service/PhotoService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -62,41 +74,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gui/MainWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="215" column="49" lean-forward="false" selection-start-line="215" selection-start-column="49" selection-end-line="215" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Photo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Photo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProxyPhoto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+              <folding>
+                <element signature="e#610#611#0" expanded="true" />
+                <element signature="e#642#643#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AlbumRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationPaths.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/other/ApplicationPaths.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuiControllers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/other/GuiControllers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="67" lean-forward="false" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhotoService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/PhotoService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="776">
+              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,8 +120,8 @@
       <file leaf-file-name="AlbumService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/service/AlbumService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+            <state relative-caret-position="204">
+              <caret line="12" column="43" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,53 +129,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlbumPickerDialogController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
+      <file leaf-file-name="AlbumAndPhotoConnectionService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/AlbumAndPhotoConnectionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="306">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RealPhoto.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/RealPhoto.java">
+      <file leaf-file-name="ImageMetadata.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/other/ImageMetadata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/FileService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhotoRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="-408">
               <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/repository/DatabaseController.java">
+      <file leaf-file-name="createAlbumWithDateOptions.fxml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/views/createAlbumWithDateOptions.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="29" column="85" lean-forward="true" selection-start-line="29" selection-start-column="85" selection-end-line="29" selection-end-column="85" />
+            <state relative-caret-position="340">
+              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createAlbumDialog.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/views/createAlbumDialog.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="19" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhotoService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/PhotoService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -171,8 +192,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -406,9 +427,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1526121044037" />
+        <entry key="$PROJECT_DIR$" value="1526337167023" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="1274989760" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3776796240" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -452,9 +473,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Model/ImageMetadata.java" />
         <option value="$PROJECT_DIR$/src/main/resources/previewPhotoDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/Repository/DatabaseController.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/UI/UserInterfaceController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/albumPickerDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/createAlbumDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/mainWindow.fxml" />
@@ -472,10 +491,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/views/showPhotoLocationDialog.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/views/mainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/model/ImageMetadata.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Photo.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/ShowPhotoLocationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/repository/PrimaryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/repository/PhotoService.java" />
@@ -488,6 +504,17 @@
         <option value="$PROJECT_DIR$/src/main/java/repository/FileService.java" />
         <option value="$PROJECT_DIR$/src/main/java/services/FileService.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/RealPhoto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/AlbumService.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Photo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/PhotoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/AlbumAndPhotoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/AlbumAndPhotoConnectionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/other/ImageMetadata.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/views/createAlbumWithDateOptions.fxml" />
       </list>
     </option>
   </component>
@@ -515,7 +542,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -600,7 +627,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -868,7 +895,21 @@
       <option name="project" value="LOCAL" />
       <updated>1526301141634</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Service">
+      <created>1526306161033</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1526306161033</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Service">
+      <created>1526310241818</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1526310241818</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -889,6 +930,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2390625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.49926794" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0010416667" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -900,7 +942,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290938" sideWeight="0.49926794" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -931,46 +972,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/PreviewPhotoDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/RealPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="45" column="4" lean-forward="false" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-          <folding>
-            <element signature="e#610#611#0" expanded="false" />
-            <element signature="e#642#643#0" expanded="false" />
-            <element signature="e#696#697#0" expanded="false" />
-            <element signature="e#728#729#0" expanded="false" />
-            <element signature="e#778#779#0" expanded="false" />
-            <element signature="e#806#807#0" expanded="false" />
-            <element signature="e#879#880#0" expanded="false" />
-            <element signature="e#931#932#0" expanded="false" />
-            <element signature="e#1002#1003#0" expanded="false" />
-            <element signature="e#1052#1053#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1955">
@@ -992,7 +993,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ImageMetadata.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/other/ImageMetadata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
@@ -1075,13 +1076,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/javafx/event/EventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1107,7 +1101,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="274" column="11" lean-forward="false" selection-start-line="274" selection-start-column="11" selection-end-line="274" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1189,30 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="840" column="26" lean-forward="false" selection-start-line="840" selection-start-column="26" selection-end-line="840" selection-end-column="26" />
-          <folding>
-            <element signature="e#28769#28770#0" expanded="false" />
-            <element signature="e#28824#28825#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ImageMetadata.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3026#3027#0" expanded="false" />
-            <element signature="e#3083#3084#0" expanded="false" />
-            <element signature="e#3127#3128#0" expanded="false" />
-            <element signature="e#3166#3167#0" expanded="false" />
-            <element signature="e#3204#3205#0" expanded="false" />
-            <element signature="e#3238#3239#0" expanded="false" />
-            <element signature="e#3273#3274#0" expanded="false" />
-            <element signature="e#3304#3305#0" expanded="false" />
-            <element signature="e#3340#3341#0" expanded="false" />
-            <element signature="e#3372#3373#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1224,41 +1193,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Photo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <element signature="e#610#611#0" expanded="false" />
-            <element signature="e#642#643#0" expanded="false" />
-            <element signature="e#696#697#0" expanded="false" />
-            <element signature="e#728#729#0" expanded="false" />
-            <element signature="e#778#779#0" expanded="false" />
-            <element signature="e#806#807#0" expanded="false" />
-            <element signature="e#879#880#0" expanded="false" />
-            <element signature="e#931#932#0" expanded="false" />
-            <element signature="e#1002#1003#0" expanded="false" />
-            <element signature="e#1052#1053#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/ShowPhotoLocationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1956#1957#0" expanded="true" />
-            <element signature="e#2009#2010#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1956#1957#0" expanded="false" />
+            <element signature="e#2009#2010#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1271,14 +1213,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2584">
-          <caret line="170" column="40" lean-forward="false" selection-start-line="170" selection-start-column="40" selection-end-line="170" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/AlbumPickerDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -1287,46 +1221,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/AlbumService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/PhotoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/repository/DatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="29" column="85" lean-forward="true" selection-start-line="29" selection-start-column="85" selection-end-line="29" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <caret line="29" column="85" lean-forward="false" selection-start-line="29" selection-start-column="85" selection-end-line="29" selection-end-column="85" />
           <folding />
         </state>
       </provider>
@@ -1357,10 +1255,132 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/RealPhoto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="663">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/PhotoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="51" column="32" lean-forward="false" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.lynden/GMapsFX/2.12.0/cf0ce95d1f2ff999cf60ea131f7f290f045ef52e/GMapsFX-2.12.0-sources.jar!/com/lynden/gmapsfx/service/geocoding/GeocoderGeometry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+          <folding>
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1197#1198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="215" column="49" lean-forward="false" selection-start-line="215" selection-start-column="49" selection-end-line="215" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ProxyPhoto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding>
+            <element signature="e#610#611#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Photo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/repository/AlbumRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/AlbumService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="43" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/PhotoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/AlbumAndPhotoConnectionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/other/ImageMetadata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/views/createAlbumDialog.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/views/createAlbumWithDateOptions.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
   </component>

@@ -251,6 +251,7 @@ public class MainWindowController implements Initializable {
         mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
 
     }
+
     private static Stage stage;
 
     public static void setStage(Stage stage) {

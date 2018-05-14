@@ -6,6 +6,7 @@ import model.RealPhoto;
 import repository.DatabaseController;
 import repository.PhotoRepository;
 
+import java.sql.Date;
 import java.util.List;
 
 public class PhotoService {
@@ -23,7 +24,7 @@ public class PhotoService {
 
 
     public Image getPhotoById(String id) {
-        Image image = photoRepository.getPhotoById(id, databaseController.getConnection());
+        Image image = photoRepository.getPhotosImageById(id, databaseController.getConnection());
         databaseController.closeConnection();
         return image;
     }
@@ -35,5 +36,10 @@ public class PhotoService {
         databaseController.closeConnection();
     }
 
+    public List<String> getPhotoIdsBetweenDates(Date startingDate, Date endingDate){
+        List<String> photoIds = photoRepository.getPhotosIdsFromSpecifiedDates(startingDate,endingDate,databaseController.getConnection());
+        databaseController.closeConnection();
+        return photoIds;
+    }
 
 }

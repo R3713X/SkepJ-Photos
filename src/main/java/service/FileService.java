@@ -3,7 +3,7 @@ package service;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
-import model.ImageMetadata;
+import other.ImageMetadata;
 import model.RealPhoto;
 
 import javax.imageio.ImageIO;

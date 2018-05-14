@@ -1,10 +1,10 @@
 package repository;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 import model.Photo;
 import model.ProxyPhoto;
 import model.RealPhoto;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,13 +12,14 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class PhotoRepository {
 
 
-    public Image getPhotoById(String uuid, Connection con) {
+    public Image getPhotosImageById(String uuid, Connection con) {
         byte[] bytes = null;
         String selectTableSQL = "SELECT CompleteData"
                 + " FROM photos"
@@ -43,6 +44,29 @@ public class PhotoRepository {
             e.printStackTrace();
         }
         return byteArrayToImage(bytes);
+    }
+
+    public List<String> getPhotosIdsFromSpecifiedDates(Date startingDate, Date endingDate, Connection con) {
+        List<String> photoIds = new ArrayList<>();
+        String selectTableSQL = "SELECT PhotoID"
+                + " FROM photos"
+                + " and Date between (?) and (?)";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(selectTableSQL);
+            preparedStatement.setDate(1, startingDate);
+            preparedStatement.setDate(2, endingDate);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            String photoId;
+            if (resultSet.next()) {
+                photoId = resultSet.getString("PhotoID");
+                photoIds.add(photoId);
+                System.out.println("ALL GOOD with getting the photoIds from the dates");
+            }
+        } catch (SQLException e) {
+            System.out.println("ALL BAD with getting the photoIds from the dates");
+            e.printStackTrace();
+        }
+        return photoIds;
     }
 
     public void uploadPhotoToDB(RealPhoto realPhoto, Connection con) {
@@ -108,7 +132,7 @@ public class PhotoRepository {
                         0,
                         image);
                 // Double.parseDouble(resultSet.getString("Latitude"))
-                if (!resultSet.getString("Latitude").isEmpty()){
+                if (!resultSet.getString("Latitude").isEmpty()) {
                     proxyPhoto.setLatitude(Double.parseDouble(resultSet.getString("Latitude")));
                     proxyPhoto.setLongitude(Double.parseDouble(resultSet.getString("Longitude")));
                 }
@@ -134,7 +158,6 @@ public class PhotoRepository {
         }
         return image;
     }
-
 
 
     private byte[] imageToByteArray(javafx.scene.image.Image image) throws IOException {
