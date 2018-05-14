@@ -1,4 +1,4 @@
-package services;
+package service;
 
 import javafx.scene.image.Image;
 import model.Photo;

@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import model.Album;
-import services.AlbumService;
+import service.AlbumService;
 
 import java.util.List;
 

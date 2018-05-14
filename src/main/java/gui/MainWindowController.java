@@ -20,8 +20,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Photo;
 import other.GuiControllers;
-import services.FileService;
-import services.PhotoService;
+import service.FileService;
+import service.PhotoService;
 import sun.applet.Main;
 
 import java.io.File;

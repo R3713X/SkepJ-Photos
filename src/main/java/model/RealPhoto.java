@@ -1,7 +1,7 @@
 package model;
 
-import services.PhotoService;
 import javafx.scene.image.Image;
+import service.PhotoService;
 
 public class RealPhoto implements Photo {
 
@@ -27,7 +27,7 @@ public class RealPhoto implements Photo {
         this.longitude = proxyPhoto.getLongitude();
         this.thumbnailImage = proxyPhoto.getThumbnailImage();
         PhotoService photoService = new PhotoService();
-        this.completeImage= photoService.getPhotoById(this.getId());
+        this.completeImage = photoService.getPhotoById(this.getId());
 
     }
 
@@ -40,26 +40,32 @@ public class RealPhoto implements Photo {
         this.thumbnailImage = thumbnailImage;
         this.completeImage = completeImage;
     }
+
     @Override
     public String getName() {
         return name;
     }
+
     @Override
     public String getDate() {
         return date;
     }
+
     @Override
     public String getId() {
         return id;
     }
+
     @Override
     public double getLatitude() {
         return latitude;
     }
+
     @Override
     public double getLongitude() {
         return longitude;
     }
+
     @Override
     public Image getThumbnailImage() {
         return thumbnailImage;
@@ -69,26 +75,32 @@ public class RealPhoto implements Photo {
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     public void setDate(String date) {
         this.date = date;
     }
+
     @Override
     public void setId(String id) {
         this.id = id;
     }
+
     @Override
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
+
     @Override
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+
     @Override
     public void setThumbnailImage(Image thumbnailImage) {
         this.thumbnailImage = thumbnailImage;
     }
+
     @Override
     public void setCompleteImage(Image completeImage) {
         this.completeImage = completeImage;

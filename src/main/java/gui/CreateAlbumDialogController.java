@@ -3,7 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import model.Album;
-import services.AlbumService;
+import service.AlbumService;
 
 
 public class CreateAlbumDialogController {
