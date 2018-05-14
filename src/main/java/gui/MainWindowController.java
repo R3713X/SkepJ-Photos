@@ -157,7 +157,6 @@ public class MainWindowController implements Initializable {
         closeButton.managedProperty().bind(closeButton.visibleProperty());
         closeButton.setVisible(false);
         dialog.showAndWait();
-
     }
 
     @FXML
