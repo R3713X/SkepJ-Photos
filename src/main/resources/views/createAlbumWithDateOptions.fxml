@@ -2,9 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<DialogPane
-            xmlns:fx="http://javafx.com/fxml">
+<DialogPane fx:controller="gui.CreateAlbumWithDateOptionsDialogController"
+        xmlns:fx="http://javafx.com/fxml">
     <headerText>
         Please select the dates between which will be the album pictures
     </headerText>
@@ -15,7 +14,7 @@
             <Label text="Starting Date" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <DatePicker fx:id="startingDatePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
             <Label text="EndingDate Date" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <DatePicker fx:id="endingDatePicker"  GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <DatePicker fx:id="endingDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
         </GridPane>
     </content>
 </DialogPane>

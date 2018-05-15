@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -59,6 +56,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button chooseAlbumButton, choosePhotoButton, uploadPhotoButton, showOnMapButton;
 
+    @FXML
+    private MenuItem createAlbumWithDatesMenuItem;
 
     @FXML
     private void selectPhoto() {
@@ -103,6 +102,28 @@ public class MainWindowController implements Initializable {
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get().equals(ButtonType.OK)) {
             CreateAlbumDialogController dialogController = fxmlLoader.getController();
+            dialogController.processResults();
+            statusLabel.setText("Album created successfully.");
+        }
+    }
+    @FXML
+    public void showCreateAlbumWithDateOptionsDialog() {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Create a new Album");
+        dialog.setHeaderText("Use this dialog to create a new Album");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("/views/createAlbumWithDateOptions.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get().equals(ButtonType.OK)) {
+            CreateAlbumWithDateOptionsDialogController dialogController = fxmlLoader.getController();
             dialogController.processResults();
             statusLabel.setText("Album created successfully.");
         }
@@ -245,6 +266,7 @@ public class MainWindowController implements Initializable {
         uploadPhotoButton.setOnAction(event -> uploadPhoto());
         chooseAlbumButton.setOnAction(event -> showAlbumPickerDialog());
         showOnMapButton.setOnAction(event -> showMapLocationDialog());
+        createAlbumWithDatesMenuItem.setOnAction(event -> showCreateAlbumWithDateOptionsDialog());
         System.out.println("Running");
         showPhotos();
 

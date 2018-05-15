@@ -16,7 +16,7 @@
                     <SeparatorMenuItem/>
                     <MenuItem text="Edit Albums"/>
                     <SeparatorMenuItem/>
-                    <MenuItem text="Create album sorted by Date"/>
+                    <MenuItem text="Create album with dates" fx:id="createAlbumWithDatesMenuItem"/>
                 </items>
             </Menu>
             <Menu text="Photos Map"/>

@@ -48,19 +48,19 @@ public class PhotoRepository {
 
     public List<String> getPhotosIdsFromSpecifiedDates(Date startingDate, Date endingDate, Connection con) {
         List<String> photoIds = new ArrayList<>();
-        String selectTableSQL = "SELECT PhotoID"
+        String selectTableSQL = "SELECT *"
                 + " FROM photos"
-                + " and Date between (?) and (?)";
+                + " WHERE Date BETWEEN \""+startingDate.toString()+"\" AND  \""+endingDate.toString()+"\"";
+        System.out.println(selectTableSQL);
         try {
             PreparedStatement preparedStatement = con.prepareStatement(selectTableSQL);
-            preparedStatement.setDate(1, startingDate);
-            preparedStatement.setDate(2, endingDate);
+
             ResultSet resultSet = preparedStatement.executeQuery();
             String photoId;
-            if (resultSet.next()) {
+            System.out.println(resultSet.getFetchSize());
+            while (resultSet.next()) {
                 photoId = resultSet.getString("PhotoID");
                 photoIds.add(photoId);
-                System.out.println("ALL GOOD with getting the photoIds from the dates");
             }
         } catch (SQLException e) {
             System.out.println("ALL BAD with getting the photoIds from the dates");

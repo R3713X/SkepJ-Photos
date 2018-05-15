@@ -10,14 +10,11 @@ public class AlbumRepository {
 
     public void connectPhotoToAlbumFromId(String photoId, String albumId, Connection con) {
         String insertTableSQL = "INSERT INTO albumandphotos"
-                + "(albumID, photoID) VALUES"
-                + "(?,?)";
+                + "(photoId, albumId) VALUES"
+                + "(\""+photoId+"\",\""+albumId+"\")";
+        System.out.println(insertTableSQL);
         try {
             PreparedStatement preparedStatement = con.prepareStatement(insertTableSQL);
-            //UUID creates a random ID check the docs for more info
-            preparedStatement.setString(1, photoId);
-            preparedStatement.setString(2, albumId);
-
             preparedStatement.execute();
             System.out.println("The connection had been created successfully.");
         } catch (SQLException e) {

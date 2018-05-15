@@ -11,8 +11,11 @@ public class AlbumService {
     private DatabaseController databaseController = new DatabaseController();
 
     public void connectPhotosToAlbumFromIds(List<String> photoIds, String albumId){
+        if (!photoIds.isEmpty()){
         for(String photoId:  photoIds){
             createConnectionForAlbumAndPhotoTable(photoId,albumId);
+        }}else {
+            System.out.println("there are not photos between these dates");
         }
     }
 
