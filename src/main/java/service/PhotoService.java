@@ -20,7 +20,12 @@ public class PhotoService {
         databaseController.closeConnection();
         return proxyPhotos;
     }
-
+    public List<Photo> getPhotosByAlbumId(String albumId) {
+        List<Photo> proxyPhotos;
+        proxyPhotos = photoRepository.getPhotosFromAlbumId(albumId,databaseController.getConnection());
+        databaseController.closeConnection();
+        return proxyPhotos;
+    }
 
 
     public Image getPhotoById(String id) {
@@ -37,7 +42,7 @@ public class PhotoService {
     }
 
     public List<String> getPhotoIdsBetweenDates(Date startingDate, Date endingDate){
-        List<String> photoIds = photoRepository.getPhotosIdsFromSpecifiedDates(startingDate,endingDate,databaseController.getConnection());
+        List<String> photoIds = photoRepository.getPhotoIdsFromDates(startingDate,endingDate,databaseController.getConnection());
         databaseController.closeConnection();
         return photoIds;
     }

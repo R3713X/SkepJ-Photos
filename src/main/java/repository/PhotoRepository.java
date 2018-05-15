@@ -46,7 +46,7 @@ public class PhotoRepository {
         return byteArrayToImage(bytes);
     }
 
-    public List<String> getPhotosIdsFromSpecifiedDates(Date startingDate, Date endingDate, Connection con) {
+    public List<String> getPhotoIdsFromDates(Date startingDate, Date endingDate, Connection con) {
         List<String> photoIds = new ArrayList<>();
         String selectTableSQL = "SELECT *"
                 + " FROM photos"
@@ -69,14 +69,14 @@ public class PhotoRepository {
         return photoIds;
     }
 
-    public List<Photo> getPhotosIdsFromSpecifiedDates(String albumId, Connection con) {
+    public List<Photo> getPhotosFromAlbumId(String albumId, Connection con) {
         BufferedImage bufferedImage;
         int blobLength;
         byte[] bytes;
         ProxyPhoto proxyPhoto;
         Image image = null;
         List<Photo> albumsPhotos = new ArrayList<>();
-        String selectTableSQL = "SELECT photos.Name, photos.PhotoID ,photos.ThumbnailData, photos.Date, photos.CompleteData, photos.Latitude, photos.Longitude" +
+        String selectTableSQL = "SELECT photos.Name, photos.PhotoID ,photos.ThumbnailData, photos.Date, photos.CompleteData, photos.Latitude, photos.Longitude " +
                 "FROM albums,albumandphotos,photos " +
                 "WHERE albums.AlbumID=\""+albumId+"\" " +
                 "AND albums.AlbumID=albumandphotos.albumID AND albumandphotos.photoID = photos.PhotoID";

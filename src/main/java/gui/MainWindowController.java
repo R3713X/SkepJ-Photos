@@ -1,8 +1,6 @@
 package gui;
 
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -44,14 +42,14 @@ public class MainWindowController implements Initializable {
     private Photo selectedPhoto;
 
 
-    private String selectedPhotoId;
+    private String selectedPhotoId, selectedAlbumId;
 
 
     @FXML
     private ImageView displayImageView;
 
     @FXML
-    private TilePane photoTilePane;
+    private TilePane photoTilePane, albumTilePane;
 
     @FXML
     private BorderPane mainBorderPane;
@@ -72,28 +70,38 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         GuiControllers.setMainController(this);
+        buttonsSetup();
+        albumListViewSetUp();
+        showAllPhotos();
+        borderPaneColumnsSetup();
+    }
+
+    public void borderPaneColumnsSetup(){
+        mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> photoTilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
+    }
+
+    public void albumListViewSetUp() {
+        albumListView.setItems(albumService.getObservableArrayListAlbums());
+        albumListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        albumListView.getSelectionModel().selectFirst();
+        selectedAlbumId = albumListView.getSelectionModel().getSelectedItem().getAlbumId();
+        albumListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Album album = albumListView.getSelectionModel().getSelectedItem();
+                selectedAlbumId = album.getAlbumId();
+                showAlbumPhotos(selectedAlbumId);
+                System.out.println(album.getName() + "  " + album.getAlbumId());
+            }
+        });
+    }
+
+
+    public void buttonsSetup() {
         choosePhotoButton.setOnAction(event -> selectPhoto());
         uploadPhotoButton.setOnAction(event -> uploadPhoto());
         chooseAlbumButton.setOnAction(event -> showAlbumPickerDialog());
         showOnMapButton.setOnAction(event -> showMapLocationDialog());
         createAlbumWithDatesMenuItem.setOnAction(event -> showCreateAlbumWithDateOptionsDialog());
-        System.out.println("Running");
-        showPhotos();
-        albumListView.setItems(albumService.getObservableArrayListAlbums());
-
-        albumListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Album>() {
-            @Override
-            public void changed(ObservableValue<? extends Album> observable, Album oldValue, Album newValue) {
-                if (newValue != null) {
-                    Album album = albumListView.getSelectionModel().getSelectedItem();
-                    System.out.println(album.getName()+"  "+ album.getAlbumId());
-                }
-            }
-        });
-        albumListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        albumListView.getSelectionModel().selectFirst();
-        mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> photoTilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
-
     }
 
     @FXML
@@ -112,7 +120,7 @@ public class MainWindowController implements Initializable {
             e.printStackTrace();
         }
         statusLabel.setText(recentFile.getName() + " has been uploaded successfully");
-        showPhotos();
+        showAllPhotos();
     }
 
 
@@ -141,6 +149,7 @@ public class MainWindowController implements Initializable {
             CreateAlbumDialogController dialogController = fxmlLoader.getController();
             dialogController.processResults();
             statusLabel.setText("Album created successfully.");
+            albumListViewSetUp();
         }
     }
 
@@ -164,6 +173,7 @@ public class MainWindowController implements Initializable {
             CreateAlbumWithDateOptionsDialogController dialogController = fxmlLoader.getController();
             dialogController.processResults();
             statusLabel.setText("Album created successfully.");
+            albumListViewSetUp();
         }
     }
 
@@ -246,7 +256,7 @@ public class MainWindowController implements Initializable {
     }
 
 
-    private void showPhotos() {
+    private void showAllPhotos() {
         photoTilePane.getChildren().clear();
         List<Photo> proxyPhotos = photoService.getAllPhotos();
         for (Photo proxyPhoto : proxyPhotos) {
@@ -289,6 +299,56 @@ public class MainWindowController implements Initializable {
             vbox.setOnMouseEntered(event -> vbox.setStyle("-fx-background-color: #b2cfff"));
             vbox.setOnMouseExited(event -> vbox.setStyle("-fx-background-color: #dbe9ff"));
             photoTilePane.getChildren().add(vbox);
+
+
+        }
+
+
+    }
+
+    private void showAlbumPhotos(String albumId) {
+        albumTilePane.getChildren().clear();
+        List<Photo> proxyPhotos = photoService.getPhotosByAlbumId(albumId);
+        for (Photo proxyPhoto : proxyPhotos) {
+            ImageView imageView = new ImageView();
+            imageView.prefHeight(100);
+            imageView.prefWidth(100);
+            imageView.smoothProperty();
+            imageView.setImage(proxyPhoto.getThumbnailImage());
+            VBox vbox = new VBox();
+            vbox.setSpacing(10);
+            vbox.setPadding(new Insets(10, 10, 10, 10));
+            vbox.setAlignment(Pos.CENTER);
+            vbox.setMaxWidth(180);
+            vbox.setMaxHeight(180);
+            vbox.getChildren().add(0, imageView);
+            vbox.setStyle("-fx-background-color: #dbe9ff");
+            vbox.setOnMouseClicked(event -> {
+                if (event.getButton() == MouseButton.PRIMARY) {
+                    System.out.println("primary");
+                    displayImage(proxyPhoto.getId());
+                    chooseAlbumButton.setVisible(true);
+                    showOnMapButton.setVisible(false);
+                    System.out.println(proxyPhoto.getLatitude());
+                    if (proxyPhoto.getLongitude() != 0 && proxyPhoto.getLatitude() != 0) {
+                        selectedPhoto = proxyPhoto;
+                        showOnMapButton.setVisible(true);
+                    }
+
+                    selectedPhotoId = proxyPhoto.getId();
+
+                } else if (event.getButton() == MouseButton.SECONDARY) {
+                    System.out.println("Secondary");
+                    showPreviewPhotoDialog(proxyPhoto);
+                }
+                System.out.println(proxyPhoto.getId());
+                vbox.setStyle("-fx-background-color: #7c7cff");
+
+            });
+            vbox.getChildren().add(1, new Label(proxyPhoto.getName()));
+            vbox.setOnMouseEntered(event -> vbox.setStyle("-fx-background-color: #b2cfff"));
+            vbox.setOnMouseExited(event -> vbox.setStyle("-fx-background-color: #dbe9ff"));
+            albumTilePane.getChildren().add(vbox);
 
 
         }
