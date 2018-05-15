@@ -64,7 +64,7 @@
                     </left>
                     <center>
                         <ScrollPane hbarPolicy="NEVER">
-                            <TilePane fx:id="tilePane" hgap="25" tileAlignment="TOP_LEFT" vgap="15"
+                            <TilePane fx:id="photoTilePane" hgap="25" tileAlignment="TOP_LEFT" vgap="15"
                                       BorderPane.alignment="CENTER">
                                 <opaqueInsets>
                                     <Insets/>
@@ -75,35 +75,48 @@
                             </TilePane>
                         </ScrollPane>
                     </center>
-                    <bottom>
-                        <BorderPane>
-                            <center>
-                                <HBox alignment="BOTTOM_RIGHT" spacing="15" xmlns="http://javafx.com/javafx/8.0.121"
-                                      xmlns:fx="http://javafx.com/fxml/1">
-                                    <Label fx:id="uploadPhotoNameLabel"/>
-                                    <Button fx:id="choosePhotoButton" contentDisplay="CENTER" layoutX="126.0"
-                                            layoutY="417.0" mnemonicParsing="false"
-                                            prefHeight="26.0" prefWidth="94.0" text="Choose Image"/>
-                                    <Button fx:id="uploadPhotoButton" alignment="CENTER_RIGHT" layoutX="432.0"
-                                            layoutY="417.0" mnemonicParsing="false"
-                                            prefHeight="26.0" prefWidth="94.0" text="Upload Image"/>
 
-                                </HBox>
-                            </center>
-                            <bottom>
-                                <HBox alignment="CENTER" style="-fx-background-color: #ffffff ">
-                                    <Label fx:id="statusLabel"/>
-                                </HBox>
-                            </bottom>
-                        </BorderPane>
-
-                    </bottom>
 
                 </BorderPane>
             </Tab>
             <Tab text="Albums" closable="false">
+                <BorderPane>
+                    <left>
+                        <ListView fx:id="albumListView">
+                        </ListView>
+                    </left>
+                    <center>
+                        <TilePane fx:id="albumTilePane"  tileAlignment="TOP_LEFT" vgap="15"
+                                  BorderPane.alignment="CENTER">
 
+                        </TilePane>
+                    </center>
+                </BorderPane>
             </Tab>
         </TabPane>
+
     </center>
+    <bottom>
+        <BorderPane>
+            <center>
+                <HBox alignment="BOTTOM_RIGHT" spacing="15" xmlns="http://javafx.com/javafx/8.0.121"
+                      xmlns:fx="http://javafx.com/fxml/1">
+                    <Label fx:id="uploadPhotoNameLabel"/>
+                    <Button fx:id="choosePhotoButton" contentDisplay="CENTER" layoutX="126.0"
+                            layoutY="417.0" mnemonicParsing="false"
+                            prefHeight="26.0" prefWidth="94.0" text="Choose Image"/>
+                    <Button fx:id="uploadPhotoButton" alignment="CENTER_RIGHT" layoutX="432.0"
+                            layoutY="417.0" mnemonicParsing="false"
+                            prefHeight="26.0" prefWidth="94.0" text="Upload Image"/>
+
+                </HBox>
+            </center>
+            <bottom>
+                <HBox alignment="CENTER" style="-fx-background-color: #ffffff ">
+                    <Label fx:id="statusLabel"/>
+                </HBox>
+            </bottom>
+        </BorderPane>
+
+    </bottom>
 </BorderPane>

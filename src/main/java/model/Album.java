@@ -43,4 +43,8 @@ public class Album {
 
         return this.date;
     }
+    @Override
+    public String toString() {
+        return name;
+    }
 }

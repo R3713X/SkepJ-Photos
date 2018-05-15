@@ -1,6 +1,8 @@
 package gui;
 
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,8 +17,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Album;
 import model.Photo;
 import other.GuiControllers;
+import service.AlbumService;
 import service.FileService;
 import service.PhotoService;
 import sun.applet.Main;
@@ -34,6 +38,8 @@ public class MainWindowController implements Initializable {
 
     private FileService fileService = new FileService();
     private PhotoService photoService = new PhotoService();
+    private AlbumService albumService = new AlbumService();
+
     private File recentFile = null;
     private Photo selectedPhoto;
 
@@ -45,7 +51,7 @@ public class MainWindowController implements Initializable {
     private ImageView displayImageView;
 
     @FXML
-    private TilePane tilePane;
+    private TilePane photoTilePane;
 
     @FXML
     private BorderPane mainBorderPane;
@@ -58,6 +64,37 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private MenuItem createAlbumWithDatesMenuItem;
+
+    @FXML
+    private ListView<Album> albumListView;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        GuiControllers.setMainController(this);
+        choosePhotoButton.setOnAction(event -> selectPhoto());
+        uploadPhotoButton.setOnAction(event -> uploadPhoto());
+        chooseAlbumButton.setOnAction(event -> showAlbumPickerDialog());
+        showOnMapButton.setOnAction(event -> showMapLocationDialog());
+        createAlbumWithDatesMenuItem.setOnAction(event -> showCreateAlbumWithDateOptionsDialog());
+        System.out.println("Running");
+        showPhotos();
+        albumListView.setItems(albumService.getObservableArrayListAlbums());
+
+        albumListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Album>() {
+            @Override
+            public void changed(ObservableValue<? extends Album> observable, Album oldValue, Album newValue) {
+                if (newValue != null) {
+                    Album album = albumListView.getSelectionModel().getSelectedItem();
+                    System.out.println(album.getName()+"  "+ album.getAlbumId());
+                }
+            }
+        });
+        albumListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        albumListView.getSelectionModel().selectFirst();
+        mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> photoTilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
+
+    }
 
     @FXML
     private void selectPhoto() {
@@ -106,6 +143,7 @@ public class MainWindowController implements Initializable {
             statusLabel.setText("Album created successfully.");
         }
     }
+
     @FXML
     public void showCreateAlbumWithDateOptionsDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -209,7 +247,7 @@ public class MainWindowController implements Initializable {
 
 
     private void showPhotos() {
-        tilePane.getChildren().clear();
+        photoTilePane.getChildren().clear();
         List<Photo> proxyPhotos = photoService.getAllPhotos();
         for (Photo proxyPhoto : proxyPhotos) {
             ImageView imageView = new ImageView();
@@ -250,7 +288,7 @@ public class MainWindowController implements Initializable {
             vbox.getChildren().add(1, new Label(proxyPhoto.getName()));
             vbox.setOnMouseEntered(event -> vbox.setStyle("-fx-background-color: #b2cfff"));
             vbox.setOnMouseExited(event -> vbox.setStyle("-fx-background-color: #dbe9ff"));
-            tilePane.getChildren().add(vbox);
+            photoTilePane.getChildren().add(vbox);
 
 
         }
@@ -258,21 +296,6 @@ public class MainWindowController implements Initializable {
 
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        GuiControllers.setMainController(this);
-        choosePhotoButton.setOnAction(event -> selectPhoto());
-        uploadPhotoButton.setOnAction(event -> uploadPhoto());
-        chooseAlbumButton.setOnAction(event -> showAlbumPickerDialog());
-        showOnMapButton.setOnAction(event -> showMapLocationDialog());
-        createAlbumWithDatesMenuItem.setOnAction(event -> showCreateAlbumWithDateOptionsDialog());
-        System.out.println("Running");
-        showPhotos();
-
-        mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> tilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
-
-    }
 
     private static Stage stage;
 

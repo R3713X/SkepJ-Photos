@@ -69,6 +69,58 @@ public class PhotoRepository {
         return photoIds;
     }
 
+    public List<Photo> getPhotosIdsFromSpecifiedDates(String albumId, Connection con) {
+        BufferedImage bufferedImage;
+        int blobLength;
+        byte[] bytes;
+        ProxyPhoto proxyPhoto;
+        Image image = null;
+        List<Photo> albumsPhotos = new ArrayList<>();
+        String selectTableSQL = "SELECT photos.Name, photos.PhotoID ,photos.ThumbnailData, photos.Date, photos.CompleteData, photos.Latitude, photos.Longitude" +
+                "FROM albums,albumandphotos,photos " +
+                "WHERE albums.AlbumID=\""+albumId+"\" " +
+                "AND albums.AlbumID=albumandphotos.albumID AND albumandphotos.photoID = photos.PhotoID";
+        System.out.println(selectTableSQL);
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(selectTableSQL);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Blob blob;
+
+            while (resultSet.next()) {
+
+                blob = resultSet.getBlob("ThumbnailData");
+                blobLength = (int) blob.length();
+                bytes = blob.getBytes(1, blobLength);
+                try {
+                    bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes));
+                    image = SwingFXUtils.toFXImage(bufferedImage, null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                proxyPhoto = new ProxyPhoto(resultSet.getString("Name"),
+                        resultSet.getString("Date"),
+                        resultSet.getString("PhotoID"),
+                        0,
+                        0,
+                        image);
+                // Double.parseDouble(resultSet.getString("Latitude"))
+                if (!resultSet.getString("Latitude").isEmpty()) {
+                    proxyPhoto.setLatitude(Double.parseDouble(resultSet.getString("Latitude")));
+                    proxyPhoto.setLongitude(Double.parseDouble(resultSet.getString("Longitude")));
+                }
+                albumsPhotos.add(proxyPhoto);
+
+            }
+        } catch (SQLException e) {
+            System.out.println("ALL BAD with getting the photoIds from the dates");
+            e.printStackTrace();
+        }
+        return albumsPhotos;
+    }
+
     public void uploadPhotoToDB(RealPhoto realPhoto, Connection con) {
         String insertTableSQL = "INSERT INTO photos"
                 + "(PhotoID, UserID, Name, Date, Latitude, Longitude,ThumbnailData,CompleteData) VALUES"

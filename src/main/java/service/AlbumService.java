@@ -1,5 +1,7 @@
 package service;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Album;
 import repository.AlbumRepository;
 import repository.DatabaseController;
@@ -26,6 +28,15 @@ public class AlbumService {
     public List<Album> getAlbums() {
         List<Album> albums= albumRepository.getAllAlbums(databaseController.getConnection());
 
+        databaseController.closeConnection();
+        return albums;
+    }
+    public ObservableList<Album> getObservableArrayListAlbums() {
+        ObservableList<Album> albums = FXCollections.observableArrayList();
+        List<Album> albumsList= albumRepository.getAllAlbums(databaseController.getConnection());
+        for (Album album: albumsList){
+            albums.add(album);
+        }
         databaseController.closeConnection();
         return albums;
     }
