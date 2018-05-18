@@ -73,14 +73,16 @@ public class MainWindowController implements Initializable {
         buttonsSetup();
         albumListViewSetUp();
         showAllPhotos();
-        borderPaneColumnsSetup();
+        paneColumnsSetup();
     }
 
-    public void borderPaneColumnsSetup(){
+    private void paneColumnsSetup(){
         mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> photoTilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
+        mainBorderPane.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> albumTilePane.setPrefColumns((newSceneWidth.intValue() - 200) / 200));
+
     }
 
-    public void albumListViewSetUp() {
+    private void albumListViewSetUp() {
         albumListView.setItems(albumService.getObservableArrayListAlbums());
         albumListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         albumListView.getSelectionModel().selectFirst();
@@ -96,7 +98,7 @@ public class MainWindowController implements Initializable {
     }
 
 
-    public void buttonsSetup() {
+    private void buttonsSetup() {
         choosePhotoButton.setOnAction(event -> selectPhoto());
         uploadPhotoButton.setOnAction(event -> uploadPhoto());
         chooseAlbumButton.setOnAction(event -> showAlbumPickerDialog());
@@ -154,7 +156,7 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    public void showCreateAlbumWithDateOptionsDialog() {
+    private void showCreateAlbumWithDateOptionsDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
         dialog.setTitle("Create a new Album");

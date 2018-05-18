@@ -86,10 +86,12 @@
                         </ListView>
                     </left>
                     <center>
-                        <TilePane fx:id="albumTilePane"  tileAlignment="TOP_LEFT" vgap="15"
-                                  BorderPane.alignment="CENTER">
+                        <ScrollPane hbarPolicy="NEVER">
+                            <TilePane fx:id="albumTilePane" tileAlignment="TOP_LEFT" vgap="15"
+                                      BorderPane.alignment="CENTER">
 
-                        </TilePane>
+                            </TilePane>
+                        </ScrollPane>
                     </center>
                 </BorderPane>
             </Tab>
